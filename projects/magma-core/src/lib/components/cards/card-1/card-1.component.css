@@ -1,0 +1,9 @@
+.card{
+    border: 1px solid #ccc;
+    background-color: #2e3234;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    color: var(--magma-color-font-primary);
+    font-family: var(--magma-font);
+}

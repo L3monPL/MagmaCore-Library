@@ -3,5 +3,136 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+    "MagmaCore": {
+      "projectType": "library",
+      "root": "projects/magma-core",
+      "sourceRoot": "projects/magma-core/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/magma-core/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/magma-core/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/magma-core/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/magma-core/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "MagmaCoreWorkspace": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/magma-core-workspace",
+      "sourceRoot": "projects/magma-core-workspace/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": "dist/magma-core-workspace",
+            "index": "projects/magma-core-workspace/src/index.html",
+            "browser": "projects/magma-core-workspace/src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "projects/magma-core-workspace/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/magma-core-workspace/src/favicon.ico",
+              "projects/magma-core-workspace/src/assets"
+            ],
+            "styles": [
+              "projects/magma-core-workspace/src/styles.scss",
+              "dist/magma-core/src/lib/assets/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "MagmaCoreWorkspace:build:production"
+            },
+            "development": {
+              "buildTarget": "MagmaCoreWorkspace:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "MagmaCoreWorkspace:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "projects/magma-core-workspace/tsconfig.spec.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/magma-core-workspace/src/favicon.ico",
+              "projects/magma-core-workspace/src/assets"
+            ],
+            "styles": [
+              "projects/magma-core-workspace/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": false
   }
 }
