@@ -5,6 +5,12 @@
   "projects": {
     "MagmaCore": {
       "projectType": "library",
+      "schematics": {
+      "@schematics/angular:component": {
+        "style": "scss",
+        "skipTests": true
+        }
+      },
       "root": "projects/magma-core",
       "sourceRoot": "projects/magma-core/src",
       "prefix": "lib",
