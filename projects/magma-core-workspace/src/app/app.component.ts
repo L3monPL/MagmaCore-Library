@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { MagmaCardModule } from '../../../magma-core/src/public-api';
+import { MagmaButonModule, MagmaCardModule } from '../../../magma-core/src/public-api';
 // import { Card1Component } from 'MagmaCore';
 
 @Component({
@@ -8,7 +8,8 @@ import { MagmaCardModule } from '../../../magma-core/src/public-api';
   standalone: true,
   imports: [
     RouterOutlet,
-    MagmaCardModule
+    MagmaCardModule,
+    MagmaButonModule
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
