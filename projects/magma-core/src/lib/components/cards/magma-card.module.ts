@@ -4,6 +4,7 @@ import { MagmaCardComponent } from './magma-card/magma-card.component';
 import { MagmaCardTitleComponent } from './magma-card-title/magma-card-title.component';
 import { MagmaCardSubtitleComponent } from './magma-card-subtitle/magma-card-subtitle.component';
 import { MagmaCardActionsComponent } from './magma-card-actions/magma-card-actions.component';
+import { MagmaCardHeaderComponent } from './magma-card-header/magma-card-header.component';
 
 
 
@@ -12,7 +13,8 @@ import { MagmaCardActionsComponent } from './magma-card-actions/magma-card-actio
     MagmaCardComponent,
     MagmaCardTitleComponent,
     MagmaCardSubtitleComponent,
-    MagmaCardActionsComponent
+    MagmaCardActionsComponent,
+    MagmaCardHeaderComponent
   ],
   imports: [
     CommonModule
@@ -21,7 +23,8 @@ import { MagmaCardActionsComponent } from './magma-card-actions/magma-card-actio
     MagmaCardComponent,
     MagmaCardTitleComponent,
     MagmaCardSubtitleComponent,
-    MagmaCardActionsComponent
+    MagmaCardActionsComponent,
+    MagmaCardHeaderComponent
   ]
 })
 export class MagmaCardModule { }
