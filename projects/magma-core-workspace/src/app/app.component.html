@@ -50,7 +50,7 @@
         </magma-banner>
       </div>
 
-      <magma-form-field>
+      <!-- <magma-form-field>
         <magma-label>Select Year</magma-label>
         <magma-select [(ngModel)]="selectLabel2">
           <magma-select-list>
@@ -58,6 +58,17 @@
             <li magmaSelectOption [value]="'2018'">2018</li>
             <li magmaSelectOption [value]="'2019'">2019</li>
             <li magmaSelectOption [value]="'2020'">2020</li>
+          </magma-select-list>
+        </magma-select>
+      </magma-form-field> -->
+
+      <magma-form-field>
+        <magma-label>Select Year</magma-label>
+        <magma-select [(ngModel)]="selectLabel2" optionLabel="name">
+          <magma-select-list>
+            @for (item of selectList; track $index) {
+              <li magmaSelectOption [value]="item">{{item.name}}</li>
+            }
           </magma-select-list>
         </magma-select>
       </magma-form-field>

@@ -1,4 +1,4 @@
-import { AfterContentInit, AfterViewInit, Component, ContentChild, ContentChildren, ElementRef, forwardRef, HostListener, QueryList, ViewChild } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, ContentChild, ContentChildren, ElementRef, forwardRef, HostListener, Input, QueryList, ViewChild } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MagmaSelectListComponent } from '../magma-select-list/magma-select-list.component';
 import { MagmaSelectOptionDirective } from '../magma-select-option.directive';
@@ -20,9 +20,11 @@ export class MagmaSelectComponent implements ControlValueAccessor, AfterContentI
 
   @ContentChild(MagmaSelectListComponent) selectList!: MagmaSelectListComponent
 
+  @Input() optionLabel?: string = ''
+
   dropdownOpen = false
 
-  value: any
+  value: any = {}
 
   onChange = (value: any) => {};
   onTouched = () => {};
@@ -40,7 +42,13 @@ export class MagmaSelectComponent implements ControlValueAccessor, AfterContentI
   ngAfterContentInit() {
     if (this.selectList) {
       this.selectList.optionSelected.subscribe((value: any) => {
-        this.value = value; 
+
+        if (this.optionLabel) {
+          this.value = value[this.optionLabel]
+        }
+        else{
+          this.value = value
+        }
         this.dropdownOpen = false
       });
     }
