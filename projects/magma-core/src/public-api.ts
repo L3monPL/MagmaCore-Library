@@ -30,3 +30,7 @@ export * from './lib/components/inputs/magma-label/magma-label.component'
 export * from './lib/components/icon/magma-icon.module'
 export * from './lib/components/icon/magma-icon.directive'
 
+// MAGMA BANNER
+export * from './lib/components/banners/magma-banner.module'
+export * from './lib/components/banners/magma-banner/magma-banner.component'
+

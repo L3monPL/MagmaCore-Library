@@ -4,6 +4,7 @@ import { MagmaButonModule, MagmaCardModule } from '../../../magma-core/src/publi
 import { MagmaInputModule } from '../../../magma-core/src/lib/components/inputs/magma-input.module';
 import { MagmaFormFieldModule } from '../../../magma-core/src/lib/components/forms/magma-form-field.module';
 import { MagmaIconModule } from '../../../magma-core/src/lib/components/icon/magma-icon.module';
+import { MagmaBannerModule } from '../../../magma-core/src/lib/components/banners/magma-banner.module';
 // import { Card1Component } from 'MagmaCore';
 
 @Component({
@@ -15,7 +16,8 @@ import { MagmaIconModule } from '../../../magma-core/src/lib/components/icon/mag
     MagmaButonModule,
     MagmaInputModule,
     MagmaFormFieldModule,
-    MagmaIconModule
+    MagmaIconModule,
+    MagmaBannerModule
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
