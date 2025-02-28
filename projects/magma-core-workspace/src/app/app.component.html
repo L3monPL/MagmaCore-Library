@@ -30,7 +30,7 @@
 
       <magma-form-field>
         <magma-label>Last name</magma-label>
-        <input magmaInput type="text" placeholder="Last name" [disabled]="true">
+        <input magmaInput type="text" placeholder="Last name" [disabled]="true" value="test">
       </magma-form-field>
 
       <magma-form-field>
@@ -49,6 +49,29 @@
           Note: These CSS banner examples are designed and built by the Magma Core. 
         </magma-banner>
       </div>
+
+      <!-- <magma-form-field>
+        <magma-label>Select brand</magma-label>
+        <magma-select [(ngModel)]="selectLabel">
+          <magma-select-list>
+            <li (click)="selectOption('Ford')">Ford</li>
+            <li (click)="selectOption('Mazda')">Mazda</li>
+            <li (click)="selectOption('Kia')">Kia</li>
+          </magma-select-list>
+        </magma-select>
+      </magma-form-field> -->
+
+      <magma-form-field>
+        <magma-label>Select Year</magma-label>
+        <magma-select [(ngModel)]="selectLabel2">
+          <magma-select-list>
+            <li magmaSelectOption [value]="">No response</li>
+            <li magmaSelectOption [value]="'2018'">2018</li>
+            <li magmaSelectOption [value]="'2019'">2019</li>
+            <li magmaSelectOption [value]="'2020'">2020</li>
+          </magma-select-list>
+        </magma-select>
+      </magma-form-field>
       
     </magma-card>
   </div>

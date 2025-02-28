@@ -1,0 +1,15 @@
+.magma-list {
+    position: absolute;
+    width: 100%;
+    box-sizing: border-box;
+    // background: white;
+    border: 1px solid #4c5462;
+    border-radius: 5px;
+    margin-top: 5px;
+    list-style: none;
+    padding: 0;
+    // box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 10;
+  }

@@ -34,3 +34,9 @@ export * from './lib/components/icon/magma-icon.directive'
 export * from './lib/components/banners/magma-banner.module'
 export * from './lib/components/banners/magma-banner/magma-banner.component'
 
+// MAGMA SELECT
+export * from './lib/components/selects/magma-select.module'
+export * from './lib/components/selects/magma-select/magma-select.component'
+export * from './lib/components/selects/magma-select-list/magma-select-list.component'
+export * from './lib/components/selects/magma-select-option.directive'
+
