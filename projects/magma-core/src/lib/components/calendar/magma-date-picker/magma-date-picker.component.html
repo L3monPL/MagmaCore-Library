@@ -1,15 +1,27 @@
 <div class="datepicker">
     <div class="header">
       <button (click)="changeMonth(-1)">&lt;</button>
-      <span>{{ currentDate | date: 'MMMM yyyy' }}</span>
+      <span (click)="toggleMonthSelection()">{{ currentDate | date: 'MMMM yyyy' }}</span>
       <button (click)="changeMonth(1)">&gt;</button>
     </div>
-    <div class="days-grid">
-      <div 
-        *ngFor="let day of days" 
-        [class.selected]="isSelected(day)"
-        (click)="selectDate(day)">
-        {{ day }}
-      </div>
+
+    <div class="months-grid" *ngIf="isMonthSelection">
+        <div *ngFor="let month of months; let i = index" 
+             (click)="selectMonth(i)">
+          {{ month | slice:0:3 }}
+        </div>
+    </div>
+
+    <div class="days-grid" *ngIf="!isMonthSelection">
+      <div class="weekdays">
+        <div *ngFor="let day of daysOfWeek">{{ day }}</div>
+        </div>
+        <div class="days">
+        <div *ngFor="let day of days; let i = index" 
+        [class.selected]="isSelected(day!.day, day.isCurrentMonth)" 
+        (click)="selectDate(day!.day, day.isCurrentMonth)">
+            {{ day.day }}
+        </div>
+        </div>
     </div>
 </div>
