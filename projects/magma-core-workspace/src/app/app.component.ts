@@ -9,6 +9,7 @@ import { MagmaSelectModule } from '../../../magma-core/src/lib/components/select
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MagmaCardModule } from '../../../magma-core/src/lib/components/cards/magma-card.module';
 import { MagmaButonModule } from '../../../magma-core/src/lib/components/buttons/magma-button.module';
+import { MagmaDatePickerModule } from '../../../magma-core/src/lib/components/calendar/magma-date-picker.module';
 // import { Card1Component } from 'MagmaCore';
 
 interface BrandSelect {
@@ -29,7 +30,8 @@ interface BrandSelect {
     MagmaBannerModule,
     MagmaSelectModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MagmaDatePickerModule
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

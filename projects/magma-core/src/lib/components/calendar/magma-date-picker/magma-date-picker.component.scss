@@ -1,0 +1,30 @@
+.datepicker {
+    width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .days-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+  }
+  
+  .days-grid div {
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+  
+  .selected {
+    background-color: #007bff;
+    color: white;
+  }
