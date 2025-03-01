@@ -28,7 +28,8 @@ export class MagmaDatePickerComponent {
 
   selectDate(day: number, isCurrentMonth: boolean) {
     if (day !== null && isCurrentMonth) {
-      this.selectedDate = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), day) 
+      let date = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), day)
+      this.selectedDate = date
       console.log(this.selectedDate)
     }
   }
@@ -76,55 +77,19 @@ export class MagmaDatePickerComponent {
 
       this.days = [...this.days, ...nextMonthDaysArray];
     }
-    // const year = this.currentDate.getFullYear();
-    // const month = this.currentDate.getMonth();
-    // const daysInMonth = new Date(year, month + 1, 0).getDate();
-    // const firstDay = new Date(year, month, 1).getDay(); // Dzień tygodnia pierwszego dnia miesiąca
-
-    // // Generowanie tablicy z dniami miesiąca
-    // this.days = Array.from({ length: daysInMonth }, (_, i) => i + 1);
-
-    // // Dodanie pustych dni na początku miesiąca, jeśli pierwszy dzień miesiąca nie jest niedzielą
-    // const paddingDaysBefore = firstDay; // Ilość pustych dni na początku
-    // const paddingDaysAfter = 42 - (this.days.length + paddingDaysBefore); // 42 = 6 tygodni x 7 dni
-
-    // // Dni z poprzedniego miesiąca
-    // const prevMonthDays = new Date(year, month, 0).getDate(); // Liczba dni w poprzednim miesiącu
-    // const prevMonthStartDay = prevMonthDays - paddingDaysBefore + 1; // Ostatni dzień przed miesiącem
-
-    // // Dni z następnego miesiąca
-    // const nextMonthStartDay = 1;
-
-    // // Generowanie dni z poprzedniego miesiąca
-    // const prevMonthDaysArray = Array.from(
-    //   { length: paddingDaysBefore },
-    //   (_, i) => prevMonthStartDay + i
-    // );
-
-    // // Generowanie dni z następnego miesiąca
-    // const nextMonthDaysArray = Array.from(
-    //   { length: paddingDaysAfter },
-    //   (_, i) => nextMonthStartDay + i
-    // );
-
-    // // Łączenie dni z bieżącego miesiąca, poprzedniego i następnego
-    // this.days = [
-    //   ...prevMonthDaysArray, 
-    //   ...this.days, 
-    //   ...nextMonthDaysArray
-    // ]
 
     if (this.days[this.days.length - 1]!.day >= 7) {
       console.log(this.days[this.days.length - 1])
       this.days.splice(-7)
+
+      if (this.days[this.days.length - 1]!.day >= 7 && this.days[this.days.length - 1]!.day < 20) {
+        this.days.splice(-7)
+      }
     }
 
     console.log(this.days)
   }
 
-  checkLastWeek(){
-
-  }
 
   toggleMonthSelection() {
     console.log('toggleMonthSelection')

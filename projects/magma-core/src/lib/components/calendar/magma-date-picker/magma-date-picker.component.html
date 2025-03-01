@@ -1,27 +1,44 @@
 <div class="datepicker">
     <div class="header">
-      <button (click)="changeMonth(-1)">&lt;</button>
-      <span (click)="toggleMonthSelection()">{{ currentDate | date: 'MMMM yyyy' }}</span>
-      <button (click)="changeMonth(1)">&gt;</button>
+        <div (click)="changeMonth(-1)" class="arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="25" height="25"><g id="_01_align_center" data-name="01 align center"><path d="M13.775,18.707,8.482,13.414a2,2,0,0,1,0-2.828l5.293-5.293,1.414,1.414L9.9,12l5.293,5.293Z"/></g></svg>
+        </div>
+        <div class="center_manage">
+            <span (click)="toggleMonthSelection()">{{ currentDate | date: 'MMMM' }}</span>
+            <span>{{ currentDate | date: 'yyyy' }}</span>
+        </div>
+        <div (click)="changeMonth(1)" class="arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="25" height="25"><g id="_01_align_center" data-name="01 align center"><path d="M10.811,18.707,9.4,17.293,14.689,12,9.4,6.707l1.415-1.414L16.1,10.586a2,2,0,0,1,0,2.828Z"/></g></svg>
+        </div>
     </div>
 
     <div class="months-grid" *ngIf="isMonthSelection">
-        <div *ngFor="let month of months; let i = index" 
-             (click)="selectMonth(i)">
-          {{ month | slice:0:3 }}
-        </div>
+        @for (month of months; track $index) {
+            <div class="month" (click)="selectMonth($index)">
+                {{month | slice:0:3}}
+            </div>
+        }
     </div>
 
     <div class="days-grid" *ngIf="!isMonthSelection">
-      <div class="weekdays">
-        <div *ngFor="let day of daysOfWeek">{{ day }}</div>
+        <div class="weekdays">
+            @for (day of daysOfWeek; track $index) {
+                <div class="weekday">
+                    {{day}}
+                </div>
+            }
         </div>
         <div class="days">
-        <div *ngFor="let day of days; let i = index" 
-        [class.selected]="isSelected(day!.day, day.isCurrentMonth)" 
-        (click)="selectDate(day!.day, day.isCurrentMonth)">
-            {{ day.day }}
-        </div>
+            @for (item of days; track $index) {
+                <div class="day"
+                [ngClass]="{
+                'selected': isSelected(item!.day, item.isCurrentMonth),
+                'not_cuttent_month': !item.isCurrentMonth,
+                }"
+                (click)="selectDate(item!.day, item.isCurrentMonth)">
+                    {{item.day}}
+                </div>
+            }
         </div>
     </div>
 </div>
