@@ -57,7 +57,8 @@ export class MagmaDatePickerComponent {
     const year = this.currentDate.getFullYear();
     const month = this.currentDate.getMonth();
     const daysInMonth = new Date(year, month + 1, 0).getDate();
-    const firstDay = new Date(year, month, 1).getDay();
+    let firstDay = new Date(year, month, 1).getDay();
+    // firstDay = (firstDay === 0) ? 6 : firstDay - 1
 
     // Poprzedni miesiąc
     const prevMonthDays = new Date(year, month, 0).getDate();
