@@ -103,14 +103,14 @@
 }
 
 .months-grid div {
-  padding: 10px;
+  padding: 5px;
   text-align: center;
-  border: 1px solid #ccc;
+  // border: 1px solid #ccc;
   border-radius: 5px;
 }
 
 .months-grid div:hover {
-  background-color: #f0f0f0;
+  background-color: #1d273a;
   transition: 0.5s;
 }
 .not_cuttent_month{
