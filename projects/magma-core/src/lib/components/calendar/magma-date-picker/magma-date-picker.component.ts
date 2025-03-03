@@ -15,15 +15,26 @@ export class MagmaDatePickerComponent {
   // months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
   months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
   daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-  isMonthSelection = false
+  years?: Array<number> = []
+  // isMonthSelection = false
+  currentSelection?: string = 'day'
 
   constructor() {
     this.generateCalendar();
   }
 
-  changeMonth(offset: number) {
-    this.currentDate = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth() + offset, 1)
-    this.generateCalendar()
+  changeArrow(offset: number) {
+    if (this.currentSelection == 'day') {
+      this.currentDate = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth() + offset, 1)
+      this.generateCalendar() 
+    }
+    if (this.currentSelection == 'month') {
+      this.currentDate = new Date(this.currentDate.getFullYear() + offset, this.currentDate.getMonth(), 1)
+    }
+    if (this.currentSelection == 'year') {
+      this.currentDate = new Date(this.currentDate.getFullYear() + (offset * 7), this.currentDate.getMonth(), 1)
+      this.years = this.getYearRange(String(this.currentDate))
+    }
   }
 
   selectDate(day: number, isCurrentMonth: boolean) {
@@ -92,13 +103,40 @@ export class MagmaDatePickerComponent {
 
 
   toggleMonthSelection() {
-    console.log('toggleMonthSelection')
-    this.isMonthSelection = !this.isMonthSelection;
+    if (this.currentSelection == 'month') {
+      this.currentSelection = 'day'
+      return
+    }
+    this.currentSelection = 'month'
   }
 
   selectMonth(index: number) {
     this.currentDate = new Date(this.currentDate.getFullYear(), index, 1);
-    this.isMonthSelection = false;
+    this.currentSelection = 'day'
     this.generateCalendar();
+  }
+
+  toggleYearSelection(){
+    this.currentSelection = 'year'
+
+    this.years = this.getYearRange(String(this.currentDate))
+
+    console.log(this.years)
+  }
+
+  selectYear(year: number) {
+    this.currentDate = new Date(year, this.currentDate.getMonth(), 1);
+    this.currentSelection = 'month'
+  }
+
+  getYearRange(date: string): number[] {
+    const year = new Date(date).getFullYear();
+    const years = [];
+  
+    for (let i = -7; i <= 7; i++) {
+      years.push(year + i);
+    }
+
+    return years
   }
 }
