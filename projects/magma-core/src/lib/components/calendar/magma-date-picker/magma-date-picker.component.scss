@@ -1,4 +1,10 @@
+.input_picker_container{
+  position: relative;
+}
 .datepicker {
+  position: absolute;
+  left: 0px;
+  margin-top: 4px;
   width: 250px;
   border: 1px solid #4c5462;
   border-radius: 5px;

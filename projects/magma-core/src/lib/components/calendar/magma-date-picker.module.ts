@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MagmaDatePickerComponent } from './magma-date-picker/magma-date-picker.component';
+import { MagmaInputModule } from 'MagmaCore';
 
 
 
@@ -9,7 +10,8 @@ import { MagmaDatePickerComponent } from './magma-date-picker/magma-date-picker.
     MagmaDatePickerComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MagmaInputModule
   ],
   exports: [
     MagmaDatePickerComponent
