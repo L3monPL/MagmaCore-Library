@@ -1,10 +1,10 @@
 <div class="input_picker_container">
-    <input #input (click)="openDropDown()" magmaInput type="text">
+    <input #input (click)="openDropDown()" magmaInput type="text" >
 
     @if (dropdown) {
         <div #dropdownPicker class="datepicker" [ngStyle]="getStyles()">
             <div class="header">
-                <div (click)="changeArrow(-1)" class="arrow">
+                <div (click)="changeArrow(-1); $event.stopPropagation()" class="arrow">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="25" height="25"><g id="_01_align_center" data-name="01 align center"><path d="M13.775,18.707,8.482,13.414a2,2,0,0,1,0-2.828l5.293-5.293,1.414,1.414L9.9,12l5.293,5.293Z"/></g></svg>
                 </div>
                 <div class="center_manage">
@@ -15,15 +15,15 @@
                             </div>
                         }
                         @case ('month') {
-                            <span (click)="toggleYearSelection()">{{ currentDate | date: 'yyyy' }}</span>
+                            <span (click)="toggleYearSelection(); $event.stopPropagation()">{{ currentDate | date: 'yyyy' }}</span>
                         }
                         @case ('day') {
-                            <span (click)="toggleMonthSelection()">{{ currentDate | date: 'MMMM' }}</span>
-                            <span (click)="toggleYearSelection()">{{ currentDate | date: 'yyyy' }}</span>
+                            <span (click)="toggleMonthSelection(); $event.stopPropagation()">{{ currentDate | date: 'MMMM' }}</span>
+                            <span (click)="toggleYearSelection(); $event.stopPropagation()">{{ currentDate | date: 'yyyy' }}</span>
                         }
                     }
                 </div>
-                <div (click)="changeArrow(1)" class="arrow">
+                <div (click)="changeArrow(1); $event.stopPropagation()" class="arrow">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="25" height="25"><g id="_01_align_center" data-name="01 align center"><path d="M10.811,18.707,9.4,17.293,14.689,12,9.4,6.707l1.415-1.414L16.1,10.586a2,2,0,0,1,0,2.828Z"/></g></svg>
                 </div>
             </div>
@@ -31,7 +31,7 @@
                 @case ('year') {
                     <div class="months-grid">
                         @for (year of years; track $index) {
-                            <div class="month" (click)="selectYear(year)">
+                            <div class="month" (click)="selectYear(year); $event.stopPropagation()">
                                 {{year}}
                             </div>
                         }
@@ -40,7 +40,7 @@
                 @case ('month') {
                     <div class="months-grid">
                         @for (month of months; track $index) {
-                            <div class="month" (click)="selectMonth($index)">
+                            <div class="month" (click)="selectMonth($index); $event.stopPropagation()">
                                 {{month | slice:0:3}}
                             </div>
                         }
@@ -62,7 +62,7 @@
                                 'selected': isSelected(item!.day, item.isCurrentMonth),
                                 'not_cuttent_month': !item.isCurrentMonth,
                                 }"
-                                (click)="selectDate(item!.day, item.isCurrentMonth)">
+                                (click)="selectDate(item!.day, item.isCurrentMonth); $event.stopPropagation()">
                                     {{item.day}}
                                 </div>
                             }
