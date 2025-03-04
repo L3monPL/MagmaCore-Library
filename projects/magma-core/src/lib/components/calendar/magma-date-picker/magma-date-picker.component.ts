@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, HostListener, Renderer2, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'magma-date-picker',
@@ -19,7 +19,10 @@ export class MagmaDatePickerComponent {
   // isMonthSelection = false
   currentSelection?: string = 'day'
 
-  constructor() {
+  constructor(
+    private el: ElementRef, 
+    private renderer: Renderer2
+  ) {
     this.generateCalendar();
   }
 
@@ -137,7 +140,76 @@ export class MagmaDatePickerComponent {
     for (let i = -7; i <= 7; i++) {
       years.push(year + i);
     }
-
     return years
+  }
+
+  dropdown = false
+
+  @ViewChild('input') inputElement!: ElementRef
+  @ViewChild('dropdownPicker') dropdownPicker!: ElementRef
+  // @HostListener('click', ['$event'])
+  @HostListener('document:click', ['$event'])
+  showDropdown(event: MouseEvent){
+    if (!this.dropdown) {
+      return
+    }
+    if (this.inputElement.nativeElement.contains(event.target)) {
+      return
+    }
+    if (!this.dropdownPicker.nativeElement.contains(event.target) && this.dropdown) {
+      this.dropdown = false
+    }
+  }
+
+  dropDownRight?: string = 'auto'
+  dropDownLeft?: string = '0px'
+  dropDownBottom?: string = 'auto'
+
+  openDropDown(){
+    const inputRect = this.inputElement.nativeElement.getBoundingClientRect()
+    const windowWidth = window.innerWidth
+    const windowHeight = window.innerHeight
+
+    console.log(inputRect)
+    // console.log(windowWidth, windowHeight)
+
+    // console.log(windowWidth - inputRect.x)
+
+    //RIGHT LEFT
+    if (windowWidth - inputRect.x < 272) {
+      console.log(windowWidth - inputRect.x)
+      this.dropDownRight = '0px'
+      this.dropDownLeft = 'auto'
+    }
+    else{
+      this.dropDownRight = 'auto'
+      this.dropDownLeft = '0px'
+    }
+    //TOP BOTTOM
+    // if (windowHeight - inputRect.y < (290 + inputRect.y + 4)) {
+    //   this.dropDownBottom = `${inputRect.y}px`
+    //   if (windowHeight < (290 + inputRect.y + 4)) {
+    //     this.dropDownBottom = 'auto'
+    //   }
+    // }
+    // else{
+    //   this.dropDownBottom = 'auto'
+    // }
+    if ((windowHeight - (inputRect.y + inputRect.height + 290 + 4)) <= 0) {
+      this.dropDownBottom = `${inputRect.height}px`
+    }
+    else{
+      this.dropDownBottom = 'auto'
+    }
+
+    this.dropdown = !this.dropdown
+  }
+
+  getStyles() {
+    return {
+      right: this.dropDownRight,
+      left: this.dropDownLeft,
+      bottom: this.dropDownBottom
+    };
   }
 }
