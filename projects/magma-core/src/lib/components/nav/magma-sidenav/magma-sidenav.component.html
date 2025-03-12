@@ -1,1 +1,17 @@
-<ng-content></ng-content>
+<!-- @if (opened) {
+    <div @openClose>
+        <ng-content></ng-content>
+    </div>
+} -->
+
+<div class="sidenav-container">
+    @if (opened) {
+      <div class="sidenav" @openClose>
+        <div class="el">
+            <ng-content></ng-content>
+        </div>
+        <!-- <p>test fds fds f sdf ds fsd fds sd fdsfsdf sdfsd fsdfsdfsdf sdfsdfsd fsdf sdf sd </p> -->
+        <!-- <ng-content></ng-content> -->
+      </div>
+    }
+</div>

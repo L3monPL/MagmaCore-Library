@@ -1,7 +1,36 @@
-:host{
-    width: 240px;
+// div{
+//     width: 240px;
+//     background-color: #1f2938;
+//     color: var(--magma-color-font-primary);
+//     padding: 0.5rem;
+//     font-family: var(--magma-font);
+//     z-index: 999;
+//     flex-direction: column;
+// }
+
+
+.sidenav-container {
+    z-index: 888;
+    height: 100%;
     background-color: #1f2938;
+    // padding: 0.5rem;
     color: var(--magma-color-font-primary);
-    padding: 0.5rem;
-    font-family: var(--magma-font);
 }
+  
+  .sidenav {
+    padding: 0.5rem;
+    width: 250px;
+    position: relative;
+}
+.el{
+    font-family: var(--magma-font);
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 0.5rem;
+    // padding-left: 1rem;
+    transition: 0.5s;
+    // overflow: hidden;
+    // width: calc(250px - 0.75rem);
+    width: 100%;
+  }

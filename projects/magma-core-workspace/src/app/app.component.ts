@@ -81,4 +81,6 @@ export class AppComponent {
     console.log(this.checkBoxList)
   }
 
+  isOpen = false
+
 }

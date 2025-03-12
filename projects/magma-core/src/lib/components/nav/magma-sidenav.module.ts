@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MagmaSidenavComponent } from './magma-sidenav/magma-sidenav.component';
 import { MagmaSidenavContainerComponent } from './magma-sidenav-container/magma-sidenav-container.component';
 import { MagmaSidenavContentComponent } from './magma-sidenav-content/magma-sidenav-content.component';
+import { MagmaSidenavItemComponent } from './magma-sidenav-item/magma-sidenav-item.component';
 
 
 
@@ -10,7 +11,8 @@ import { MagmaSidenavContentComponent } from './magma-sidenav-content/magma-side
   declarations: [
     MagmaSidenavComponent,
     MagmaSidenavContainerComponent,
-    MagmaSidenavContentComponent
+    MagmaSidenavContentComponent,
+    MagmaSidenavItemComponent
   ],
   imports: [
     CommonModule
@@ -18,7 +20,8 @@ import { MagmaSidenavContentComponent } from './magma-sidenav-content/magma-side
   exports: [
     MagmaSidenavComponent,
     MagmaSidenavContainerComponent,
-    MagmaSidenavContentComponent
+    MagmaSidenavContentComponent,
+    MagmaSidenavItemComponent
   ]
 })
 export class MagmaSidenavModule { }
