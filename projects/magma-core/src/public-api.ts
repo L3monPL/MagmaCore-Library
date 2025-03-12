@@ -40,3 +40,15 @@ export * from './lib/components/selects/magma-select/magma-select.component'
 export * from './lib/components/selects/magma-select-list/magma-select-list.component'
 export * from './lib/components/selects/magma-select-option.directive'
 
+// MAGMA CALENDAR
+export * from './lib/components/calendar/magma-date-picker.module'
+export * from './lib/components/calendar/magma-date-picker/magma-date-picker.component'
+
+// MAGMA PROGRESS SPINNER
+export * from './lib/components/progressSpinner/progress-spinner.module'
+export * from './lib/components/progressSpinner/progress-spinner/progress-spinner.component'
+
+// MAGMA CHECKBOX
+export * from './lib/components/checkbox/magma-checkbox.module'
+export * from './lib/components/checkbox/magma-checkbox/magma-checkbox.component'
+

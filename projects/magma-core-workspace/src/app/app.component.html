@@ -15,11 +15,9 @@
         <button magmaButton>Button</button>
       </magma-card-actions>
     </magma-card>
-    <magma-card>
-      <magma-date-picker></magma-date-picker>
-    </magma-card>
     <!-- <MAGMA INPUT> ---------------------------------------- -->
-    <magma-card>
+
+    <!-- <magma-card>
       <magma-card-header>
         <magma-card-title>
           Card with inputs
@@ -53,18 +51,6 @@
         </magma-banner>
       </div>
 
-      <!-- <magma-form-field>
-        <magma-label>Select Year</magma-label>
-        <magma-select [(ngModel)]="selectLabel2">
-          <magma-select-list>
-            <li magmaSelectOption [value]="">No response</li>
-            <li magmaSelectOption [value]="'2018'">2018</li>
-            <li magmaSelectOption [value]="'2019'">2019</li>
-            <li magmaSelectOption [value]="'2020'">2020</li>
-          </magma-select-list>
-        </magma-select>
-      </magma-form-field> -->
-
       <magma-form-field>
         <magma-label>Select Year</magma-label>
         <magma-select [(ngModel)]="selectLabel2" optionLabel="name">
@@ -76,15 +62,33 @@
         </magma-select>
       </magma-form-field>
       
-    </magma-card>
+    </magma-card> -->
 
     <magma-card>
-      <magma-date-picker></magma-date-picker>
+      <div class="header_test">
+        <magma-date-picker></magma-date-picker>
+        @for (item of checkBoxList; track $index) {
+          <div class="checkbox_row">
+            <magma-checkbox [id]="item.id" [(checked)]="item.isChecked"></magma-checkbox>
+            <label [for]="item.id">{{item.name}}</label>
+          </div>
+        }
+        <magma-card-actions justify="end">
+          <button (click)="detetListChecboxChange()" magmaButton>Sprawdz listę</button>
+        </magma-card-actions>
+      </div>
+
+
+
     </magma-card>
   </div>
-  <div class="right">
+  <!-- <div class="right">
     <magma-card>
       <magma-date-picker></magma-date-picker>
+
+      <div class="container_spinner">
+        <progress-spinner [size]="30"></progress-spinner>
+      </div>
     </magma-card>
-  </div>
+  </div> -->
 </section>

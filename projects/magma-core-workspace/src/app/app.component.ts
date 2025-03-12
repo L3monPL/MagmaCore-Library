@@ -10,6 +10,8 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
 import { MagmaCardModule } from '../../../magma-core/src/lib/components/cards/magma-card.module';
 import { MagmaButonModule } from '../../../magma-core/src/lib/components/buttons/magma-button.module';
 import { MagmaDatePickerModule } from '../../../magma-core/src/lib/components/calendar/magma-date-picker.module';
+import { ProgressSpinnerModule } from '../../../magma-core/src/lib/components/progressSpinner/progress-spinner.module';
+import { MagmaCheckboxModule } from '../../../magma-core/src/lib/components/checkbox/magma-checkbox.module';
 // import { Card1Component } from 'MagmaCore';
 
 interface BrandSelect {
@@ -31,7 +33,9 @@ interface BrandSelect {
     MagmaSelectModule,
     FormsModule,
     ReactiveFormsModule,
-    MagmaDatePickerModule
+    MagmaDatePickerModule,
+    ProgressSpinnerModule,
+    MagmaCheckboxModule
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
@@ -51,6 +55,28 @@ export class AppComponent {
       {id: 1, name: 'Kia'},
       {id: 2, name: 'Mazda'},
     ];
+  }
+
+  checkBoxList = [
+    {
+      id: 0,
+      name: 'Akcpetuje regulamin',
+      isChecked: false
+    },
+    {
+      id: 1,
+      name: 'Akcpetuje podpisy',
+      isChecked: false
+    },
+    {
+      id: 2,
+      name: 'Akcpetuje rozliczenie',
+      isChecked: false
+    }
+  ]
+
+  detetListChecboxChange(){
+    console.log(this.checkBoxList)
   }
 
 }
