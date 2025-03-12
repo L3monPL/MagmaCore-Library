@@ -52,3 +52,9 @@ export * from './lib/components/progressSpinner/progress-spinner/progress-spinne
 export * from './lib/components/checkbox/magma-checkbox.module'
 export * from './lib/components/checkbox/magma-checkbox/magma-checkbox.component'
 
+// MAGMA SIDENAV
+export * from './lib/components/nav/magma-sidenav.module'
+export * from './lib/components/nav/magma-sidenav/magma-sidenav.component'
+export * from './lib/components/nav/magma-sidenav-container/magma-sidenav-container.component'
+export * from './lib/components/nav/magma-sidenav-content/magma-sidenav-content.component'
+

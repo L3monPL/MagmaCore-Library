@@ -12,6 +12,7 @@ import { MagmaButonModule } from '../../../magma-core/src/lib/components/buttons
 import { MagmaDatePickerModule } from '../../../magma-core/src/lib/components/calendar/magma-date-picker.module';
 import { ProgressSpinnerModule } from '../../../magma-core/src/lib/components/progressSpinner/progress-spinner.module';
 import { MagmaCheckboxModule } from '../../../magma-core/src/lib/components/checkbox/magma-checkbox.module';
+import { MagmaSidenavModule } from '../../../magma-core/src/lib/components/nav/magma-sidenav.module';
 // import { Card1Component } from 'MagmaCore';
 
 interface BrandSelect {
@@ -35,7 +36,8 @@ interface BrandSelect {
     ReactiveFormsModule,
     MagmaDatePickerModule,
     ProgressSpinnerModule,
-    MagmaCheckboxModule
+    MagmaCheckboxModule,
+    MagmaSidenavModule
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

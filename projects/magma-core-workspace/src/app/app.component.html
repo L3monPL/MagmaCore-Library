@@ -1,94 +1,102 @@
-<section>
-  <div class="left">
-    <!-- <MAGMA CARD> ---------------------------------------- -->
-    <magma-card>
-      <magma-card-header>
-        <magma-card-title>
-          Card title
-        </magma-card-title>
-        <magma-card-subtitle>
-          Subtitle
-        </magma-card-subtitle>
-      </magma-card-header>
-
-      <magma-card-actions justify="end">
-        <button magmaButton>Button</button>
-      </magma-card-actions>
-    </magma-card>
-    <!-- <MAGMA INPUT> ---------------------------------------- -->
-
-    <!-- <magma-card>
-      <magma-card-header>
-        <magma-card-title>
-          Card with inputs
-        </magma-card-title>
-      </magma-card-header>
-
-      <magma-form-field>
-        <magma-label>First name</magma-label>
-        <input magmaInput type="text" placeholder="First name">
-      </magma-form-field>
-
-      <magma-form-field>
-        <magma-label>Last name</magma-label>
-        <input magmaInput type="text" placeholder="Last name" [disabled]="true" value="test">
-      </magma-form-field>
-
-      <magma-form-field>
-        <magma-label>Age</magma-label>
-        <input magmaInput type="number" placeholder="Age">
-      </magma-form-field>
-
-      <magma-form-field>
-        <magma-label>Input with icon</magma-label>
-        <input magmaInput type="text" placeholder="Input with icon">
-        <svg magmaIcon xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24"><path d="M19,1H5A5.006,5.006,0,0,0,0,6V18a5.006,5.006,0,0,0,5,5H19a5.006,5.006,0,0,0,5-5V6A5.006,5.006,0,0,0,19,1ZM5,3H19a3,3,0,0,1,2.78,1.887l-7.658,7.659a3.007,3.007,0,0,1-4.244,0L2.22,4.887A3,3,0,0,1,5,3ZM19,21H5a3,3,0,0,1-3-3V7.5L8.464,13.96a5.007,5.007,0,0,0,7.072,0L22,7.5V18A3,3,0,0,1,19,21Z"/></svg>
-      </magma-form-field>
-
-      <div class="margin-1">
-        <magma-banner>
-          Note: These CSS banner examples are designed and built by the Magma Core. 
-        </magma-banner>
-      </div>
-
-      <magma-form-field>
-        <magma-label>Select Year</magma-label>
-        <magma-select [(ngModel)]="selectLabel2" optionLabel="name">
-          <magma-select-list>
-            @for (item of selectList; track $index) {
-              <li magmaSelectOption [value]="item">{{item.name}}</li>
-            }
-          </magma-select-list>
-        </magma-select>
-      </magma-form-field>
-      
-    </magma-card> -->
-
-    <magma-card>
-      <div class="header_test">
-        <magma-date-picker></magma-date-picker>
-        @for (item of checkBoxList; track $index) {
-          <div class="checkbox_row">
-            <magma-checkbox [id]="item.id" [(checked)]="item.isChecked"></magma-checkbox>
-            <label [for]="item.id">{{item.name}}</label>
+<magma-sidenav-container>
+  <magma-sidenav>
+    <p>nav</p>
+  </magma-sidenav>
+  <magma-sidenav-content>
+    <section>
+      <div class="left">
+        <!-- <MAGMA CARD> ---------------------------------------- -->
+        <magma-card>
+          <magma-card-header>
+            <magma-card-title>
+              Card title
+            </magma-card-title>
+            <magma-card-subtitle>
+              Subtitle
+            </magma-card-subtitle>
+          </magma-card-header>
+    
+          <magma-card-actions justify="end">
+            <button magmaButton>Button</button>
+          </magma-card-actions>
+        </magma-card>
+        <!-- <MAGMA INPUT> ---------------------------------------- -->
+    
+        <!-- <magma-card>
+          <magma-card-header>
+            <magma-card-title>
+              Card with inputs
+            </magma-card-title>
+          </magma-card-header>
+    
+          <magma-form-field>
+            <magma-label>First name</magma-label>
+            <input magmaInput type="text" placeholder="First name">
+          </magma-form-field>
+    
+          <magma-form-field>
+            <magma-label>Last name</magma-label>
+            <input magmaInput type="text" placeholder="Last name" [disabled]="true" value="test">
+          </magma-form-field>
+    
+          <magma-form-field>
+            <magma-label>Age</magma-label>
+            <input magmaInput type="number" placeholder="Age">
+          </magma-form-field>
+    
+          <magma-form-field>
+            <magma-label>Input with icon</magma-label>
+            <input magmaInput type="text" placeholder="Input with icon">
+            <svg magmaIcon xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24"><path d="M19,1H5A5.006,5.006,0,0,0,0,6V18a5.006,5.006,0,0,0,5,5H19a5.006,5.006,0,0,0,5-5V6A5.006,5.006,0,0,0,19,1ZM5,3H19a3,3,0,0,1,2.78,1.887l-7.658,7.659a3.007,3.007,0,0,1-4.244,0L2.22,4.887A3,3,0,0,1,5,3ZM19,21H5a3,3,0,0,1-3-3V7.5L8.464,13.96a5.007,5.007,0,0,0,7.072,0L22,7.5V18A3,3,0,0,1,19,21Z"/></svg>
+          </magma-form-field>
+    
+          <div class="margin-1">
+            <magma-banner>
+              Note: These CSS banner examples are designed and built by the Magma Core. 
+            </magma-banner>
           </div>
-        }
-        <magma-card-actions justify="end">
-          <button (click)="detetListChecboxChange()" magmaButton>Sprawdz listę</button>
-        </magma-card-actions>
+    
+          <magma-form-field>
+            <magma-label>Select Year</magma-label>
+            <magma-select [(ngModel)]="selectLabel2" optionLabel="name">
+              <magma-select-list>
+                @for (item of selectList; track $index) {
+                  <li magmaSelectOption [value]="item">{{item.name}}</li>
+                }
+              </magma-select-list>
+            </magma-select>
+          </magma-form-field>
+          
+        </magma-card> -->
+    
+        <magma-card>
+          <div class="header_test">
+            <magma-date-picker></magma-date-picker>
+            @for (item of checkBoxList; track $index) {
+              <div class="checkbox_row">
+                <magma-checkbox [id]="item.id" [(checked)]="item.isChecked"></magma-checkbox>
+                <label [for]="item.id">{{item.name}}</label>
+              </div>
+            }
+            <magma-card-actions justify="end">
+              <button (click)="detetListChecboxChange()" magmaButton>Sprawdz listę</button>
+            </magma-card-actions>
+          </div>
+    
+    
+    
+        </magma-card>
       </div>
+      <!-- <div class="right">
+        <magma-card>
+          <magma-date-picker></magma-date-picker>
+    
+          <div class="container_spinner">
+            <progress-spinner [size]="30"></progress-spinner>
+          </div>
+        </magma-card>
+      </div> -->
+    </section>
+  </magma-sidenav-content>
+</magma-sidenav-container>
 
-
-
-    </magma-card>
-  </div>
-  <!-- <div class="right">
-    <magma-card>
-      <magma-date-picker></magma-date-picker>
-
-      <div class="container_spinner">
-        <progress-spinner [size]="30"></progress-spinner>
-      </div>
-    </magma-card>
-  </div> -->
-</section>
