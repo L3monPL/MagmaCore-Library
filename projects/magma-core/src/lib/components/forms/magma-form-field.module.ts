@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MagmaFormFieldComponent } from './magma-form-field/magma-form-field.component';
+import { MagmaDatePickerModule } from '../calendar/magma-date-picker.module';
 
 
 
@@ -9,7 +10,8 @@ import { MagmaFormFieldComponent } from './magma-form-field/magma-form-field.com
     MagmaFormFieldComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MagmaDatePickerModule
   ],
   exports: [
     MagmaFormFieldComponent

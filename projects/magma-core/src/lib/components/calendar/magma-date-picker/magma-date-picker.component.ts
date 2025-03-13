@@ -1,4 +1,5 @@
-import { Component, ElementRef, HostListener, Input, Renderer2, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ContentChild, ElementRef, HostListener, Input, OnChanges, Renderer2, SimpleChanges, ViewChild } from '@angular/core';
+import { MagmaFormFieldComponent } from '../../forms/magma-form-field/magma-form-field.component';
 
 @Component({
   selector: 'magma-date-picker',
@@ -12,21 +13,19 @@ export class MagmaDatePickerComponent {
 
   currentDate = new Date()
   selectedDate: Date | null = null
-  // days: Array<number|null> = []
+
   days: Array<{ day: number, isCurrentMonth: boolean }> = []
-  // months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
   months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
   daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
   years?: Array<number> = []
-  // isMonthSelection = false
   currentSelection?: string = 'day'
 
   constructor(
     private el: ElementRef, 
-    private renderer: Renderer2
   ) {
-    this.generateCalendar();
+    this.generateCalendar()
   }
+
 
   changeArrow(offset: number) {
     if (this.currentSelection == 'day') {
@@ -145,15 +144,14 @@ export class MagmaDatePickerComponent {
     return years
   }
 
-  @ViewChild('input') inputElement!: ElementRef
   @ViewChild('dropdownPicker') dropdownPicker!: ElementRef
-  // @HostListener('click', ['$event'])
   @HostListener('document:click', ['$event'])
   showDropdown(event: MouseEvent){
+
     if (!this.dropdown) {
       return
     }
-    if (this.inputElement.nativeElement.contains(event.target)) {
+    if (this.el.nativeElement.closest('.form-field').contains(event.target)) {
       return
     }
     if (!this.dropdownPicker.nativeElement.contains(event.target) && this.dropdown) {
@@ -166,14 +164,10 @@ export class MagmaDatePickerComponent {
   dropDownBottom?: string = 'auto'
 
   openDropDown(){
-    const inputRect = this.inputElement.nativeElement.getBoundingClientRect()
+
+    const inputRect = this.el.nativeElement.closest('.form-field').getBoundingClientRect()
     const windowWidth = window.innerWidth
     const windowHeight = window.innerHeight
-
-    console.log(inputRect)
-    // console.log(windowWidth, windowHeight)
-
-    // console.log(windowWidth - inputRect.x)
 
     //RIGHT LEFT
     if (windowWidth - inputRect.x < 272) {
@@ -201,8 +195,7 @@ export class MagmaDatePickerComponent {
     else{
       this.dropDownBottom = 'auto'
     }
-
-    this.dropdown = !this.dropdown
+    this.dropdown = true
   }
 
   getStyles() {

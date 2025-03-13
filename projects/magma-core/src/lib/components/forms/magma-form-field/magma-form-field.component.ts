@@ -1,6 +1,7 @@
-import { AfterViewInit, Component, ContentChild, ElementRef, forwardRef, Input, OnInit, Renderer2 } from '@angular/core';
+import { AfterViewInit, Component, ContentChild, ElementRef, forwardRef, Input, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { MagmaIconDirective } from '../../icon/magma-icon.directive';
 import { NG_VALUE_ACCESSOR, NgControl, NgModel } from '@angular/forms';
+import { MagmaDatePickerComponent } from '../../calendar/magma-date-picker/magma-date-picker.component';
 
 @Component({
   selector: 'magma-form-field',
@@ -15,7 +16,7 @@ import { NG_VALUE_ACCESSOR, NgControl, NgModel } from '@angular/forms';
     },
   ],
 })
-export class MagmaFormFieldComponent implements AfterViewInit, OnInit{
+export class MagmaFormFieldComponent implements AfterViewInit, OnInit, OnDestroy{
 
   constructor(private el: ElementRef, private renderer: Renderer2) {}
 
@@ -24,10 +25,15 @@ export class MagmaFormFieldComponent implements AfterViewInit, OnInit{
 
   inputTypeStyle?: string
 
+  private inputClickListener?: () => void
+  isDropdownDate: boolean = false
+  @ViewChild(MagmaDatePickerComponent) magmaDatePickerComponent!: MagmaDatePickerComponent
+
   ngOnInit(): void {
     const inputElement = this.el.nativeElement.querySelector('input')
 
     if (inputElement.getAttribute('inputTypeStyle')) {
+      // INSIDE INPUT TYPE NUMBER ------------------------------------------------- //
       if (inputElement.getAttribute('inputTypeStyle') == 'number') {
         this.inputTypeStyle = 'number'
 
@@ -35,6 +41,16 @@ export class MagmaFormFieldComponent implements AfterViewInit, OnInit{
         this.renderer.setStyle(inputElement, 'padding-right', '38px')
 
         inputElement.addEventListener('input', this.validateNumberInput.bind(this))
+      }
+      // INSIDE INPUT TYPE DATE ------------------------------------------------- //
+      if (inputElement.getAttribute('inputTypeStyle') == 'date') {
+        this.inputTypeStyle = 'date'
+
+        if (inputElement) {
+          this.inputClickListener = this.renderer.listen(inputElement, 'click', (event) => {
+            this.magmaDatePickerComponent.openDropDown()
+          });
+        }
       }
     }
   }
@@ -47,6 +63,16 @@ export class MagmaFormFieldComponent implements AfterViewInit, OnInit{
       this.renderer.setStyle(inputElement, 'padding-left', '2rem')
     }
   }
+
+  ngOnDestroy(): void {
+    if (this.inputClickListener) {
+      this.inputClickListener();
+    }
+  }
+
+  // -------------------------------------------------------------------------- //
+  // INSIDE INPUT TYPE NUMBER ------------------------------------------------- //
+  // -------------------------------------------------------------------------- //
 
   increaseValue() {
     if (this.ngControl && this.ngControl.control) {
@@ -82,5 +108,9 @@ export class MagmaFormFieldComponent implements AfterViewInit, OnInit{
 
     inputElement.value = value;
   }
+
+  // -------------------------------------------------------------------------- //
+  // END END END -------------------------------------------------------------- //
+  // -------------------------------------------------------------------------- //
 
 }

@@ -1,4 +1,4 @@
-<div class="form-field">
+<div class="form-field" #formField>
     <ng-content></ng-content>
     @if (inputTypeStyle == 'number') {
         <div class="container_absolute_type_number_right">
@@ -11,5 +11,8 @@
                 <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24"><rect x="6" y="11" width="12" height="2" rx="1"/></svg>
             </div>
         </div>
+    }
+    @if (inputTypeStyle == 'date') {
+        <magma-date-picker [dropdown]="isDropdownDate"></magma-date-picker>
     }
 </div>
