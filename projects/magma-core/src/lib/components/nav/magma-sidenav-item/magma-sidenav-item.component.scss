@@ -1,10 +1,11 @@
 :host{
     font-family: var(--magma-font);
     padding: 0rem 1rem;
-    height: 50px;
+    height: 36px;
+    min-height: 36px;
     display: flex;
     flex-direction: row;
-    column-gap: 1rem;
+    column-gap: 0.75rem;
     align-items: center;
     border-radius: 5px;
     transition: 0.3s;

@@ -58,4 +58,4 @@ export * from './lib/components/nav/magma-sidenav/magma-sidenav.component'
 export * from './lib/components/nav/magma-sidenav-container/magma-sidenav-container.component'
 export * from './lib/components/nav/magma-sidenav-content/magma-sidenav-content.component'
 export * from './lib/components/nav/magma-sidenav-item/magma-sidenav-item.component'
-
+export * from './lib/components/nav/magma-sidenav-label/magma-sidenav-label.component'

@@ -4,6 +4,7 @@ import { MagmaSidenavComponent } from './magma-sidenav/magma-sidenav.component';
 import { MagmaSidenavContainerComponent } from './magma-sidenav-container/magma-sidenav-container.component';
 import { MagmaSidenavContentComponent } from './magma-sidenav-content/magma-sidenav-content.component';
 import { MagmaSidenavItemComponent } from './magma-sidenav-item/magma-sidenav-item.component';
+import { MagmaSidenavLabelComponent } from './magma-sidenav-label/magma-sidenav-label.component';
 
 
 
@@ -12,7 +13,8 @@ import { MagmaSidenavItemComponent } from './magma-sidenav-item/magma-sidenav-it
     MagmaSidenavComponent,
     MagmaSidenavContainerComponent,
     MagmaSidenavContentComponent,
-    MagmaSidenavItemComponent
+    MagmaSidenavItemComponent,
+    MagmaSidenavLabelComponent
   ],
   imports: [
     CommonModule
@@ -21,7 +23,8 @@ import { MagmaSidenavItemComponent } from './magma-sidenav-item/magma-sidenav-it
     MagmaSidenavComponent,
     MagmaSidenavContainerComponent,
     MagmaSidenavContentComponent,
-    MagmaSidenavItemComponent
+    MagmaSidenavItemComponent,
+    MagmaSidenavLabelComponent
   ]
 })
 export class MagmaSidenavModule { }

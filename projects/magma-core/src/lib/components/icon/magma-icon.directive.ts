@@ -25,8 +25,8 @@ export class MagmaIconDirective implements AfterViewInit{
       this.renderer.setStyle(this.el.nativeElement, 'height', '14') 
     } 
     if (parentMagmaSidenavItem) {
-      this.renderer.setStyle(this.el.nativeElement, 'width', '22')
-      this.renderer.setStyle(this.el.nativeElement, 'height', '22') 
+      this.renderer.setStyle(this.el.nativeElement, 'width', '18')
+      this.renderer.setStyle(this.el.nativeElement, 'height', '18') 
       this.renderer.setStyle(this.el.nativeElement, 'fill', '#6366f1')
     }
   }
