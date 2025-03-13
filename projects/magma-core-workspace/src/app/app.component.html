@@ -27,7 +27,7 @@
   </magma-sidenav>
 
   <magma-sidenav-content>
-    <section>
+    <section [formGroup]="form">
       <div class="left">
         <!-- <MAGMA CARD> ---------------------------------------- -->
         <magma-card>
@@ -42,7 +42,7 @@
 
           <magma-form-field>
             <magma-label>Stan liczb</magma-label>
-            <input magmaInput inputType="number" placeholder="Stan liczb" [(ngModel)]="numberCount">
+            <input magmaInput inputTypeStyle="number" placeholder="Stan liczb" formControlName="numberCount">
           </magma-form-field>
 
           <magma-form-field>

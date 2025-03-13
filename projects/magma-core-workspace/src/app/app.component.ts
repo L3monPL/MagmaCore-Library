@@ -88,4 +88,8 @@ export class AppComponent {
 
   numberCount = 120234
 
+  form = new FormGroup({
+    numberCount: new FormControl(120234), // Możesz ustawić domyślną wartość
+  });
+
 }

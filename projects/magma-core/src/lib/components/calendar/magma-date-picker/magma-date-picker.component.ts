@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, Input, Renderer2, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'magma-date-picker',
@@ -7,6 +7,8 @@ import { Component, ElementRef, HostListener, Renderer2, ViewChild } from '@angu
   styleUrl: './magma-date-picker.component.scss'
 })
 export class MagmaDatePickerComponent {
+
+  @Input() dropdown = false
 
   currentDate = new Date()
   selectedDate: Date | null = null
@@ -142,8 +144,6 @@ export class MagmaDatePickerComponent {
     }
     return years
   }
-
-  dropdown = false
 
   @ViewChild('input') inputElement!: ElementRef
   @ViewChild('dropdownPicker') dropdownPicker!: ElementRef

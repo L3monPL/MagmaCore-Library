@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ContentChild, ElementRef, forwardRef, Input, OnInit, Renderer2 } from '@angular/core';
 import { MagmaIconDirective } from '../../icon/magma-icon.directive';
-import { NG_VALUE_ACCESSOR, NgModel } from '@angular/forms';
+import { NG_VALUE_ACCESSOR, NgControl, NgModel } from '@angular/forms';
 
 @Component({
   selector: 'magma-form-field',
@@ -20,16 +20,16 @@ export class MagmaFormFieldComponent implements AfterViewInit, OnInit{
   constructor(private el: ElementRef, private renderer: Renderer2) {}
 
   @ContentChild(MagmaIconDirective) magmaIcon?: MagmaIconDirective
-  @ContentChild(NgModel) ngModel!: NgModel
+  @ContentChild(NgControl) ngControl!: NgControl
 
-  inputType?: string
+  inputTypeStyle?: string
 
   ngOnInit(): void {
     const inputElement = this.el.nativeElement.querySelector('input')
 
-    if (inputElement.getAttribute('inputType')) {
-      if (inputElement.getAttribute('inputType') == 'number') {
-        this.inputType = 'number'
+    if (inputElement.getAttribute('inputTypeStyle')) {
+      if (inputElement.getAttribute('inputTypeStyle') == 'number') {
+        this.inputTypeStyle = 'number'
 
         this.renderer.setStyle(inputElement, 'padding-left', '38px')
         this.renderer.setStyle(inputElement, 'padding-right', '38px')
@@ -44,28 +44,21 @@ export class MagmaFormFieldComponent implements AfterViewInit, OnInit{
     const inputElement = this.el.nativeElement.querySelector('input')
 
     if (magmaIconElement && inputElement) {
-      // this.renderer.addClass(inputElement, 'with-icon')
       this.renderer.setStyle(inputElement, 'padding-left', '2rem')
-
-      // this.renderer.setStyle(magmaIconElement, 'position', 'absolute')
-      // this.renderer.setStyle(magmaIconElement, 'bottom', '9px')
-      // this.renderer.setStyle(magmaIconElement, 'left', '10px')
-      // this.renderer.setStyle(magmaIconElement, 'fill', '#fff')
-
-      // this.renderer.setStyle(magmaIconElement, 'width', '14')
-      // this.renderer.setStyle(magmaIconElement, 'height', '14')
     }
   }
 
   increaseValue() {
-    if (this.ngModel) {
-      this.ngModel.control.setValue(Number(this.ngModel.value) + 1)
+    if (this.ngControl && this.ngControl.control) {
+      const currentValue = Number(this.ngControl.control.value) || 0
+      this.ngControl.control.setValue(currentValue + 1)
     }
   }
 
   decreaseValue() {
-    if (this.ngModel) {
-      this.ngModel.control.setValue(Number(this.ngModel.value) - 1)
+    if (this.ngControl && this.ngControl.control) {
+      const currentValue = Number(this.ngControl.control.value) || 0
+      this.ngControl.control.setValue(currentValue - 1)
     }
   }
 
