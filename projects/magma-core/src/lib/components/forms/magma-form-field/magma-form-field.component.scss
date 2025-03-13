@@ -2,3 +2,63 @@
     margin-top: 1rem;
     position: relative;
 }
+.container_absolute_type_number_right{
+    display: flex;
+    flex-direction: row;
+    column-gap: 0.5rem;
+    align-items: center;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+    .btn_type_number_right{
+        background-color: #1f2938;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        max-height: 32px;
+        height: 32px;
+        width: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #4c5462;
+        user-select: none;
+        cursor: pointer;
+
+        svg{
+            fill: #ccc;
+            width: 18px;
+            height: 18px;
+        }
+    }
+}
+.container_absolute_type_number_left{
+    display: flex;
+    flex-direction: row;
+    column-gap: 0.5rem;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    .btn_type_number_left{
+        background-color: #1f2938;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        max-height: 32px;
+        height: 32px;
+        width: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #4c5462;
+        user-select: none;
+        cursor: pointer;
+
+        svg{
+            fill: #ccc;
+            width: 18px;
+            height: 18px;
+        }
+    }
+}

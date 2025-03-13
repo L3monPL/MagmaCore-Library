@@ -13,6 +13,7 @@ import { MagmaDatePickerModule } from '../../../magma-core/src/lib/components/ca
 import { ProgressSpinnerModule } from '../../../magma-core/src/lib/components/progressSpinner/progress-spinner.module';
 import { MagmaCheckboxModule } from '../../../magma-core/src/lib/components/checkbox/magma-checkbox.module';
 import { MagmaSidenavModule } from '../../../magma-core/src/lib/components/nav/magma-sidenav.module';
+import { CommonModule } from '@angular/common';
 // import { Card1Component } from 'MagmaCore';
 
 interface BrandSelect {
@@ -25,6 +26,7 @@ interface BrandSelect {
   standalone: true,
   imports: [
     RouterOutlet,
+    CommonModule,
     MagmaCardModule,
     MagmaButonModule,
     MagmaInputModule,
@@ -37,7 +39,7 @@ interface BrandSelect {
     MagmaDatePickerModule,
     ProgressSpinnerModule,
     MagmaCheckboxModule,
-    MagmaSidenavModule
+    MagmaSidenavModule,
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
@@ -83,5 +85,7 @@ export class AppComponent {
 
   isOpen = true
   mode = 'side' //over //side
+
+  numberCount = 120234
 
 }

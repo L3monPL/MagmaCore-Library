@@ -39,6 +39,16 @@
               Subtitle
             </magma-card-subtitle>
           </magma-card-header>
+
+          <magma-form-field>
+            <magma-label>Stan liczb</magma-label>
+            <input magmaInput inputType="number" placeholder="Stan liczb" [(ngModel)]="numberCount">
+          </magma-form-field>
+
+          <magma-form-field>
+            <magma-label>Opis</magma-label>
+            <input magmaInput type="text" placeholder="Opis">
+          </magma-form-field>
     
           <magma-card-actions justify="end">
             <button magmaButton>Button</button>
