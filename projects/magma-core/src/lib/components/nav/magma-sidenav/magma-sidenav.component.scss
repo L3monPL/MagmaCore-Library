@@ -13,24 +13,32 @@
     z-index: 888;
     height: 100%;
     background-color: #1f2938;
-    // padding: 0.5rem;
     color: var(--magma-color-font-primary);
+    position: relative;
+    // transition: width 0.3s ease-in-out;
 }
   
   .sidenav {
-    padding: 0.5rem;
-    width: 250px;
-    position: relative;
+    // padding: 0.5rem;
+    // background-color: #1f2938;
+    // width: 250px;
+    // position: relative;
+    // transition: width 0.3s ease-in-out;
+    // position: fixed;
+    // top: 0;
+    // left: 0;
+    // bottom: 0;
+    width: 0;
+    // overflow: hidden;
 }
 .el{
     font-family: var(--magma-font);
-    position: fixed;
+    position: absolute;
     top: 0;
     right: 0;
+    // left: 0px;
     padding: 0.5rem;
-    // padding-left: 1rem;
     transition: 0.5s;
-    // overflow: hidden;
-    // width: calc(250px - 0.75rem);
-    width: 100%;
+    // width: calc(100% - 0.2rem);
+    // width: 100%;
   }

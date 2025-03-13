@@ -14,7 +14,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    // width: calc(240px - 1rem);
+    width: calc(240px - 0.3rem);
 }
 :host:hover{
     background-color: #2b3646;

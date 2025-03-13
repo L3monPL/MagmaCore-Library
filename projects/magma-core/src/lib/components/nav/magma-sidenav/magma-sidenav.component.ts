@@ -1,4 +1,4 @@
-import { animate, state, style, transition, trigger } from '@angular/animations';
+import { animate, group, state, style, transition, trigger } from '@angular/animations';
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, Output, Renderer2, SimpleChanges } from '@angular/core';
 
 @Component({
@@ -8,43 +8,19 @@ import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, O
   styleUrl: './magma-sidenav.component.scss',
   animations: [
     trigger('openClose', [
-      // Początkowy stan (ukryty, zero szerokości)
-      state('void', style({ 
-        width: '0px',
-        transform: 'translateX(-100%)',
-        opacity: 0 
-      })), 
-
-      // Końcowy stan (pełna szerokość, widoczny)
-      state('*', style({ 
-        width: '240px',
-        transform: 'translateX(0)',
-        opacity: 1,
+      state('false', style({ 
+        width: '0px', 
       })),
-
-      // Animacja otwierania (najpierw szerokość, potem przesuwanie)
-      transition('void => *', [
-        animate('300ms ease-out', style({ 
-          width: '240px',
-          transform: 'translateX(0)',
-          opacity: 1 
-        })) 
-      ]),
-
-      // Animacja zamykania (najpierw przesuwanie, potem zwężanie)
-      transition('* => void', [
-        animate('200ms ease-in', style({ 
-          width: '0px',
-          transform: 'translateX(-100%)',
-          opacity: 0 
-        })) 
-      ])
-    ])
-    // trigger('openClose', [
-    //   state('void', style({ transform: 'translateX(-100%)', opacity: 0 })),
-    //   state('*', style({ transform: 'translateX(0)', opacity: 1 })),
-    //   transition('void <=> *', animate('300ms ease-in-out'))
-    // ])
+      state('true', style({ 
+        width: '250px', 
+      })),
+      transition('false => true', group([
+        animate('300ms ease-in-out', style({ width: '250px' }))
+      ])),
+      transition('true => false', group([
+        animate('300ms ease-in-out', style({ width: '0px' }))
+      ]))
+    ]),
   ]
 })
 export class MagmaSidenavComponent implements AfterViewInit, OnChanges {

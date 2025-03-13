@@ -5,13 +5,14 @@
 } -->
 
 <div class="sidenav-container">
-    @if (opened) {
-      <div class="sidenav" @openClose>
+    <!-- @if (opened) { -->
+      <div class="sidenav" [@openClose]="opened">
         <div class="el">
             <ng-content></ng-content>
         </div>
+        <!-- <ng-content></ng-content> -->
         <!-- <p>test fds fds f sdf ds fsd fds sd fdsfsdf sdfsd fsdfsdfsdf sdfsdfsd fsdf sdf sd </p> -->
         <!-- <ng-content></ng-content> -->
       </div>
-    }
+    <!-- } -->
 </div>

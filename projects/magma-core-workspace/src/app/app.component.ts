@@ -81,6 +81,7 @@ export class AppComponent {
     console.log(this.checkBoxList)
   }
 
-  isOpen = false
+  isOpen = true
+  mode = 'side' //over //side
 
 }
