@@ -27,8 +27,8 @@
   </magma-sidenav>
 
   <magma-sidenav-content>
-    <section [formGroup]="form">
-      <div class="left">
+    <section>
+      <div [formGroup]="form" class="left">
         <!-- <MAGMA CARD> ---------------------------------------- -->
         <magma-card>
           <magma-card-header>
@@ -48,6 +48,11 @@
           <magma-form-field>
             <magma-label>Wybierz datę</magma-label>
             <input magmaInput inputTypeStyle="date" type="text" formControlName="date" readonly>
+          </magma-form-field>
+
+          <magma-form-field>
+            <magma-label>First name</magma-label>
+            <input magmaInput type="text" placeholder="First name">
           </magma-form-field>
 
           <magma-form-field>
@@ -126,15 +131,28 @@
         <button (click)="isOpen = !isOpen" magmaButton>MENU</button>
 
       </div>
-      <!-- <div class="right">
+      <div class="right">
         <magma-card>
           <magma-date-picker></magma-date-picker>
     
           <div class="container_spinner">
             <progress-spinner [size]="30"></progress-spinner>
           </div>
+
+          <magma-form-field>
+            <magma-label>Select Year</magma-label>
+            <magma-select [(ngModel)]="selectLabel2" optionLabel="name">
+              <magma-select-list>
+                @for (item of selectList; track $index) {
+                  <li magmaSelectOption [value]="item">{{item.name}}</li>
+                }
+              </magma-select-list>
+            </magma-select>
+          </magma-form-field>
+
+          
         </magma-card>
-      </div> -->
+      </div>
     </section>
   </magma-sidenav-content>
 </magma-sidenav-container>
