@@ -7,7 +7,7 @@ import { MagmaDatePickerModule } from '../calendar/magma-date-picker.module';
 
 @NgModule({
   declarations: [
-    MagmaFormFieldComponent
+    MagmaFormFieldComponent,
   ],
   imports: [
     CommonModule,

@@ -1,5 +1,4 @@
 import { AfterViewInit, Component, ContentChild, ElementRef, EventEmitter, HostListener, Input, OnChanges, Output, Renderer2, SimpleChanges, ViewChild } from '@angular/core';
-import { MagmaFormFieldComponent } from '../../forms/magma-form-field/magma-form-field.component';
 
 @Component({
   selector: 'magma-date-picker',

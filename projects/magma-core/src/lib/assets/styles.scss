@@ -37,10 +37,7 @@
     width: 100%;
 }
 .magma-input:focus {
-    border: 1px solid #6366f1; //4670bc
-    // outline-color: red;
-    // outline-width: 2px;
-    // outline-style: solid;
+    border: 1px solid #6366f1; 
 }
 .magma-input[type="number"]::-webkit-outer-spin-button,
 .magma-input[type="number"]::-webkit-inner-spin-button {
@@ -50,4 +47,19 @@
 
 .magma-input[type="number"] {
   -moz-appearance: textfield;
+}
+// MAGMA TEXTAREA //
+.magma-textarea{
+    background-color: #101827;
+    border-radius: 5px;
+    border: 1px solid #4c5462;
+    box-sizing: border-box;
+    color: #fff;
+    outline: none;
+    padding: 0.5rem 0.5rem;
+    width: 100%;
+    font-family: var(--magma-font);
+}
+.magma-textarea:focus {
+    border: 1px solid #6366f1;
 }

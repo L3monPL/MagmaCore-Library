@@ -25,6 +25,7 @@ export * from './lib/components/forms/magma-form-field/magma-form-field.componen
 export * from './lib/components/inputs/magma-input.module'
 export * from './lib/components/inputs/magma-input.directive'
 export * from './lib/components/inputs/magma-label/magma-label.component'
+export * from './lib/components/inputs/magma-textarea.directive'
 
 // MAGMA ICON
 export * from './lib/components/icon/magma-icon.module'
