@@ -1,0 +1,41 @@
+.magma-notification {
+    // background-color: #333;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    width: 300px;
+    max-width: 300px;
+    backdrop-filter: blur(5px)
+}
+
+//   .magma-show-notification {
+//     opacity: 1;
+//     transform: translateY(0);
+//   }
+
+//   .magma-hide-notification {
+//     opacity: 0;
+//     transform: translateY(-20px);
+//   }
+
+.status_text{
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+p{
+    font-size: 0.8rem;
+    margin-bottom: 0px;
+    margin-top: 6px;
+}
+/* Typy powiadomień */
+.SUCCES { 
+    background-color: #56d45a22; 
+    border: 1px solid #56d45a;
+}  /* Zielone */
+.ERROR   { background-color: #F44336; }  /* Czerwone */
+.INFO    { background-color: #2196F3; }  /* Niebieskie */
+.WARNING { background-color: #FF9800; }  /* Pomarańczowe */

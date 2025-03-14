@@ -62,6 +62,9 @@ export * from './lib/components/nav/magma-sidenav-item/magma-sidenav-item.compon
 export * from './lib/components/nav/magma-sidenav-label/magma-sidenav-label.component'
 
 // MAGMA DIALOG
-// export * from './lib/components/dialog/magma-dialog.module'
 export * from './lib/components/dialog/magma-dialog.service'
 export * from './lib/components/dialog/magma-dialog/magma-dialog.component'
+
+// MAGMA NOTIFICATION
+export * from './lib/components/notification/magma-notification.service'
+export * from './lib/components/notification/magma-notification/magma-notification.component'

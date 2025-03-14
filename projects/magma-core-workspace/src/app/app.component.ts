@@ -15,7 +15,8 @@ import { MagmaCheckboxModule } from '../../../magma-core/src/lib/components/chec
 import { MagmaSidenavModule } from '../../../magma-core/src/lib/components/nav/magma-sidenav.module';
 import { CommonModule } from '@angular/common';
 // import { MagmaDialogModule } from '../../../magma-core/src/lib/components/dialog/magma-dialog.module';
-import { MagmaDialogComponent, MagmaDialogService } from '../../../magma-core/src/public-api';
+import { MagmaDialogComponent, MagmaDialogService, MagmaNotificationService } from '../../../magma-core/src/public-api';
+import { MagmaNotificationComponent } from 'MagmaCore';
 // import { Card1Component } from 'MagmaCore';
 
 interface BrandSelect {
@@ -57,6 +58,11 @@ export class AppComponent {
 
   selectList?: Array<BrandSelect>
 
+  constructor(
+    private dialogService: MagmaDialogService,
+    private notificationService: MagmaNotificationService
+  ) { }
+
   ngOnInit() {
     this.selectList = [
       {id: 0, name: 'Ford'},
@@ -97,14 +103,15 @@ export class AppComponent {
     date: new FormControl <Date|string>(new Date()) 
   });
 
-
-  constructor(private dialogService: MagmaDialogService) { }
-
   openDialog() {
     this.dialogService.openDialog(MagmaDialogComponent, {
       title: 'Custom Dialog',
       message: 'This is a custom message for the dialog.'
     });
+  }
+
+  showNotification(message: string) {
+    this.notificationService.showNotification(MagmaNotificationComponent, { message: message, type: 'SUCCES' }, 3000)
   }
 
 }
