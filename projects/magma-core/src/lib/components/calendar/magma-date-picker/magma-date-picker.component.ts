@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ContentChild, ElementRef, HostListener, Input, OnChanges, Renderer2, SimpleChanges, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ContentChild, ElementRef, EventEmitter, HostListener, Input, OnChanges, Output, Renderer2, SimpleChanges, ViewChild } from '@angular/core';
 import { MagmaFormFieldComponent } from '../../forms/magma-form-field/magma-form-field.component';
 
 @Component({
@@ -10,6 +10,7 @@ import { MagmaFormFieldComponent } from '../../forms/magma-form-field/magma-form
 export class MagmaDatePickerComponent {
 
   @Input() dropdown = false
+  @Output() selectDateEmmiter = new EventEmitter<any>()
 
   currentDate = new Date()
   selectedDate: Date | null = null
@@ -45,7 +46,12 @@ export class MagmaDatePickerComponent {
     if (day !== null && isCurrentMonth) {
       let date = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), day)
       this.selectedDate = date
-      console.log(this.selectedDate)
+      // console.log(this.selectedDate)
+      this.selectDateEmmiter.emit(this.selectedDate)
+
+      setTimeout(() => {
+        this.dropdown = false
+      }, 300);
     }
   }
 

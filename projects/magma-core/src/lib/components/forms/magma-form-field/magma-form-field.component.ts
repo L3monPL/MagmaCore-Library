@@ -56,11 +56,27 @@ export class MagmaFormFieldComponent implements AfterViewInit, OnInit, OnDestroy
   }
   
   ngAfterViewInit(): void {
-    const magmaIconElement = this.magmaIcon
     const inputElement = this.el.nativeElement.querySelector('input')
+
+    // INSIDE INPUT WITH ICON ------------------------------------------------- //
+    const magmaIconElement = this.magmaIcon
 
     if (magmaIconElement && inputElement) {
       this.renderer.setStyle(inputElement, 'padding-left', '2rem')
+    }
+
+    // INSIDE INPUT TYPE DATE ------------------------------------------------- //
+    if (inputElement.getAttribute('inputTypeStyle') == 'date') {
+      if (this.ngControl && this.ngControl.control) {
+        if (this.isValidDate(this.ngControl.value)) {
+
+          this.magmaDatePickerComponent.selectedDate = this.ngControl.value
+  
+          let date = this.convertDate(this.ngControl.value)
+  
+          this.ngControl.control.setValue(date)
+        }
+      }
     }
   }
 
@@ -107,6 +123,37 @@ export class MagmaFormFieldComponent implements AfterViewInit, OnInit, OnDestroy
     }
 
     inputElement.value = value;
+  }
+
+  // -------------------------------------------------------------------------- //
+  // END END END -------------------------------------------------------------- //
+  // -------------------------------------------------------------------------- //
+
+  // -------------------------------------------------------------------------- //
+  // INSIDE INPUT TYPE DATE --------------------------------------------------- //
+  // -------------------------------------------------------------------------- //
+
+  selectedDate(event: any){
+    console.log(event)
+
+    if (this.ngControl && this.ngControl.control) {
+
+      let date = this.convertDate(event)
+
+      this.ngControl.control.setValue(date)
+    }
+  }
+
+  convertDate(dateStr: string): string {
+    const date = new Date(dateStr);
+    const day = date.getDate().toString().padStart(2, '0'); // Dzień z zerem na początku
+    const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Miesiące liczone od 0
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
+  }
+
+  isValidDate(dateStr: string): boolean {
+    return !isNaN(Date.parse(dateStr));
   }
 
   // -------------------------------------------------------------------------- //

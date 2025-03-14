@@ -13,6 +13,6 @@
         </div>
     }
     @if (inputTypeStyle == 'date') {
-        <magma-date-picker [dropdown]="isDropdownDate"></magma-date-picker>
+        <magma-date-picker [dropdown]="isDropdownDate" (selectDateEmmiter)="selectedDate($event)"></magma-date-picker>
     }
 </div>

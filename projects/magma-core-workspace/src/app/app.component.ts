@@ -90,6 +90,7 @@ export class AppComponent {
 
   form = new FormGroup({
     numberCount: new FormControl(120234), // Możesz ustawić domyślną wartość
+    date: new FormControl <Date|string>(new Date()) 
   });
 
 }
