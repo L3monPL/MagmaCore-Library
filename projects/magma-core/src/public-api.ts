@@ -60,3 +60,8 @@ export * from './lib/components/nav/magma-sidenav-container/magma-sidenav-contai
 export * from './lib/components/nav/magma-sidenav-content/magma-sidenav-content.component'
 export * from './lib/components/nav/magma-sidenav-item/magma-sidenav-item.component'
 export * from './lib/components/nav/magma-sidenav-label/magma-sidenav-label.component'
+
+// MAGMA DIALOG
+// export * from './lib/components/dialog/magma-dialog.module'
+export * from './lib/components/dialog/magma-dialog.service'
+export * from './lib/components/dialog/magma-dialog/magma-dialog.component'

@@ -14,6 +14,8 @@ import { ProgressSpinnerModule } from '../../../magma-core/src/lib/components/pr
 import { MagmaCheckboxModule } from '../../../magma-core/src/lib/components/checkbox/magma-checkbox.module';
 import { MagmaSidenavModule } from '../../../magma-core/src/lib/components/nav/magma-sidenav.module';
 import { CommonModule } from '@angular/common';
+// import { MagmaDialogModule } from '../../../magma-core/src/lib/components/dialog/magma-dialog.module';
+import { MagmaDialogComponent, MagmaDialogService } from '../../../magma-core/src/public-api';
 // import { Card1Component } from 'MagmaCore';
 
 interface BrandSelect {
@@ -40,7 +42,9 @@ interface BrandSelect {
     ProgressSpinnerModule,
     MagmaCheckboxModule,
     MagmaSidenavModule,
-],
+    MagmaDialogComponent
+  ],
+  providers: [MagmaDialogService],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -92,5 +96,15 @@ export class AppComponent {
     numberCount: new FormControl(120234), // Możesz ustawić domyślną wartość
     date: new FormControl <Date|string>(new Date()) 
   });
+
+
+  constructor(private dialogService: MagmaDialogService) { }
+
+  openDialog() {
+    this.dialogService.openDialog(MagmaDialogComponent, {
+      title: 'Custom Dialog',
+      message: 'This is a custom message for the dialog.'
+    });
+  }
 
 }
