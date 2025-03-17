@@ -3,12 +3,12 @@
 :root {
     // font-family: "Inter", serif;
     --magma-font: 'Inter', serif;
-    --magma-color-font-primary: #fff;
-    --magma-color-green: #4ade7f;
-    --magma-color-blue: #38bdf8;
-    --magma-color-yellow: #fb923c;
-    --magma-color-purple: #c084fc;
-    --magma-color-red: #f87171;
+    --magma-color-font-primary-100: #fff;
+    --magma-color-green-100: #2dc976;
+    --magma-color-blue-100: #38bdf8;
+    --magma-color-yellow-100: #fb923c;
+    --magma-color-purple-100: #c084fc;
+    --magma-color-red-100: #bb1f29;
 }
 
 // MAGMA BUTTON //
@@ -21,7 +21,7 @@
 }
 .magma-button:hover{
     // background-color: rgb(93 94 109)!important;
-    filter: brightness(1.2);
+    filter: brightness(0.9);
 }
 // MAGMA INPUT //
 .magma-input{
