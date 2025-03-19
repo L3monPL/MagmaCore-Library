@@ -17,6 +17,7 @@ import { CommonModule } from '@angular/common';
 // import { MagmaDialogModule } from '../../../magma-core/src/lib/components/dialog/magma-dialog.module';
 import { MagmaDialogComponent, MagmaDialogService, MagmaNotificationService } from '../../../magma-core/src/public-api';
 import { MagmaNotificationComponent } from 'MagmaCore';
+import { MagmaTimelineModule } from '../../../magma-core/src/lib/components/timeline/magma-timeline.module';
 // import { Card1Component } from 'MagmaCore';
 
 interface BrandSelect {
@@ -43,7 +44,8 @@ interface BrandSelect {
     ProgressSpinnerModule,
     MagmaCheckboxModule,
     MagmaSidenavModule,
-    MagmaDialogComponent
+    MagmaDialogComponent,
+    MagmaTimelineModule
   ],
   providers: [MagmaDialogService],
   templateUrl: './app.component.html',

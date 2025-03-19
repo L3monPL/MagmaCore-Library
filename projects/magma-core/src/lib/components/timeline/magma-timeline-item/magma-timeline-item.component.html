@@ -1,0 +1,11 @@
+<div class="item" [ngClass]="{'is_last': isLast}">
+    <div class="left">
+        <div class="dot"></div>
+        @if (!isLast) {
+            <div class="line"></div>
+        }
+    </div>
+    <div class="right">
+        <ng-content></ng-content>
+    </div>
+</div>

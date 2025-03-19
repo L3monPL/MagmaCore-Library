@@ -1,0 +1,35 @@
+.item{
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    column-gap: 1rem;
+    flex: 1;
+    min-height: 60px;
+    position: relative;
+}
+.left{
+    display: flex;
+    flex-direction: column;
+
+    .dot{
+        background-color: #fff;
+        border-radius: 50%;
+        width: 7px;
+        height: 7px;
+        margin-top: 5px;
+    }
+    .line{
+        position: absolute;
+        width: 1px;
+        top: 16px;
+        bottom: 0;
+        left: 3px;
+        background-color: #fff;
+    }
+}   
+.right{
+
+}
+.is_last{
+    min-height: 0px!important;
+}

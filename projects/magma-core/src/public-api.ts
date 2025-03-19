@@ -68,3 +68,7 @@ export * from './lib/components/dialog/magma-dialog/magma-dialog.component'
 // MAGMA NOTIFICATION
 export * from './lib/components/notification/magma-notification.service'
 export * from './lib/components/notification/magma-notification/magma-notification.component'
+
+// MAGMA TIMELINE
+export * from './lib/components/timeline/magma-timeline.module'
+export * from './lib/components/timeline/magma-timeline/magma-timeline.component'
