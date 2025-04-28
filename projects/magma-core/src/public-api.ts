@@ -72,3 +72,4 @@ export * from './lib/components/notification/magma-notification/magma-notificati
 // MAGMA TIMELINE
 export * from './lib/components/timeline/magma-timeline.module'
 export * from './lib/components/timeline/magma-timeline/magma-timeline.component'
+export * from './lib/components/timeline/magma-timeline-item/magma-timeline-item.component'
