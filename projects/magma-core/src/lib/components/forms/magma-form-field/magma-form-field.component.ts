@@ -26,6 +26,7 @@ export class MagmaFormFieldComponent implements AfterViewInit, OnInit, OnDestroy
   @ContentChild(NgControl) ngControl!: NgControl
 
   inputTypeStyle?: string
+  step?: number = 1
 
   private inputClickListener?: () => void
   isDropdownDate: boolean = false
@@ -42,7 +43,7 @@ export class MagmaFormFieldComponent implements AfterViewInit, OnInit, OnDestroy
         this.renderer.setStyle(inputElement, 'padding-left', '38px')
         this.renderer.setStyle(inputElement, 'padding-right', '38px')
 
-        inputElement.addEventListener('input', this.validateNumberInput.bind(this))
+        // inputElement.addEventListener('input', this.validateNumberInput.bind(this))
       }
       // INSIDE INPUT TYPE DATE ------------------------------------------------- //
       if (inputElement.getAttribute('inputTypeStyle') == 'date') {
@@ -95,6 +96,8 @@ export class MagmaFormFieldComponent implements AfterViewInit, OnInit, OnDestroy
   // -------------------------------------------------------------------------- //
 
   increaseValue() {
+    const inputElement = this.el.nativeElement.querySelector('input')
+
     if (this.ngControl && this.ngControl.control) {
       const currentValue = Number(this.ngControl.control.value) || 0
       this.ngControl.control.setValue(currentValue + 1)
@@ -102,32 +105,44 @@ export class MagmaFormFieldComponent implements AfterViewInit, OnInit, OnDestroy
   }
 
   decreaseValue() {
+    const inputElement = this.el.nativeElement.querySelector('input')
+
     if (this.ngControl && this.ngControl.control) {
       const currentValue = Number(this.ngControl.control.value) || 0
-      this.ngControl.control.setValue(currentValue - 1)
+
+      if (inputElement.getAttribute('step')) {
+        let step = inputElement.getAttribute('step')
+
+        console.log(Number(step))
+
+        this.ngControl.control.setValue(currentValue - Number(step))
+      }
+      else{
+        this.ngControl.control.setValue(currentValue - 1)
+      }
     }
   }
 
-  validateNumberInput(event: Event): void {
-    //   inputElement.setCustomValidity('Proszę wprowadzić tylko liczbę');
-    //   inputElement.reportValidity(); // Pokazuje walidację
+  // validateNumberInput(event: Event): void {
+  //   //   inputElement.setCustomValidity('Proszę wprowadzić tylko liczbę');
+  //   //   inputElement.reportValidity(); // Pokazuje walidację
 
-    const inputElement = event.target as HTMLInputElement;
-    let value = inputElement.value;
+  //   const inputElement = event.target as HTMLInputElement;
+  //   let value = inputElement.value;
 
-    value = value.replace(/,/g, '.');
-    value = value.replace(/[^0-9.\-]/g, '');
+  //   value = value.replace(/,/g, '.');
+  //   value = value.replace(/[^0-9.\-]/g, '');
 
-    if (value.indexOf('-') > 0) {
-      value = value.replace(/-/g, '');
-    }
+  //   if (value.indexOf('-') > 0) {
+  //     value = value.replace(/-/g, '');
+  //   }
 
-    if (value.split('.').length > 2) {
-      value = value.slice(0, value.lastIndexOf('.'));
-    }
+  //   if (value.split('.').length > 2) {
+  //     value = value.slice(0, value.lastIndexOf('.'));
+  //   }
 
-    inputElement.value = value;
-  }
+  //   inputElement.value = value;
+  // }
 
   // -------------------------------------------------------------------------- //
   // END END END -------------------------------------------------------------- //
