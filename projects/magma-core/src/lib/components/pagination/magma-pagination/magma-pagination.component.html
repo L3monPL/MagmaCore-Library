@@ -1,0 +1,28 @@
+<div class="pagination">
+
+  <div class="arrow" (click)="changePage(currentPage - 1, 'prev')">
+    <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="18" height="18"><path d="M10.6,12.71a1,1,0,0,1,0-1.42l4.59-4.58a1,1,0,0,0,0-1.42,1,1,0,0,0-1.41,0L9.19,9.88a3,3,0,0,0,0,4.24l4.59,4.59a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.42Z"/></svg>
+  </div>
+
+  @for (page of displayPages; track $index) {
+    @if (page !== 'space') {
+        <button
+        (click)="changePage(page, 'page')"
+        [class.active]="page === currentPage"
+        class="item_page"
+        >
+        {{ page }}
+        </button>
+    }
+    @else {
+        <div class="space">
+            <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="12" height="12"><circle cx="2" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="22" cy="12" r="2"/></svg>
+        </div>
+    }
+  }
+
+  <div class="arrow" (click)="changePage(currentPage + 1, 'next')">
+    <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="18" height="18"><path d="M15.4,9.88,10.81,5.29a1,1,0,0,0-1.41,0,1,1,0,0,0,0,1.42L14,11.29a1,1,0,0,1,0,1.42L9.4,17.29a1,1,0,0,0,1.41,1.42l4.59-4.59A3,3,0,0,0,15.4,9.88Z"/></svg>
+  </div>
+
+</div>

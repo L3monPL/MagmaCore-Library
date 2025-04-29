@@ -163,6 +163,13 @@
           </magma-timeline>
 
         </magma-card>
+
+        <magma-pagination
+        [totalItems]="50"
+        [pageSize]="10"
+        [currentPage]="currentPage"
+        (pageChange)="onPageChange($event)"
+        ></magma-pagination>
       </div>
     </section>
   </magma-sidenav-content>

@@ -18,6 +18,7 @@ import { CommonModule } from '@angular/common';
 import { MagmaDialogComponent, MagmaDialogService, MagmaNotificationService } from '../../../magma-core/src/public-api';
 import { MagmaNotificationComponent } from 'MagmaCore';
 import { MagmaTimelineModule } from '../../../magma-core/src/lib/components/timeline/magma-timeline.module';
+import { MagmaPaginationModule } from '../../../magma-core/src/lib/components/pagination/magma-pagination.module';
 // import { Card1Component } from 'MagmaCore';
 
 interface BrandSelect {
@@ -45,7 +46,8 @@ interface BrandSelect {
     MagmaCheckboxModule,
     MagmaSidenavModule,
     MagmaDialogComponent,
-    MagmaTimelineModule
+    MagmaTimelineModule,
+    MagmaPaginationModule
   ],
   providers: [MagmaDialogService],
   templateUrl: './app.component.html',
@@ -114,6 +116,13 @@ export class AppComponent {
 
   showNotification(message: string) {
     this.notificationService.showNotification(MagmaNotificationComponent, { message: message, type: 'SUCCES' }, 3000)
+  }
+
+  currentPage = 1
+
+  onPageChange(page: number) {
+    this.currentPage = page;
+    console.log('Nowa strona:', page);
   }
 
 }
