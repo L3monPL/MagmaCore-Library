@@ -29,8 +29,8 @@ export class MagmaPaginationComponent {
     const nextPage = this.currentPage + 1
 
     if (prevPage > 1 && this.totalPages != 3) {
-      pages.push(1)
-      pages.push('space')
+      // pages.push(1)
+      // pages.push('space')
     }
 
     if (this.currentPage > 1) {
@@ -43,7 +43,6 @@ export class MagmaPaginationComponent {
     // Always show current page
     pages.push(this.currentPage)
 
-    // Show next page if it's not the last page
     if (nextPage <= this.totalPages - 1) {
       pages.push(nextPage)
 
@@ -51,15 +50,14 @@ export class MagmaPaginationComponent {
         pages.push(nextPage + 1)
       }
       if (this.totalPages != 3){
-        pages.push('space')
+        // pages.push('space')
       }
     } else if (nextPage === this.totalPages) {
       pages.push(nextPage)
     }
 
-    // Always show last page (if it's not already included)
     if (!pages.includes(this.totalPages)) {
-      pages.push(this.totalPages)
+      // pages.push(this.totalPages)
     }
 
     return pages

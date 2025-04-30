@@ -30,7 +30,12 @@
       }
     }
 }
-
+.container{
+    display: flex;
+    gap: 0.25rem;
+    align-items: center;
+    margin: 0px 6px;
+}
 .item_page{
     border-radius: 5px;
     max-width: 26px;
@@ -53,7 +58,7 @@
     justify-content: center;
     background-color: transparent;
 
-    width: 26px;
+    width: 18px;
     height: 26px;
     cursor: pointer;
     user-select: none;
@@ -67,5 +72,12 @@
 
     svg{
         fill: var(--magma-color-font-primary-100);
+    }
+}
+.arrow_disable{
+    cursor: default;
+
+    svg{
+        fill: #919191;
     }
 }
