@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { DialogComponentInterface } from '../magma-dialog.service';
 
 @Component({
   selector: 'magma-dialog',
@@ -7,11 +8,18 @@ import { Component, Input } from '@angular/core';
   templateUrl: './magma-dialog.component.html',
   styleUrl: './magma-dialog.component.scss'
 })
-export class MagmaDialogComponent {
+export class MagmaDialogComponent implements DialogComponentInterface{
 
   @Input() data: any;
-  closeDialog: Function = () => {};
+  closeDialog!: (result?: any) => void;
 
-  constructor() { }
+  submitForm() {
+    const result = { ok: true, selected: 42 }
+    this.closeDialog(result)
+  }
+
+  close() {
+    this.closeDialog('close')
+  }
   
 }

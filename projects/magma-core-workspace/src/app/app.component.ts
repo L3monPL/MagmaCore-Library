@@ -111,6 +111,10 @@ export class AppComponent {
     this.dialogService.openDialog(MagmaDialogComponent, {
       title: 'Custom Dialog',
       message: 'This is a custom message for the dialog.'
+    }).then(result => {
+      if (result) {
+        console.log(result) 
+      }
     });
   }
 

@@ -2,7 +2,7 @@ import { ApplicationRef, ComponentFactoryResolver, EmbeddedViewRef, Injectable, 
 
 export interface DialogComponentInterface {
   data: any;
-  closeDialog: () => void;
+  closeDialog: (result?: any) => void;
 }
 
 @Injectable({
@@ -25,35 +25,40 @@ export class MagmaDialogService {
     return container;
   }
 
-  openDialog(component: any, data: any): void {
-    // Tworzymy kontener na dialog
-    if (!this.dialogContainer) {
-      this.dialogContainer = this.createDialogContainer();
-    }
+  openDialog(component: any, data: any): Promise<any> {
+    return new Promise((resolve) => {
+      // Tworzymy kontener
+      if (!this.dialogContainer) {
+        this.dialogContainer = this.createDialogContainer();
+      }
 
-    // Tworzymy fabrykę komponentu
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(component);
-    const componentRef = componentFactory.create(this.injector);
+      const componentFactory = this.componentFactoryResolver.resolveComponentFactory(component);
+      const componentRef = componentFactory.create(this.injector);
 
-    // Przekazujemy dane do komponentu
-    (componentRef.instance as DialogComponentInterface).data = data;
+      // Przekazujemy dane
+      const instance = componentRef.instance as DialogComponentInterface;
+      instance.data = data;
 
-    // Dodajemy komponent do aplikacji
-    this.appRef.attachView(componentRef.hostView);
+      // Definiujemy closeDialog z możliwością przekazania wyniku
+      instance.closeDialog = (result?: any) => {
+        this.closeDialog(componentRef);
+        resolve(result);
+      };
 
-    // Dodajemy komponent do kontenera
-    this.dialogContainer.appendChild((componentRef.hostView as EmbeddedViewRef<any>).rootNodes[0]);
-
-    // Dodajemy funkcjonalność zamknięcia
-    (componentRef.instance as DialogComponentInterface).closeDialog = () => this.closeDialog(componentRef);
+      // Osadzamy w DOM
+      this.appRef.attachView(componentRef.hostView);
+      this.dialogContainer.appendChild(
+        (componentRef.hostView as EmbeddedViewRef<any>).rootNodes[0]
+      );
+    });
   }
 
-  closeDialog(componentRef: any): void {
-    // Usuwamy komponent z DOM
+  private closeDialog(componentRef: any): void {
     this.appRef.detachView(componentRef.hostView);
-    this.dialogContainer?.removeChild((componentRef.hostView as EmbeddedViewRef<any>).rootNodes[0]);
+    this.dialogContainer?.removeChild(
+      (componentRef.hostView as EmbeddedViewRef<any>).rootNodes[0]
+    );
 
-    // Jeśli nie ma już innych dialogów, usuwamy kontener
     if (this.dialogContainer?.childNodes.length === 0) {
       document.body.removeChild(this.dialogContainer);
       this.dialogContainer = null;
