@@ -73,3 +73,7 @@ export * from './lib/components/notification/magma-notification/magma-notificati
 export * from './lib/components/timeline/magma-timeline.module'
 export * from './lib/components/timeline/magma-timeline/magma-timeline.component'
 export * from './lib/components/timeline/magma-timeline-item/magma-timeline-item.component'
+
+// MAGMA PAGINATION
+export * from './lib/components/pagination/magma-pagination.module'
+export * from './lib/components/pagination/magma-pagination/magma-pagination.component'
