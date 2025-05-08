@@ -77,3 +77,7 @@ export * from './lib/components/timeline/magma-timeline-item/magma-timeline-item
 // MAGMA PAGINATION
 export * from './lib/components/pagination/magma-pagination.module'
 export * from './lib/components/pagination/magma-pagination/magma-pagination.component'
+
+// MAGMA RADIO BUTTO
+export * from './lib/components/radioButton/magma-radio-button.module'
+export * from './lib/components/radioButton/magma-radio-button/magma-radio-button.component'

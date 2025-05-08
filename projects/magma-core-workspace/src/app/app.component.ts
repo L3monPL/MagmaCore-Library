@@ -15,7 +15,7 @@ import { MagmaCheckboxModule } from '../../../magma-core/src/lib/components/chec
 import { MagmaSidenavModule } from '../../../magma-core/src/lib/components/nav/magma-sidenav.module';
 import { CommonModule } from '@angular/common';
 // import { MagmaDialogModule } from '../../../magma-core/src/lib/components/dialog/magma-dialog.module';
-import { MagmaDialogComponent, MagmaDialogService, MagmaNotificationService } from '../../../magma-core/src/public-api';
+import { MagmaDialogComponent, MagmaDialogService, MagmaNotificationService, MagmaRadioButtonModule } from '../../../magma-core/src/public-api';
 import { MagmaNotificationComponent } from 'MagmaCore';
 import { MagmaTimelineModule } from '../../../magma-core/src/lib/components/timeline/magma-timeline.module';
 import { MagmaPaginationModule } from '../../../magma-core/src/lib/components/pagination/magma-pagination.module';
@@ -47,7 +47,8 @@ interface BrandSelect {
     MagmaSidenavModule,
     MagmaDialogComponent,
     MagmaTimelineModule,
-    MagmaPaginationModule
+    MagmaPaginationModule,
+    MagmaRadioButtonModule
   ],
   providers: [MagmaDialogService],
   templateUrl: './app.component.html',
@@ -77,19 +78,38 @@ export class AppComponent {
 
   checkBoxList = [
     {
-      id: 0,
+      inputId: 'checkboxId1',
       name: 'Akcpetuje regulamin',
       isChecked: false
     },
     {
-      id: 1,
+      inputId: 'checkboxId2',
       name: 'Akcpetuje podpisy',
       isChecked: false
     },
     {
-      id: 2,
+      inputId: 'checkboxId3',
       name: 'Akcpetuje rozliczenie',
       isChecked: false
+    }
+  ]
+
+  redioButtonSelectedId?: number|string
+  radioButtonSelect(radioButtonId: number|string){
+    this.redioButtonSelectedId = radioButtonId
+  }
+  radioButtonList = [
+    {
+      inputId: 'radioId1',
+      name: 'Akcpetuje regulamin'
+    },
+    {
+      inputId: 'radioId2',
+      name: 'Akcpetuje podpisy'
+    },
+    {
+      inputId: 'radioId3',
+      name: 'Akcpetuje rozliczenie'
     }
   ]
 

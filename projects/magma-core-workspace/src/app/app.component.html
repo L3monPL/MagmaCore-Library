@@ -121,13 +121,21 @@
     
         <magma-card>
           <div class="header_test">
-            <magma-date-picker></magma-date-picker>
             @for (item of checkBoxList; track $index) {
               <div class="checkbox_row">
-                <magma-checkbox [id]="item.id" [(checked)]="item.isChecked"></magma-checkbox>
-                <label [for]="item.id">{{item.name}}</label>
+                <magma-checkbox [id]="item.inputId" [(checked)]="item.isChecked"></magma-checkbox>
+                <label [for]="item.inputId">{{item.name}}</label>
               </div>
             }
+
+            @for (item of radioButtonList; track $index) {
+              <div class="checkbox_row">
+                <magma-radio-button [id]="item.inputId" (checkedChange)="radioButtonSelect($event)"></magma-radio-button>
+                <label [for]="item.inputId">{{item.name}}</label>
+              </div>
+            }
+
+
             <magma-card-actions justify="end">
               <button (click)="detetListChecboxChange()" magmaButton size="m" color="purple">Sprawdz listę</button>
             </magma-card-actions>
