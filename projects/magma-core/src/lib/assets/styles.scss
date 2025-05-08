@@ -7,8 +7,10 @@
     --magma-color-green-100: #2dc976;
     --magma-color-blue-100: #38bdf8;
     --magma-color-yellow-100: #fb923c;
-    --magma-color-purple-100: rgb(99, 102, 241);
-    --magma-color-purple-200: #6366f1;
+
+    --magma-color-purple-100: #6366f1;
+    --magma-color-purple-200: #3a3b6a;
+    
     --magma-color-red-100: #bb1f29;
 
     --magma-color-card-100: #101827;
@@ -29,20 +31,22 @@
 }
 // MAGMA INPUT //
 .magma-input{
-    background-color: #101827;
+    background-color: var(--magma-color-card-100);
     border-radius: 5px;
-    // border: 1px solid #4c5462; //959ca9
-    border: 1px solid #101827;
+    border: 1px solid var(--magma-color-card-100);
+    // border: 1px solid #6366f1;
     box-sizing: border-box;
     max-height: 32px;
     height: 32px;
-    color: #fff;
+    color: var(--magma-color-font-primary-100);
     outline: none;
     padding: 0rem 0.5rem;
     width: 100%;
+    transition: 0.3s;
 }
 .magma-input:focus {
-    border: 1px solid #6366f1; 
+    border: 1px solid var(--magma-color-purple-200); 
+    transition: 0.3s;
 }
 .magma-input[type="number"]::-webkit-outer-spin-button,
 .magma-input[type="number"]::-webkit-inner-spin-button {
@@ -55,19 +59,21 @@
 }
 // MAGMA TEXTAREA //
 .magma-textarea{
-    background-color: #101827;
+    background-color: var(--magma-color-card-100);
     border-radius: 5px;
-    // border: 1px solid #4c5462;
-    border: 1px solid #101827;
+    // border: 1px solid #3a3b6a;
+    border: 1px solid var(--magma-color-card-100);
     box-sizing: border-box;
-    color: #fff;
+    color: var(--magma-color-font-primary-100);
     outline: none;
     padding: 0.5rem 0.5rem;
     width: 100%;
     font-family: var(--magma-font);
+    transition: 0.3s;
 }
 .magma-textarea:focus {
-    border: 1px solid #6366f1;
+    border: 1px solid var(--magma-color-purple-200);
+    transition: 0.3s;
 }
 .magma-notification-container {
     position: fixed;
