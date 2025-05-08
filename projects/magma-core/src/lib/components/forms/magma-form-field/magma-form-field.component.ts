@@ -42,8 +42,13 @@ export class MagmaFormFieldComponent implements AfterViewInit, OnInit, OnDestroy
 
         this.renderer.setStyle(inputElement, 'padding-left', '38px')
         this.renderer.setStyle(inputElement, 'padding-right', '38px')
+      }
+      // INSIDE INPUT TYPE NUMBER ------------------------------------------------- //
+      if (inputElement.getAttribute('inputTypeStyle') == 'number-right') {
+        this.inputTypeStyle = 'number-right'
 
-        // inputElement.addEventListener('input', this.validateNumberInput.bind(this))
+        // this.renderer.setStyle(inputElement, 'padding-left', '38px')
+        this.renderer.setStyle(inputElement, 'padding-right', '28px')
       }
       // INSIDE INPUT TYPE DATE ------------------------------------------------- //
       if (inputElement.getAttribute('inputTypeStyle') == 'date') {
@@ -55,6 +60,7 @@ export class MagmaFormFieldComponent implements AfterViewInit, OnInit, OnDestroy
           });
         }
       }
+
     }
   }
   
@@ -100,7 +106,17 @@ export class MagmaFormFieldComponent implements AfterViewInit, OnInit, OnDestroy
 
     if (this.ngControl && this.ngControl.control) {
       const currentValue = Number(this.ngControl.control.value) || 0
-      this.ngControl.control.setValue(currentValue + 1)
+
+      if (inputElement.getAttribute('step')) {
+        let step = inputElement.getAttribute('step')
+
+        let changedNumber: number = this.subtractWithPrecision(currentValue, step, '+')
+
+        this.ngControl.control.setValue(changedNumber)
+      }
+      else{
+        this.ngControl.control.setValue(currentValue + 1)
+      }
     }
   }
 
@@ -113,9 +129,9 @@ export class MagmaFormFieldComponent implements AfterViewInit, OnInit, OnDestroy
       if (inputElement.getAttribute('step')) {
         let step = inputElement.getAttribute('step')
 
-        console.log(Number(step))
+        let changedNumber: number = this.subtractWithPrecision(currentValue, step, '-')
 
-        this.ngControl.control.setValue(currentValue - Number(step))
+        this.ngControl.control.setValue(changedNumber)
       }
       else{
         this.ngControl.control.setValue(currentValue - 1)
@@ -123,26 +139,22 @@ export class MagmaFormFieldComponent implements AfterViewInit, OnInit, OnDestroy
     }
   }
 
-  // validateNumberInput(event: Event): void {
-  //   //   inputElement.setCustomValidity('Proszę wprowadzić tylko liczbę');
-  //   //   inputElement.reportValidity(); // Pokazuje walidację
-
-  //   const inputElement = event.target as HTMLInputElement;
-  //   let value = inputElement.value;
-
-  //   value = value.replace(/,/g, '.');
-  //   value = value.replace(/[^0-9.\-]/g, '');
-
-  //   if (value.indexOf('-') > 0) {
-  //     value = value.replace(/-/g, '');
-  //   }
-
-  //   if (value.split('.').length > 2) {
-  //     value = value.slice(0, value.lastIndexOf('.'));
-  //   }
-
-  //   inputElement.value = value;
-  // }
+  subtractWithPrecision(value: number, step: number, operator: '+' | '-'): number {
+    const decimals = Math.max(
+      (value.toString().split('.')[1]?.length || 0),
+      (step.toString().split('.')[1]?.length || 0)
+    );
+    const factor = Math.pow(10, decimals);
+  
+    const aInt = Math.round(value * factor);
+    const bInt = Math.round(step * factor);
+  
+    const result = operator === '+'
+      ? aInt + bInt
+      : aInt - bInt;
+  
+    return result / factor;
+  }
 
   // -------------------------------------------------------------------------- //
   // END END END -------------------------------------------------------------- //

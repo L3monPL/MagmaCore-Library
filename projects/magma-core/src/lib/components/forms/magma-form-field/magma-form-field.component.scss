@@ -62,3 +62,47 @@
         }
     }
 }
+.container_absolute_right_bts{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    user-select: none;
+
+    .btn_top_number{
+        width: 26px;
+        height: 16px;
+        cursor: pointer;
+
+        svg{
+            fill: #ccc;
+            width: 18px;
+            height: 16px;
+        }
+    }
+    .btn_bottom_number{
+        width: 26px;
+        height: 16px;
+        cursor: pointer;
+
+        svg{
+            fill: #ccc;
+            width: 18px;
+            height: 16px;
+        }
+    }
+    .btn_top_number:hover{
+
+        svg{
+            fill: var(--magma-color-purple-100);
+        }
+    }
+    .btn_bottom_number:hover{
+
+        svg{
+            fill: var(--magma-color-purple-100);
+        }
+    }
+}
