@@ -130,7 +130,7 @@
 
             @for (item of radioButtonList; track $index) {
               <div class="checkbox_row">
-                <magma-radio-button [id]="item.inputId" (checkedChange)="radioButtonSelect($event)"></magma-radio-button>
+                <magma-radio-button [id]="item.inputId" [checked]="item.inputId == this.redioButtonSelectedId" (checkedChange)="radioButtonSelect($event)"></magma-radio-button>
                 <label [for]="item.inputId">{{item.name}}</label>
               </div>
             }

@@ -9,18 +9,12 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class MagmaRadioButtonComponent {
 
   @Input() id: string|number = ``
-  @Input() radioButtonSelectedId?: string
-  @Output() checkedChange = new EventEmitter<string|number>()
+  @Input() checked: boolean = false
+  @Output() checkedChange = new EventEmitter<any>()
 
   toggleCheckbox(event: Event) {
     event.stopPropagation()
-
-    console.log('click')
-
-    // this.checked = !this.checked
-
-    // console.log(this.checked)
-
+    this.checked = !this.checked
     this.checkedChange.emit(this.id)
   }
 }

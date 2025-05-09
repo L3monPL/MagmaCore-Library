@@ -94,22 +94,25 @@ export class AppComponent {
     }
   ]
 
-  redioButtonSelectedId?: number|string
+  redioButtonSelectedId?: number|string = ''
   radioButtonSelect(radioButtonId: number|string){
     this.redioButtonSelectedId = radioButtonId
   }
   radioButtonList = [
     {
       inputId: 'radioId1',
-      name: 'Akcpetuje regulamin'
+      name: 'Akcpetuje regulamin',
+      isChecked: false
     },
     {
       inputId: 'radioId2',
-      name: 'Akcpetuje podpisy'
+      name: 'Akcpetuje podpisy',
+      isChecked: false
     },
     {
       inputId: 'radioId3',
-      name: 'Akcpetuje rozliczenie'
+      name: 'Akcpetuje rozliczenie',
+      isChecked: false
     }
   ]
 

@@ -1,7 +1,11 @@
 <!-- Ukryty natywny input -->
-<input type="radio" [id]="id" (change)="toggleCheckbox($event)" hidden />
+<input type="radio" [id]="id" [checked]="checked" (change)="toggleCheckbox($event)" hidden />
 
 <!-- Customowy checkbox -->
 <div class="checkbox-wrapper" (click)="toggleCheckbox($event)">
-  <div class="custom-checkbox" [class.checked]="radioButtonSelectedId == id"></div>
+  <div class="custom-checkbox">
+    @if (checked) {
+        <div class="radio_checked"></div>
+    }
+  </div>
 </div>
