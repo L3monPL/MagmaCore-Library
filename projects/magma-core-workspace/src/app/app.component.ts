@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-// import { MagmaButonModule, MagmaCardModule } from '../../../magma-core/src/public-api';
 import { MagmaInputModule } from '../../../magma-core/src/lib/components/inputs/magma-input.module';
 import { MagmaFormFieldModule } from '../../../magma-core/src/lib/components/forms/magma-form-field.module';
 import { MagmaIconModule } from '../../../magma-core/src/lib/components/icon/magma-icon.module';
@@ -14,12 +13,9 @@ import { ProgressSpinnerModule } from '../../../magma-core/src/lib/components/pr
 import { MagmaCheckboxModule } from '../../../magma-core/src/lib/components/checkbox/magma-checkbox.module';
 import { MagmaSidenavModule } from '../../../magma-core/src/lib/components/nav/magma-sidenav.module';
 import { CommonModule } from '@angular/common';
-// import { MagmaDialogModule } from '../../../magma-core/src/lib/components/dialog/magma-dialog.module';
-import { MagmaDialogComponent, MagmaDialogService, MagmaNotificationService, MagmaRadioButtonModule } from '../../../magma-core/src/public-api';
-import { MagmaNotificationComponent } from 'MagmaCore';
+import { MagmaDialogComponent, MagmaDialogService, MagmaNotificationComponent, MagmaNotificationService, MagmaRadioButtonModule } from '../../../magma-core/src/public-api';
 import { MagmaTimelineModule } from '../../../magma-core/src/lib/components/timeline/magma-timeline.module';
 import { MagmaPaginationModule } from '../../../magma-core/src/lib/components/pagination/magma-pagination.module';
-// import { Card1Component } from 'MagmaCore';
 
 interface BrandSelect {
   id: number;
@@ -69,6 +65,8 @@ export class AppComponent {
   ) { }
 
   ngOnInit() {
+    this.checkScreenSize()
+
     this.selectList = [
       {id: 0, name: 'Ford'},
       {id: 1, name: 'Kia'},
@@ -122,6 +120,31 @@ export class AppComponent {
 
   isOpen = true
   mode = 'side' //over //side
+
+  @HostListener('window:resize', [])
+    onResize() {
+      this.checkScreenSize()
+    }
+
+  isLargeScreen?: boolean
+
+  checkScreenSize(){
+    const width = window.innerWidth;
+    this.isLargeScreen = width >= 800;
+
+    if (this.isLargeScreen) {
+      if (this.mode != 'side') {
+        this.mode = 'side'
+        this.isOpen = true
+      }
+    }
+    else{
+      if (this.mode != 'over') {
+        this.mode = 'over'
+        this.isOpen = false
+      }
+    }
+  }
 
   numberCount = 120234
 

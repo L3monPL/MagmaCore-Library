@@ -10,6 +10,9 @@ import { MagmaRadioButtonComponent } from './magma-radio-button/magma-radio-butt
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    MagmaRadioButtonComponent
   ]
 })
 export class MagmaRadioButtonModule { }
