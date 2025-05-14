@@ -1,0 +1,22 @@
+:host{
+    display: flex;
+    height: 6dvh;
+    // background-color: var(--magma-color-purple-100);
+    // padding: 0px 1rem;
+    position: relative;
+    // border-top-left-radius: 18px;
+}
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    position: absolute;
+    bottom: 0px;
+    top: 0px;
+    left: 0rem;
+    right: 0rem;
+    background-color: var(--magma-color-purple-100);
+    padding: 0px 1rem;
+    z-index: 9999;
+}

@@ -50,14 +50,22 @@ magma-select-list li{
         user-select: none;
     }
 }
-// magma-card{
-//     display: flex;
-//     flex-direction: column;
-//     height: calc(100dvh - 2rem);
-// }
-// .list_test{
-//     display: flex;
-//     flex-direction: column;
-//     // flex: 1;
-//     overflow: auto
-// }
+@media only screen and (max-width:800px){
+    section{
+        height: 94dvh;
+    }
+    .magma_nav_menu_item{
+        flex: 1;
+        max-width: 100px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.25rem;
+        align-items: center;
+        justify-content: center;
+        svg{
+            width: 2.3dvh;
+            height: 2.3dvh;
+            fill: #fff;
+        }
+    }
+}
