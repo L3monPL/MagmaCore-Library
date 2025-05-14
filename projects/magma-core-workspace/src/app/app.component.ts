@@ -176,4 +176,6 @@ export class AppComponent {
     console.log('Nowa strona:', page);
   }
 
+  isMobileMenuContainer = false
+
 }

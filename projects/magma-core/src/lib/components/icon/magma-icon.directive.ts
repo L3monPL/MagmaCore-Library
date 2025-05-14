@@ -15,6 +15,7 @@ export class MagmaIconDirective implements AfterViewInit{
   checkInsideMagmaFormField(){
     const parentFormField = this.el.nativeElement.closest('magma-form-field');
     const parentMagmaSidenavItem = this.el.nativeElement.closest('magma-sidenav-item')
+    const parentMagmaNavMobileButton = this.el.nativeElement.closest('magma-nav-mobile-button')
 
     if (parentFormField) {
       this.renderer.setStyle(this.el.nativeElement, 'position', 'absolute')
@@ -28,6 +29,11 @@ export class MagmaIconDirective implements AfterViewInit{
       this.renderer.setStyle(this.el.nativeElement, 'width', '18')
       this.renderer.setStyle(this.el.nativeElement, 'height', '18') 
       this.renderer.setStyle(this.el.nativeElement, 'fill', '#6366f1')
+    }
+    if (parentMagmaNavMobileButton) {
+      this.renderer.setStyle(this.el.nativeElement, 'width', '2.3dvh')
+      this.renderer.setStyle(this.el.nativeElement, 'height', '2.3dvh') 
+      this.renderer.setStyle(this.el.nativeElement, 'fill', '#fff')
     }
   }
 

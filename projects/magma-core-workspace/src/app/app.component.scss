@@ -54,18 +54,17 @@ magma-select-list li{
     section{
         height: 94dvh;
     }
-    .magma_nav_menu_item{
-        flex: 1;
-        max-width: 100px;
-        display: flex;
-        flex-direction: column;
-        row-gap: 0.25rem;
-        align-items: center;
-        justify-content: center;
-        svg{
-            width: 2.3dvh;
-            height: 2.3dvh;
-            fill: #fff;
-        }
+    main{
+        position: relative;
+    }
+    .mobile_menu_container{
+        position: absolute;
+        top: 0px;
+        bottom: 6dvh;
+        left: 0px;
+        right: 0px;
+        background-color: var(--magma-color-card-100);
+        color: var(--magma-color-font-primary-100);
+        padding: 1rem;
     }
 }

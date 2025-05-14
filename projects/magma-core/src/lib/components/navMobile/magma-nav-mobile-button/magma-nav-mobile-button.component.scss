@@ -1,0 +1,14 @@
+:host{
+    flex: 1;
+    max-width: 100px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.25rem;
+    align-items: center;
+    justify-content: center;
+    // svg{
+    //     width: 2.3dvh;
+    //     height: 2.3dvh;
+    //     fill: #fff;
+    // }
+}
