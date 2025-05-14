@@ -85,3 +85,7 @@ export * from './lib/components/pagination/magma-pagination/magma-pagination.com
 // MAGMA RADIO BUTTON
 export * from './lib/components/radioButton/magma-radio-button.module'
 export * from './lib/components/radioButton/magma-radio-button/magma-radio-button.component'
+
+// MAGMA DROPDOWN PROFILE MENU
+export * from './lib/components/dropdownProfileMenu/magma-dropdown-profile-menu.module'
+export * from './lib/components/dropdownProfileMenu/magma-dropdown-profile-menu/magma-dropdown-profile-menu.component'

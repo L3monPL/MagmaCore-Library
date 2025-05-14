@@ -46,14 +46,19 @@
               <input magmaInput type="number" inputTypeStyle="number" step="1" placeholder="Stan liczb" formControlName="numberCount">
             </magma-form-field>
   
-            <magma-form-field>
+            <!-- <magma-form-field>
               <magma-label>Stan liczb</magma-label>
               <input magmaInput type="number" inputTypeStyle="number-right" step="0.1" placeholder="Stan liczb" formControlName="numberCount">
-            </magma-form-field>
+            </magma-form-field> -->
   
             <magma-form-field>
               <magma-label>Wybierz datę</magma-label>
-              <input magmaInput inputTypeStyle="date" type="text" formControlName="date" readonly>
+              <input magmaInput inputTypeStyle="date" typeCalendar="month" type="text" formControlName="dateMonth" readonly>
+            </magma-form-field>
+
+            <magma-form-field>
+              <magma-label>Wybierz datę</magma-label>
+              <input magmaInput inputTypeStyle="date" typeCalendar="day" type="text" formControlName="date" readonly>
             </magma-form-field>
   
             <magma-form-field>

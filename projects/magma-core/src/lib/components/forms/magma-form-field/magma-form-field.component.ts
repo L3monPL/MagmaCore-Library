@@ -30,6 +30,7 @@ export class MagmaFormFieldComponent implements AfterViewInit, OnInit, OnDestroy
 
   private inputClickListener?: () => void
   isDropdownDate: boolean = false
+  typeCalendar?: string
   @ViewChild(MagmaDatePickerComponent) magmaDatePickerComponent!: MagmaDatePickerComponent
 
   ngOnInit(): void {
@@ -53,6 +54,10 @@ export class MagmaFormFieldComponent implements AfterViewInit, OnInit, OnDestroy
       // INSIDE INPUT TYPE DATE ------------------------------------------------- //
       if (inputElement.getAttribute('inputTypeStyle') == 'date') {
         this.inputTypeStyle = 'date'
+
+        if (inputElement.getAttribute('typeCalendar')) {
+          this.typeCalendar = inputElement.getAttribute('typeCalendar')
+        }
 
         if (inputElement) {
           this.inputClickListener = this.renderer.listen(inputElement, 'click', (event) => {
@@ -83,9 +88,18 @@ export class MagmaFormFieldComponent implements AfterViewInit, OnInit, OnDestroy
 
           this.magmaDatePickerComponent.selectedDate = this.ngControl.value
   
-          let date = this.convertDate(this.ngControl.value)
-  
-          this.ngControl.control.setValue(date)
+          if (this.typeCalendar == 'day') {
+            let date = this.convertDate(this.ngControl.value)
+            this.ngControl.control.setValue(date)
+          }
+          if (this.typeCalendar == 'month') {
+            let date = this.formatMonthYear(this.ngControl.value)
+            this.ngControl.control.setValue(date)
+          }
+          if (this.typeCalendar == 'year') {
+            let date = this.convertDate(this.ngControl.value)
+            this.ngControl.control.setValue(date)
+          }
         }
       }
     }
@@ -169,9 +183,18 @@ export class MagmaFormFieldComponent implements AfterViewInit, OnInit, OnDestroy
 
     if (this.ngControl && this.ngControl.control) {
 
-      let date = this.convertDate(event)
-
-      this.ngControl.control.setValue(date)
+      if (this.typeCalendar == 'day') {
+        let date = this.convertDate(event)
+        this.ngControl.control.setValue(date)
+      }
+      if (this.typeCalendar == 'month') {
+        let date = this.formatMonthYear(event)
+        this.ngControl.control.setValue(date)
+      }
+      if (this.typeCalendar == 'year') {
+        let date = this.convertDate(event)
+        this.ngControl.control.setValue(date)
+      }
     }
   }
 
@@ -181,6 +204,12 @@ export class MagmaFormFieldComponent implements AfterViewInit, OnInit, OnDestroy
     const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Miesiące liczone od 0
     const year = date.getFullYear();
     return `${day}/${month}/${year}`;
+  }
+
+  formatMonthYear(date: Date): string {
+    const month = (date.getMonth() + 1).toString().padStart(2, '0')
+    const year = date.getFullYear()
+    return `${month}/${year}`
   }
 
   isValidDate(dateStr: string): boolean {

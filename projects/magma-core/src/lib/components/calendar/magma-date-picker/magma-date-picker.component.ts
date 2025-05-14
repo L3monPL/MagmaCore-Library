@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ContentChild, ElementRef, EventEmitter, HostListener, Input, OnChanges, Output, Renderer2, SimpleChanges, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ContentChild, ElementRef, EventEmitter, HostListener, Input, OnChanges, OnInit, Output, Renderer2, SimpleChanges, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'magma-date-picker',
@@ -6,9 +6,10 @@ import { AfterViewInit, Component, ContentChild, ElementRef, EventEmitter, HostL
   templateUrl: './magma-date-picker.component.html',
   styleUrl: './magma-date-picker.component.scss'
 })
-export class MagmaDatePickerComponent {
+export class MagmaDatePickerComponent implements OnInit{
 
   @Input() dropdown = false
+  @Input() typeCalendar?: string
   @Output() selectDateEmmiter = new EventEmitter<any>()
 
   currentDate = new Date()
@@ -23,6 +24,12 @@ export class MagmaDatePickerComponent {
   constructor(
     private el: ElementRef, 
   ) {
+  }
+
+  ngOnInit(): void {
+    console.log(this.typeCalendar)
+    this.currentSelection = this.typeCalendar
+
     this.generateCalendar()
   }
 
@@ -122,8 +129,20 @@ export class MagmaDatePickerComponent {
 
   selectMonth(index: number) {
     this.currentDate = new Date(this.currentDate.getFullYear(), index, 1);
-    this.currentSelection = 'day'
-    this.generateCalendar();
+
+    if (this.typeCalendar == 'month') {
+      let date = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth())
+      this.selectedDate = date
+      this.selectDateEmmiter.emit(this.selectedDate)
+
+      setTimeout(() => {
+        this.dropdown = false
+      }, 300);
+    }
+    if (this.typeCalendar == 'day') {
+      this.currentSelection = 'day'
+      this.generateCalendar(); 
+    }
   }
 
   toggleYearSelection(){
