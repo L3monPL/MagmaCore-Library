@@ -64,6 +64,7 @@ export * from './lib/components/nav/magma-sidenav-label/magma-sidenav-label.comp
 // MAGMA NAV MOBILE
 export * from './lib/components/navMobile/magma-nav-mobile.module'
 export * from './lib/components/navMobile/magma-nav-mobile/magma-nav-mobile.component'
+export * from './lib/components/navMobile/magma-nav-mobile-button/magma-nav-mobile-button.component'
 
 // MAGMA DIALOG
 export * from './lib/components/dialog/magma-dialog.service'
