@@ -13,7 +13,7 @@ import { ProgressSpinnerModule } from '../../../magma-core/src/lib/components/pr
 import { MagmaCheckboxModule } from '../../../magma-core/src/lib/components/checkbox/magma-checkbox.module';
 import { MagmaSidenavModule } from '../../../magma-core/src/lib/components/nav/magma-sidenav.module';
 import { CommonModule } from '@angular/common';
-import { MagmaDialogComponent, MagmaDialogService, MagmaDropdownProfileMenuModule, MagmaNavMobileModule, MagmaNotificationComponent, MagmaNotificationService, MagmaRadioButtonModule } from '../../../magma-core/src/public-api';
+import { MagmaDialogComponent, MagmaDialogService, MagmaDropdownProfileMenuModule, MagmaNavMobileModule, MagmaNotificationComponent, MagmaNotificationService, MagmaRadioButtonModule, MagmaTableModule } from '../../../magma-core/src/public-api';
 import { MagmaTimelineModule } from '../../../magma-core/src/lib/components/timeline/magma-timeline.module';
 import { MagmaPaginationModule } from '../../../magma-core/src/lib/components/pagination/magma-pagination.module';
 
@@ -46,7 +46,8 @@ interface BrandSelect {
     MagmaPaginationModule,
     MagmaRadioButtonModule,
     MagmaNavMobileModule,
-    MagmaDropdownProfileMenuModule
+    MagmaDropdownProfileMenuModule,
+    MagmaTableModule
   ],
   providers: [MagmaDialogService],
   templateUrl: './app.component.html',

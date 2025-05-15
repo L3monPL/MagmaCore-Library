@@ -89,3 +89,7 @@ export * from './lib/components/radioButton/magma-radio-button/magma-radio-butto
 // MAGMA DROPDOWN PROFILE MENU
 export * from './lib/components/dropdownProfileMenu/magma-dropdown-profile-menu.module'
 export * from './lib/components/dropdownProfileMenu/magma-dropdown-profile-menu/magma-dropdown-profile-menu.component'
+
+// MAGMA TABLE
+export * from './lib/components/table/magma-table.module'
+export * from './lib/components/table/magma-table/magma-table.component'

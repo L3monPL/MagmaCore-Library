@@ -30,6 +30,32 @@
     <magma-sidenav-content>
       <section>
         <div [formGroup]="form" class="left">
+          <magma-table>
+            <thead>
+              <tr>
+                <th class="m-col-s">id</th>
+                <th class="m-col-m">name</th>
+                <th class="m-col-m">surname</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th class="m-col-s">0</th>
+                <th class="m-col-m">mikolaj</th>
+                <th class="m-col-m">andrzejewski</th>
+              </tr>
+              <tr>
+                <th class="m-col-s">1</th>
+                <th class="m-col-m">mikolaj</th>
+                <th class="m-col-m">andrzejewski</th>
+              </tr>
+              <tr>
+                <th class="m-col-s">2</th>
+                <th class="m-col-m">mikolajfsdfsfds</th>
+                <th class="m-col-m">andrzejewskifdsfds</th>
+              </tr>
+            </tbody>
+          </magma-table>
           <!-- <MAGMA CARD> ---------------------------------------- -->
           <magma-card>
             <magma-card-header>
@@ -46,10 +72,10 @@
               <input magmaInput type="number" inputTypeStyle="number" step="1" placeholder="Stan liczb" formControlName="numberCount">
             </magma-form-field>
   
-            <!-- <magma-form-field>
+            <magma-form-field>
               <magma-label>Stan liczb</magma-label>
               <input magmaInput type="number" inputTypeStyle="number-right" step="0.1" placeholder="Stan liczb" formControlName="numberCount">
-            </magma-form-field> -->
+            </magma-form-field>
   
             <magma-form-field>
               <magma-label>Wybierz datę</magma-label>

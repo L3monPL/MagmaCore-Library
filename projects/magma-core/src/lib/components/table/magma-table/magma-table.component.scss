@@ -1,0 +1,37 @@
+:host{
+    color: var(--magma-color-font-primary-100);
+}
+table{
+    width: 100%;
+}
+.magma_table ::ng-deep thead{
+    // width: 100%;
+}
+.magma_table ::ng-deep tr {
+    background-color: #f0f0f0;
+    display: flex;
+    // flex-direction: row;
+} 
+.magma_table ::ng-deep th {
+    color: darkblue;
+    font-weight: bold;
+    text-align: start;
+}
+.magma_table ::ng-deep .m-col-xs{
+    flex: 1;
+}
+.magma_table ::ng-deep .m-col-s{
+    flex: 2;
+}
+.magma_table ::ng-deep .m-col-m{
+    flex: 3;
+}
+.magma_table ::ng-deep .m-col-l{
+    flex: 4;
+}
+.magma_table ::ng-deep .m-col-xl{
+    flex: 5;
+}
+.magma_table ::ng-deep .m-col-xxl{
+    flex: 6;
+}
