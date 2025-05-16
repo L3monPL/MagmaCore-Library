@@ -8,4 +8,25 @@ html, body{
 }
 * {
     box-sizing: border-box;
-  }
+}
+
+:root {
+    // font-family: "Inter", serif;
+    --magma-font: 'Inter', serif;
+    --magma-color-font-primary-100: #262626 !important;
+    --magma-color-font-secondary-100: #6c6c6c !important;
+    --magma-color-font-secondary-200: #6c6c6c !important;
+
+    --magma-color-green-100: #2dc976 !important;
+    --magma-color-blue-100: #38bdf8 !important;
+    --magma-color-yellow-100: #fb923c !important;
+
+    --magma-color-purple-100: #6366f1 !important;
+    --magma-color-purple-200: #3a3b6a !important;
+    
+    --magma-color-red-100: #bb1f29 !important;
+
+    --magma-color-card-100: #f5f5f5 !important;
+    --magma-color-card-200: #ffffff !important;
+    --magma-color-card-300: #fafafa !important;
+}

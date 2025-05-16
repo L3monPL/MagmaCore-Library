@@ -12,7 +12,7 @@
     bottom: 0;
 
     .btn_type_number_right{
-        background-color: #1f2938;
+        background-color: var(--magma-color-card-200);
         border-top-right-radius: 5px;
         border-bottom-right-radius: 5px;
         max-height: 32px;
@@ -42,7 +42,7 @@
     bottom: 0;
 
     .btn_type_number_left{
-        background-color: #1f2938;
+        background-color: var(--magma-color-card-200);
         border-top-left-radius: 5px;
         border-bottom-left-radius: 5px;
         max-height: 32px;

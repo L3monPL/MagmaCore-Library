@@ -77,6 +77,97 @@ export class AppComponent {
     ];
   }
 
+  usersList = [
+    {
+      id: 0,
+      name: 'Testowy',
+      surname: 'Tester',
+      email: 'testowy@gmail.com',
+      role: 'admin',
+      createdAt: '10/04/2025'
+    },
+    {
+      id: 1,
+      name: 'Mikołaj',
+      surname: 'Andrzejewski',
+      email: 'mikolaj@gmail.com',
+      role: 'admin',
+      createdAt: '10/04/2025'
+    },
+    {
+      id: 2,
+      name: 'Anna',
+      surname: 'Kowalska',
+      email: 'anna.kowalska@gmail.com',
+      role: 'user',
+      createdAt: '10/04/2025'
+    },
+    {
+      id: 3,
+      name: 'Jan',
+      surname: 'Nowak',
+      email: 'jan.nowak@gmail.com',
+      role: 'user',
+      createdAt: '10/04/2025'
+    },
+    {
+      id: 4,
+      name: 'Katarzyna',
+      surname: 'Wiśniewska',
+      email: 'katarzyna.w@gmail.com',
+      role: 'user',
+      createdAt: '10/04/2025'
+    },
+    {
+      id: 5,
+      name: 'Piotr',
+      surname: 'Zieliński',
+      email: 'piotr.zielinski@gmail.com',
+      role: 'user',
+      createdAt: '10/04/2025'
+    },
+    {
+      id: 6,
+      name: 'Aleksandra',
+      surname: 'Mazur',
+      email: 'aleksandra.mazur@gmail.com',
+      role: 'user',
+      createdAt: '10/04/2025'
+    },
+    {
+      id: 7,
+      name: 'Tomasz',
+      surname: 'Krawczyk',
+      email: 'tomasz.krawczyk@gmail.com',
+      role: 'user',
+      createdAt: '10/04/2025'
+    },
+    {
+      id: 8,
+      name: 'Magdalena',
+      surname: 'Wójcik',
+      email: 'magdalena.wojcik@gmail.com',
+      role: 'user',
+      createdAt: '10/04/2025'
+    },
+    {
+      id: 9,
+      name: 'Kamil',
+      surname: 'Dąbrowski',
+      email: 'kamil.dabrowski@gmail.com',
+      role: 'user',
+      createdAt: '10/04/2025'
+    },
+    {
+      id: 10,
+      name: 'Natalia',
+      surname: 'Kaczmarek',
+      email: 'natalia.kaczmarek@gmail.com',
+      role: 'user',
+      createdAt: '10/04/2025'
+    }
+  ]
+
   checkBoxList = [
     {
       inputId: 'checkboxId1',

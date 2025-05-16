@@ -4,6 +4,9 @@
     // font-family: "Inter", serif;
     --magma-font: 'Inter', serif;
     --magma-color-font-primary-100: #fff;
+    --magma-color-font-secondary-100: #afafaf !important;
+    --magma-color-font-secondary-200: #bbbbbb !important;
+
     --magma-color-green-100: #2dc976;
     --magma-color-blue-100: #38bdf8;
     --magma-color-yellow-100: #fb923c;
@@ -15,6 +18,7 @@
 
     --magma-color-card-100: #101827;
     --magma-color-card-200: #1f2938;
+    --magma-color-card-300: #131c2c;
 }
 
 // MAGMA BUTTON //
@@ -85,4 +89,10 @@
     gap: 10px;
     z-index: 9999;
     font-family: var(--magma-font);
+}
+
+@media only screen and (max-width:800px){
+    .m-mobile-hide{
+        display: none!important;
+    }
 }

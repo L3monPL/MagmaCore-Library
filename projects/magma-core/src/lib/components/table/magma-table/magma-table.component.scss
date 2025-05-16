@@ -6,6 +6,7 @@
 table{
     width: 100%;
     border-spacing: 0px;
+    table-layout: fixed;
 }
 //rows
 .magma_table ::ng-deep tr {
@@ -14,38 +15,46 @@ table{
 //header items
 .magma_table ::ng-deep th {
     text-align: left;
-    height: 56px;
     word-break: break-word;
-    display: flex;
-    align-items: center;
-    color: #afafaf;
+    // display: flex;
+    // align-items: center;
+    color: var(--magma-color-font-secondary-100);
+    min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 
     svg{
-        height: 11px;
-        width: 11px;
-        fill: #afafaf;
-        margin-right: 0.5rem;
+        height: 10px;
+        width: 10px;
+        fill: var(--magma-color-font-secondary-100);
+        margin-right: 0.25rem;
     }
 }
 //header row
 .magma_table ::ng-deep thead tr{
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem;
     background-color: var(--magma-color-card-200);
     color: #fff;
     font-weight: bold;
-    // border-bottom: 1px solid #2e3747;
     padding: 0rem 1.5rem;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
-    // margin: 0rem -1rem;
+    height: 36px;
 }
 //body row
 .magma_table ::ng-deep tbody tr{
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem;
     background-color: transparent;
     border-bottom: 1px solid #2e3747;
     padding: 0rem 1.5rem;
-    // margin: 0rem -1rem;
+    height: 46px;
     cursor: pointer;
-    background-color: #131c2c;
+    background-color: var(--magma-color-card-300);
     transition: 0.3s;
 }
 .magma_table ::ng-deep tbody tr:hover{
@@ -54,13 +63,15 @@ table{
 }
 //body item
 .magma_table ::ng-deep td {
+    display: inline-block;
     color: var(--magma-color-font-primary-100);
     text-align: left;
-    height: 56px;
     word-break: break-word;
-    display: flex;
     align-items: center;
-    // padding: 10px;
+    min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 
     svg{
         fill: var(--magma-color-font-primary-100);
@@ -68,25 +79,19 @@ table{
 }
 .magma_table ::ng-deep .m-col-xs{
     flex: 1;
-    white-space: nowrap;
 }
 .magma_table ::ng-deep .m-col-s{
     flex: 2;
-    white-space: nowrap;
 }
 .magma_table ::ng-deep .m-col-m{
     flex: 3;
-    white-space: nowrap;
 }
 .magma_table ::ng-deep .m-col-l{
     flex: 4;
-    white-space: nowrap;
 }
 .magma_table ::ng-deep .m-col-xl{
     flex: 5;
-    white-space: nowrap;
 }
 .magma_table ::ng-deep .m-col-xxl{
     flex: 6;
-    white-space: nowrap;
 }

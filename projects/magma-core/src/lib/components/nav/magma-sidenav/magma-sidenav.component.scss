@@ -1,6 +1,6 @@
 // div{
 //     width: 240px;
-//     background-color: #1f2938;
+//     background-color: var(--magma-color-card-200);
 //     color: var(--magma-color-font-primary);
 //     padding: 0.5rem;
 //     font-family: var(--magma-font);
@@ -12,7 +12,7 @@
 .sidenav-container {
     z-index: 888;
     height: 100%;
-    background-color: #1f2938;
+    background-color: var(--magma-color-card-200);
     color: var(--magma-color-font-primary-100);
     position: relative;
     // transition: width 0.3s ease-in-out;
@@ -20,7 +20,7 @@
   
   .sidenav {
     // padding: 0.5rem;
-    // background-color: #1f2938;
+    // background-color: var(--magma-color-card-200);
     // width: 250px;
     // position: relative;
     // transition: width 0.3s ease-in-out;
