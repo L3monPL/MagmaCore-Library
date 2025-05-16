@@ -5,6 +5,7 @@
 }
 table{
     width: 100%;
+    border-spacing: 0px;
 }
 //rows
 .magma_table ::ng-deep tr {
@@ -18,30 +19,52 @@ table{
     display: flex;
     align-items: center;
     color: #afafaf;
+
+    svg{
+        height: 11px;
+        width: 11px;
+        fill: #afafaf;
+        margin-right: 0.5rem;
+    }
 }
 //header row
 .magma_table ::ng-deep thead tr{
-    background-color: transparent;
+    background-color: var(--magma-color-card-200);
     color: #fff;
     font-weight: bold;
-    border-bottom: 1px solid #2e3747;
-    padding: 0rem 1rem;
+    // border-bottom: 1px solid #2e3747;
+    padding: 0rem 1.5rem;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    // margin: 0rem -1rem;
 }
 //body row
 .magma_table ::ng-deep tbody tr{
     background-color: transparent;
     border-bottom: 1px solid #2e3747;
-    padding: 0rem 1rem;
+    padding: 0rem 1.5rem;
+    // margin: 0rem -1rem;
+    cursor: pointer;
+    background-color: #131c2c;
+    transition: 0.3s;
+}
+.magma_table ::ng-deep tbody tr:hover{
+    background-color: #162031; //131c2c //162031
+    transition: 0.3s;
 }
 //body item
 .magma_table ::ng-deep td {
-    color: #FFF;
+    color: var(--magma-color-font-primary-100);
     text-align: left;
     height: 56px;
     word-break: break-word;
     display: flex;
     align-items: center;
     // padding: 10px;
+
+    svg{
+        fill: var(--magma-color-font-primary-100);
+    }
 }
 .magma_table ::ng-deep .m-col-xs{
     flex: 1;
