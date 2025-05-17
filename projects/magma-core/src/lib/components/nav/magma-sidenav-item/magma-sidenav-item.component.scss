@@ -18,6 +18,6 @@
     width: calc(240px - 0.3rem);
 }
 :host:hover{
-    background-color: #2b3646;
+    background-color: var(--magma-color-card-500);
     transition: 0.3s;
 }

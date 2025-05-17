@@ -58,7 +58,7 @@ table{
     transition: 0.3s;
 }
 .magma_table ::ng-deep tbody tr:hover{
-    background-color: #162031; //131c2c //162031
+    background-color: var(--magma-color-card-400); //131c2c //162031
     transition: 0.3s;
 }
 //body item
