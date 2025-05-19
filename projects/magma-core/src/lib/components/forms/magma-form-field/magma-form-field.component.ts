@@ -65,6 +65,16 @@ export class MagmaFormFieldComponent implements AfterViewInit, OnInit, OnDestroy
           });
         }
       }
+      // INSIDE INPUT TYPE DATE ------------------------------------------------- //
+      if (inputElement.getAttribute('inputTypeStyle') == 'search') {
+        this.inputTypeStyle = 'search'
+
+        this.renderer.setStyle(inputElement, 'background-color', 'var(--magma-color-card-200)')
+        this.renderer.setStyle(inputElement, 'height', '40px')
+        this.renderer.setStyle(inputElement, 'max-height', '40px')
+        this.renderer.setStyle(inputElement, 'border-radius', '8px')
+        this.renderer.setStyle(inputElement, 'padding-left', '40px')
+      }
 
     }
   }

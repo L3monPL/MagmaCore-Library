@@ -16,6 +16,7 @@ import { CommonModule } from '@angular/common';
 import { MagmaDialogComponent, MagmaDialogService, MagmaDropdownProfileMenuModule, MagmaNavMobileModule, MagmaNotificationComponent, MagmaNotificationService, MagmaRadioButtonModule, MagmaTableModule } from '../../../magma-core/src/public-api';
 import { MagmaTimelineModule } from '../../../magma-core/src/lib/components/timeline/magma-timeline.module';
 import { MagmaPaginationModule } from '../../../magma-core/src/lib/components/pagination/magma-pagination.module';
+import { MagmaHeaderModule } from '../../../magma-core/src/lib/components/header/magma-header.module';
 
 interface BrandSelect {
   id: number;
@@ -47,7 +48,8 @@ interface BrandSelect {
     MagmaRadioButtonModule,
     MagmaNavMobileModule,
     MagmaDropdownProfileMenuModule,
-    MagmaTableModule
+    MagmaTableModule,
+    MagmaHeaderModule
   ],
   providers: [MagmaDialogService],
   templateUrl: './app.component.html',

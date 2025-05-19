@@ -106,3 +106,21 @@
         }
     }
 }
+.container_absolute_search{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    user-select: none;
+
+    svg{
+        height: 15px;
+        width: 15px;
+        fill: var(--magma-color-font-primary-100);
+        margin-left: 1rem;
+    }
+}

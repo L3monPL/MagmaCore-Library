@@ -30,6 +30,14 @@
     <magma-sidenav-content>
       <section>
         <div [formGroup]="form" class="left">
+          <magma-header>
+
+            <h1>Lista użytkowników</h1>
+            <magma-form-field>
+              <input magmaInput type="text" inputTypeStyle="search" placeholder="Wyszukaj ...">
+            </magma-form-field>
+
+          </magma-header>
           <magma-table>
             <thead>
               <tr>
