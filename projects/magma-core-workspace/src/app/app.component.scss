@@ -50,6 +50,77 @@ magma-select-list li{
         user-select: none;
     }
 }
+.m_filters{
+    display: flex;
+    flex-direction: row;
+    column-gap: 0.5rem;
+    align-items: center;
+    margin-top: 1rem;
+
+    .m_filter{
+        // display: flex;
+        // flex-direction: row;
+        // column-gap: 8px;
+        // align-items: center;
+        // background-color: var(--magma-color-card-200);
+        user-select: none;
+        position: relative;
+
+        .m_filter_label{
+            display: flex;
+            flex-direction: row;
+            column-gap: 8px;
+            align-items: center;
+            padding: 6px 12px;
+            background-color: var(--magma-color-purple-100);
+            border-radius: 8px;
+            cursor: pointer;
+
+            svg{
+                height: 14px;
+                width: 14px;
+                fill: var(--magma-color-font-secondary-100);
+                // fill: var(--magma-color-font-primary-100);
+            }
+        }
+        .m_filter_panel{
+            display: flex;
+            flex-direction: column;
+            // row-gap: 0.25rem;
+            position: absolute;
+            min-width: 120px;
+            top: 34px;
+            left: 0px;
+            padding: 8px;
+            border-radius: 8px;
+            background-color: var(--magma-color-card-200);
+            box-shadow: rgba(57, 57, 57, 0.2) 0px 7px 29px 0px;
+            // border: 1px solid var(--magma-color-font-secondary-100);
+
+            p{
+                padding: 4px 8px;
+                // background-color: var(--magma-color-card-300);
+                // border: 1px solid transparent;
+                border-radius: 6px;
+                cursor: pointer;
+            }
+            p:hover{
+                // padding: 4px 8px;
+                color: var(--magma-color-purple-100);
+                // background-color: var(--magma-color-card-300);
+                // border: 1px solid var(--magma-color-card-100);
+                // border-radius: 6px;
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
 @media only screen and (max-width:800px){
     section{
         height: 94dvh;

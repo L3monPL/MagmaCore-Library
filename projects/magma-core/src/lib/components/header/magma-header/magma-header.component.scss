@@ -2,3 +2,20 @@
     color: var(--magma-color-font-primary-100);
     font-family: var(--magma-font);
 }
+:host ::ng-deep .m_row{
+    display: flex;
+    column-gap: 0.5rem;
+    // justify-content: space-between;
+}
+:host ::ng-deep .m_justify_space{
+    justify-content: space-between;
+}
+:host ::ng-deep .m_align_center{
+    align-items: center;
+}
+:host ::ng-deep .m_action{
+    display: flex;
+    flex-direction: row;
+    column-gap: 0.5rem;
+    align-items: center;
+}
