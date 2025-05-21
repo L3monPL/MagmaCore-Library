@@ -98,3 +98,7 @@ export * from './lib/components/table/magma-table/magma-table.component'
 // MAGMA HEADER
 export * from './lib/components/header/magma-header.module'
 export * from './lib/components/header/magma-header/magma-header.component'
+
+// MAGMA MENU
+export * from './lib/components/menu/magma-menu.module'
+export * from './lib/components/menu/magma-menu/magma-menu.component'

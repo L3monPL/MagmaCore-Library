@@ -1,0 +1,24 @@
+:host{
+    display: flex;
+    height: auto;
+    position: absolute;
+    left: 0px;
+}
+.container_menu{
+    display: flex;
+    flex-direction: column;
+    min-width: 120px;
+    padding: 8px;
+    border-radius: 8px;
+    background-color: var(--magma-color-card-200);
+    box-shadow: rgba(57, 57, 57, 0.2) 0px 7px 29px 0px;
+
+    ::ng-deep p{
+        padding: 4px 8px;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+    ::ng-deep p:hover{
+        color: var(--magma-color-purple-100);
+    }
+}
