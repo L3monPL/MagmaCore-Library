@@ -76,6 +76,25 @@ magma-select-list li{
             width: 14px;
             fill: var(--magma-color-font-secondary-100);
         }
+        .m_filter_name{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            column-gap: 0.5rem;
+
+            .m_close_action{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0.25rem 0rem 0.25rem 0.25rem;
+            }
+
+            svg{
+                height: 11px!important;
+                width: 11px!important;
+                fill: var(--magma-color-card-200);
+            }
+        }
 
         // .m_filter_label{
         //     display: flex;

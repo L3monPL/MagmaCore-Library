@@ -275,4 +275,11 @@ export class AppComponent {
 
   isMobileMenuContainer = false
 
+  //MAGMA MENU //
+  selectedRole = ''
+
+  selectMenuRole(name: string){
+    this.selectedRole = name
+  }
+
 }
