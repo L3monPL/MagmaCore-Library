@@ -19,6 +19,7 @@ import { MagmaPaginationModule } from '../../../magma-core/src/lib/components/pa
 import { MagmaHeaderModule } from '../../../magma-core/src/lib/components/header/magma-header.module';
 import { MagmaChipModule } from '../../../magma-core/src/lib/components/chip/magma-chip.module';
 import { DialogCenterComponent } from './components/dialog-center/dialog-center.component';
+import { DialogRightComponent } from './components/dialog-right/dialog-right.component';
 
 interface BrandSelect {
   id: number;
@@ -286,9 +287,8 @@ export class AppComponent {
   }
 
   openItemRightDialog(user: any){
-    this.dialogService.openDialog(DialogCenterComponent, {
-      title: 'Custom Dialog',
-      message: 'This is a custom message for the dialog.',
+    this.dialogService.openDialog(DialogRightComponent, {
+      user: user,
       position: 'center'
     }).then(result => {
       if (result) {

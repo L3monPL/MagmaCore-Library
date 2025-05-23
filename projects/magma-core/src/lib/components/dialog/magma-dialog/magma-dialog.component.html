@@ -1,17 +1,6 @@
-@if(position == 'center'){
-  <div class="dialog-overlay">
-    <div class="dialog-content">
-      <h1>center</h1>
-      <ng-content></ng-content>
-    </div>
+<div [ngClass]="{'dialog_center': position == 'center', 'dialog_right': position == 'right'}">
+  <div [ngClass]="{'dialog_content_center': position == 'center', 'dialog_content_right': position == 'right'}" class="dialog_content">
+    <ng-content></ng-content>
   </div>
-}
-@if(position == 'right'){
-  <div class="dialog_right">
-    <div class="dialog-content">
-      <h1>right</h1>
-      <ng-content></ng-content>
-    </div>
-  </div>
-}
+</div>
 

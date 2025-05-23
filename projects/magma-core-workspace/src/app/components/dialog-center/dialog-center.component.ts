@@ -1,12 +1,13 @@
 import { Component, Input } from '@angular/core';
 import { DialogComponentInterface } from '../../../../../magma-core/src/lib/components/dialog/magma-dialog.service';
-import { MagmaDialogComponent } from '../../../../../magma-core/src/public-api';
+import { MagmaButonModule, MagmaDialogComponent } from '../../../../../magma-core/src/public-api';
 
 @Component({
   selector: 'app-dialog-center',
   standalone: true,
   imports: [
-    MagmaDialogComponent
+    MagmaDialogComponent,
+    MagmaButonModule
   ],
   templateUrl: './dialog-center.component.html',
   styleUrl: './dialog-center.component.scss'

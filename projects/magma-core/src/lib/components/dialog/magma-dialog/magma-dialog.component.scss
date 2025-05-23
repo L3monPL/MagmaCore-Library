@@ -1,4 +1,4 @@
-.dialog-overlay {
+.dialog_center {
     position: fixed;
     top: 0;
     left: 0;
@@ -10,16 +10,6 @@
     align-items: center;
     z-index: 1000;
 }
-.dialog-content {
-    background: white;
-    padding: 20px;
-    margin: 1rem;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    max-width: 1200px;
-    width: 100%;
-}
-
 .dialog_right{
   position: fixed;
   top: 0;
@@ -30,4 +20,24 @@
   display: flex;
   justify-content: end;
   z-index: 1000;
+}
+
+.dialog_content{
+  background-color: var(--magma-color-card-200);
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  color: var(--magma-color-font-primary-100);
+  font-family: var(--magma-font);
+}
+.dialog_content_center {
+    margin: 1rem;
+    border-radius: 8px;
+    max-width: 1200px;
+}
+.dialog_content_right {
+  margin: 0rem 0rem 0rem 1rem;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  max-width: 600px;
 }

@@ -1,1 +1,29 @@
-<p>dialog-right works!</p>
+<magma-dialog [formGroup]="form" [position]="'right'">
+    <h2>Użytkownik</h2>
+
+    <magma-form-field>
+        <magma-label>Imię</magma-label>
+        <input magmaInput formControlName="name" type="text" placeholder="Imię">
+    </magma-form-field>
+    <magma-form-field>
+        <magma-label>Nazwisko</magma-label>
+        <input magmaInput formControlName="surname" type="text" placeholder="Nazwisko">
+    </magma-form-field>
+    <magma-form-field>
+        <magma-label>Email</magma-label>
+        <input magmaInput formControlName="email" type="text" placeholder="Email">
+    </magma-form-field>
+    <magma-form-field>
+        <magma-label>Rola</magma-label>
+        <input magmaInput formControlName="role" type="text" placeholder="Rola">
+    </magma-form-field>
+    <magma-form-field>
+        <magma-label>Utworzono</magma-label>
+        <input magmaInput formControlName="createdAt" type="text" placeholder="Utworzono">
+    </magma-form-field>
+
+    <br>
+    <magma-card-actions justify="end">
+        <button magmaButton color="red" (click)="close()">Zamknij</button>
+    </magma-card-actions>
+</magma-dialog>
