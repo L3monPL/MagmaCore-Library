@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, HostListener, Input, Output, Renderer2 } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, Input, Output, Renderer2, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'magma-menu',
@@ -25,7 +25,7 @@ export class MagmaMenuComponent{
 
   toggle(event: Event) {
     this.isOpen = !this.isOpen
-    console.log(this.isOpen)
+    // console.log(this.isOpen)
   }
 
   @HostListener('click', ['$event'])

@@ -17,6 +17,7 @@ import { MagmaDialogComponent, MagmaDialogService, MagmaDropdownProfileMenuModul
 import { MagmaTimelineModule } from '../../../magma-core/src/lib/components/timeline/magma-timeline.module';
 import { MagmaPaginationModule } from '../../../magma-core/src/lib/components/pagination/magma-pagination.module';
 import { MagmaHeaderModule } from '../../../magma-core/src/lib/components/header/magma-header.module';
+import { MagmaChipModule } from '../../../magma-core/src/lib/components/chip/magma-chip.module';
 
 interface BrandSelect {
   id: number;
@@ -50,7 +51,8 @@ interface BrandSelect {
     MagmaDropdownProfileMenuModule,
     MagmaTableModule,
     MagmaHeaderModule,
-    MagmaMenuModule
+    MagmaMenuModule,
+    MagmaChipModule
   ],
   providers: [MagmaDialogService],
   templateUrl: './app.component.html',
@@ -276,7 +278,7 @@ export class AppComponent {
   isMobileMenuContainer = false
 
   //MAGMA MENU //
-  selectedRole = ''
+  selectedRole?: string | null = null
 
   selectMenuRole(name: string){
     this.selectedRole = name

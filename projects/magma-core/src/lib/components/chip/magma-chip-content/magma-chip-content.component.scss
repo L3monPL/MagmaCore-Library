@@ -1,0 +1,55 @@
+.magma_chip{
+    display: flex;
+    flex-direction: row;
+    column-gap: 8px;
+    align-items: center;
+    padding: 6px 12px;
+    background-color: var(--magma-color-purple-100);
+    border-radius: 8px;
+    cursor: pointer;
+    user-select: none;
+    height: 24px;
+    max-height: 24px;
+
+    ::ng-deep svg{
+        height: 14px;
+        width: 14px;
+        fill: var(--magma-color-font-secondary-100);
+    }
+    .magma_chip_value{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        column-gap: 0.5rem;
+        color: var(--magma-color-font-primary-100);
+
+    }
+    .m_close_action{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.25rem 0.25rem 0.25rem 0.25rem;
+        svg{
+            height: 13px!important;
+            width: 13px!important;
+            fill: var(--magma-color-card-200);
+            transition: 0.3s;
+        }
+    }
+    .m_close_action:hover{
+        svg{
+            fill: var(--magma-color-red-100);
+            transition: 0.3s;
+        }
+    }
+}
+.is_selected{
+    // color: #000!important;
+    padding: 6px 6px 6px 12px;
+
+    ::ng-deep svg{
+        height: 14px;
+        width: 14px;
+        fill: var(--magma-color-blue-100);
+    }
+}
