@@ -18,6 +18,7 @@ import { MagmaTimelineModule } from '../../../magma-core/src/lib/components/time
 import { MagmaPaginationModule } from '../../../magma-core/src/lib/components/pagination/magma-pagination.module';
 import { MagmaHeaderModule } from '../../../magma-core/src/lib/components/header/magma-header.module';
 import { MagmaChipModule } from '../../../magma-core/src/lib/components/chip/magma-chip.module';
+import { DialogCenterComponent } from './components/dialog-center/dialog-center.component';
 
 interface BrandSelect {
   id: number;
@@ -254,7 +255,7 @@ export class AppComponent {
   });
 
   openDialog() {
-    this.dialogService.openDialog(MagmaDialogComponent, {
+    this.dialogService.openDialog(DialogCenterComponent, {
       title: 'Custom Dialog',
       message: 'This is a custom message for the dialog.'
     }).then(result => {
@@ -282,6 +283,18 @@ export class AppComponent {
 
   selectMenuRole(name: string){
     this.selectedRole = name
+  }
+
+  openItemRightDialog(user: any){
+    this.dialogService.openDialog(DialogCenterComponent, {
+      title: 'Custom Dialog',
+      message: 'This is a custom message for the dialog.',
+      position: 'center'
+    }).then(result => {
+      if (result) {
+        console.log(result) 
+      }
+    });
   }
 
 }

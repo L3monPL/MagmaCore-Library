@@ -1,7 +1,17 @@
-<div class="dialog-overlay">
+@if(position == 'center'){
+  <div class="dialog-overlay">
     <div class="dialog-content">
-      <h2>{{ data.title }}</h2>
-      <p>{{ data.message }}</p>
-      <button (click)="close()">Close</button>
+      <h1>center</h1>
+      <ng-content></ng-content>
     </div>
-</div>
+  </div>
+}
+@if(position == 'right'){
+  <div class="dialog_right">
+    <div class="dialog-content">
+      <h1>right</h1>
+      <ng-content></ng-content>
+    </div>
+  </div>
+}
+
