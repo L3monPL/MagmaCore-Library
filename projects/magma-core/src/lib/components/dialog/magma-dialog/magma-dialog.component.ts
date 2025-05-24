@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Input, OnDestroy, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'magma-dialog',
@@ -8,19 +8,39 @@ import { Component, Input } from '@angular/core';
   templateUrl: './magma-dialog.component.html',
   styleUrl: './magma-dialog.component.scss'
 })
-export class MagmaDialogComponent{
+export class MagmaDialogComponent implements AfterViewInit, OnDestroy{
 
   @Input() data: any;
   @Input() position = 'center'
-  // closeDialog!: (result?: any) => void;
+  isOpen = false
 
-  // submitForm() {
-  //   const result = { ok: true, selected: 42 }
-  //   this.closeDialog(result)
-  // }
+  @Output() closeDialog = new EventEmitter<any>()
 
-  // close() {
-  //   this.closeDialog('close')
-  // }
+  constructor(private el: ElementRef) {}
+
+  ngOnDestroy(): void {
+    this.isOpen = false
+  }
+
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+        this.isOpen = true
+    }, 0);
+  }
+
+  @ViewChild('dialogContent') dialogContentRef!: ElementRef
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    const clickedInsideContent = this.dialogContentRef?.nativeElement.contains(event.target);
+    
+    if (!clickedInsideContent && this.isOpen) {
+      this.close();
+    }
+  }
+
+  close() {
+    this.closeDialog.emit()
+  }
   
 }

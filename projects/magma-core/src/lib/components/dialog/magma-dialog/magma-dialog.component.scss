@@ -41,3 +41,28 @@
   border-bottom-left-radius: 8px;
   max-width: 600px;
 }
+.magma_relative{
+  position: relative;
+}
+.close_item_container{
+  position: absolute;
+  left: calc(-60px);
+  top: 0px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: var(--magma-color-card-300);
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  cursor: pointer;
+  user-select: none;
+
+  svg{
+    height: 20px;
+    width: 20px;
+    fill: var(--magma-color-font-primary-100);
+  }
+}
