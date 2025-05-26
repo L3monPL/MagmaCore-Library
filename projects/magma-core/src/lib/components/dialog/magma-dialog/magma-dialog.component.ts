@@ -1,20 +1,27 @@
 import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Input, OnDestroy, Output, ViewChild } from '@angular/core';
+import { ProgressSpinnerModule } from '../../progressSpinner/progress-spinner.module';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'magma-dialog',
   standalone: true,
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    ProgressSpinnerModule
+  ],
   templateUrl: './magma-dialog.component.html',
-  styleUrl: './magma-dialog.component.scss'
+  styleUrl: './magma-dialog.component.scss',
 })
 export class MagmaDialogComponent implements AfterViewInit, OnDestroy{
 
   @Input() data: any;
   @Input() position = 'center'
-  isOpen = false
+  @Input() loading = false
 
   @Output() closeDialog = new EventEmitter<any>()
+
+  isOpen = false
 
   constructor(private el: ElementRef) {}
 

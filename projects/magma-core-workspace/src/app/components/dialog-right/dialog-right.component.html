@@ -1,5 +1,5 @@
-<magma-dialog [formGroup]="form" [position]="'right'" (closeDialog)="close()">
-    <h2>Użytkownik</h2>
+<magma-dialog [formGroup]="form" [position]="'right'" (closeDialog)="close()" [loading]="loading">
+    <h1>Użytkownik</h1>
 
     <magma-form-field>
         <magma-label>Imię</magma-label>
@@ -24,6 +24,7 @@
 
     <br>
     <magma-card-actions justify="end">
-        <button magmaButton color="red" (click)="close()">Zamknij</button>
+        <button magmaButton color="red" (click)="close()">Anuluj</button>
+        <button magmaButton color="green" (click)="changeLoading()">Zapisz</button>
     </magma-card-actions>
 </magma-dialog>

@@ -288,8 +288,7 @@ export class AppComponent {
 
   openItemRightDialog(user: any){
     this.dialogService.openDialog(DialogRightComponent, {
-      user: user,
-      position: 'center'
+      user: user
     }).then(result => {
       if (result) {
         console.log(result) 

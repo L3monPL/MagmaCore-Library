@@ -36,6 +36,8 @@ export class DialogRightComponent implements DialogComponentInterface, OnInit{
     this.setForm()
   }
 
+  loading = false
+
   form = new FormGroup({
     name: new FormControl<string>(''),
     surname: new FormControl <string>(''),
@@ -56,6 +58,10 @@ export class DialogRightComponent implements DialogComponentInterface, OnInit{
     )
 
     this.form.get('createdAt')?.disable()
+  }
+
+  changeLoading(){
+    this.loading =  !this.loading
   }
 
 }

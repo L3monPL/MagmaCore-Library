@@ -1,5 +1,4 @@
-<magma-dialog [position]="'center'">
-    <h2>{{ data.title }}</h2>
-    <p>{{ data.message }}</p>
+<magma-dialog [position]="'center'" (closeDialog)="close()" [loading]="false">
+    <h2>Center</h2>
     <button magmaButton color="red" (click)="close()">Close</button>
 </magma-dialog>

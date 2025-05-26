@@ -1,11 +1,17 @@
 <div [ngClass]="{'dialog_center': position == 'center', 'dialog_right': position == 'right'}">
-  <div #dialogContent [ngClass]="{'dialog_content_center': position == 'center', 'dialog_content_right': position == 'right'}" class="dialog_content">
+  <div #dialogContent [ngClass]="{'dialog_content_center': position == 'center', 'dialog_content_right': position == 'right'}" 
+  class="dialog_content">
     <div class="magma_relative">
       <ng-content></ng-content>
       @if (position == 'right') {
         <div (click)="close()" class="close_item_container">
           <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24"><path d="M18,6h0a1,1,0,0,0-1.414,0L12,10.586,7.414,6A1,1,0,0,0,6,6H6A1,1,0,0,0,6,7.414L10.586,12,6,16.586A1,1,0,0,0,6,18H6a1,1,0,0,0,1.414,0L12,13.414,16.586,18A1,1,0,0,0,18,18h0a1,1,0,0,0,0-1.414L13.414,12,18,7.414A1,1,0,0,0,18,6Z"/></svg>
         </div>
+        @if (loading) {
+          <div class="loading_container">
+            <progress-spinner></progress-spinner>
+          </div>
+        }
       }
     </div>
   </div>
