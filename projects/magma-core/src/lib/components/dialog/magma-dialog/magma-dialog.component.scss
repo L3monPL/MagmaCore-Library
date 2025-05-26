@@ -53,16 +53,22 @@
   align-items: center;
   justify-content: center;
   width: 40px;
-  height: 40px;
-  background-color: var(--magma-color-card-300);
-  border-top-left-radius: 8px;
-  border-bottom-left-radius: 8px;
+  height: 34px;
+  // background-color: var(--magma-color-card-400);
+  background-color: var(--magma-color-purple-100);
+  border-top-left-radius: 14px;
+  border-bottom-left-radius: 14px;
   cursor: pointer;
   user-select: none;
+  transition: 0.3s;
 
   svg{
     height: 20px;
     width: 20px;
     fill: var(--magma-color-font-primary-100);
   }
+}
+.close_item_container:hover{
+  filter: brightness(0.9);
+  transition: 0.3s;
 }

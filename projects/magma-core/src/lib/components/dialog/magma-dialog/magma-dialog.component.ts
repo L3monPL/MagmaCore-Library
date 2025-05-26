@@ -30,13 +30,33 @@ export class MagmaDialogComponent implements AfterViewInit, OnDestroy{
 
   @ViewChild('dialogContent') dialogContentRef!: ElementRef
 
-  @HostListener('document:click', ['$event'])
-  onDocumentClick(event: MouseEvent) {
-    const clickedInsideContent = this.dialogContentRef?.nativeElement.contains(event.target);
+  // @HostListener('document:click', ['$event'])
+  // onDocumentClick(event: MouseEvent) {
+  //   const clickedInsideContent = this.dialogContentRef?.nativeElement.contains(event.target);
     
-    if (!clickedInsideContent && this.isOpen) {
+  //   if (!clickedInsideContent && this.isOpen) {
+  //     this.close();
+  //   }
+  // }
+
+  mouseDownOutside = false
+
+  @HostListener('document:mousedown', ['$event'])
+  onDocumentMouseDown(event: MouseEvent) {
+    const clickedInside = this.dialogContentRef?.nativeElement.contains(event.target);
+    this.mouseDownOutside = !clickedInside;
+  }
+
+  @HostListener('document:mouseup', ['$event'])
+  onDocumentMouseUp(event: MouseEvent) {
+    const clickedInside = this.dialogContentRef?.nativeElement.contains(event.target);
+    const mouseUpOutside = !clickedInside;
+
+    if (this.mouseDownOutside && mouseUpOutside && this.isOpen) {
       this.close();
     }
+
+    this.mouseDownOutside = false; // Reset flag
   }
 
   close() {
