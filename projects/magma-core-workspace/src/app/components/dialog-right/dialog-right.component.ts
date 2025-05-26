@@ -34,6 +34,7 @@ export class DialogRightComponent implements DialogComponentInterface, OnInit{
 
   ngOnInit(): void {
     this.setForm()
+    this.detectFormChanges()
   }
 
   loading = false
@@ -62,6 +63,38 @@ export class DialogRightComponent implements DialogComponentInterface, OnInit{
 
   changeLoading(){
     this.loading =  !this.loading
+  }
+
+  isFormChanges = false
+
+  detectFormChanges(){
+    this.form.valueChanges.subscribe((value) => {
+
+      if (this.formControlIsDifference(value.name, this.data.user.name)) {
+        return
+      }
+      if (this.formControlIsDifference(value.surname, this.data.user.surname)) {
+        return
+      }
+      if (this.formControlIsDifference(value.email, this.data.user.email)) {
+        return
+      }
+      if (this.formControlIsDifference(value.role, this.data.user.role)) {
+        return
+      }
+
+      this.isFormChanges = false
+    })
+  }
+
+  formControlIsDifference(control: any, dataValue: any): boolean{
+    if(control != dataValue){
+      this.isFormChanges = true
+      return true
+    }
+    else{
+      return false
+    }
   }
 
 }

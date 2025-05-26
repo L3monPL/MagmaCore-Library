@@ -8,13 +8,18 @@
     --magma-color-font-secondary-200: #bbbbbb;
 
     --magma-color-green-100: #2dc976;
+
     --magma-color-blue-100: #38bdf8;
+
     --magma-color-yellow-100: #fb923c;
 
     --magma-color-purple-100: #6366f1;
     --magma-color-purple-200: #3a3b6a;
     
     --magma-color-red-100: #bb1f29;
+
+    --magma-color-gray-100: #e3e8ec;
+    --magma-color-gray-200: #a0a6ac;
 
     --magma-color-card-100: #101827;
     --magma-color-card-200: #1f2938;
@@ -51,6 +56,15 @@
     // background-color: rgb(93 94 109)!important;
     filter: brightness(0.9);
 }
+.magma-button:disabled{
+    background-color: var(--magma-color-gray-100)!important;
+    color: var(--magma-color-gray-200)!important;
+    transition: 0.3s;
+}
+.magma-button:disabled:hover{
+    filter: brightness(1)!important;
+}
+
 // MAGMA INPUT //
 .magma-input{
     background-color: var(--magma-color-card-100);
@@ -75,7 +89,6 @@
   -webkit-appearance: none;
   margin: 0;
 }
-
 .magma-input[type="number"] {
   -moz-appearance: textfield;
 }
