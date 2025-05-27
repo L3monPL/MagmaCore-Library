@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, ViewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MagmaInputModule } from '../../../magma-core/src/lib/components/inputs/magma-input.module';
 import { MagmaFormFieldModule } from '../../../magma-core/src/lib/components/forms/magma-form-field.module';
@@ -13,7 +13,7 @@ import { ProgressSpinnerModule } from '../../../magma-core/src/lib/components/pr
 import { MagmaCheckboxModule } from '../../../magma-core/src/lib/components/checkbox/magma-checkbox.module';
 import { MagmaSidenavModule } from '../../../magma-core/src/lib/components/nav/magma-sidenav.module';
 import { CommonModule } from '@angular/common';
-import { MagmaDialogComponent, MagmaDialogService, MagmaDropdownProfileMenuModule, MagmaMenuModule, MagmaNavMobileModule, MagmaNotificationComponent, MagmaNotificationService, MagmaRadioButtonModule, MagmaTableModule } from '../../../magma-core/src/public-api';
+import { MagmaDatePickerComponent, MagmaDialogComponent, MagmaDialogService, MagmaDropdownProfileMenuModule, MagmaMenuModule, MagmaNavMobileModule, MagmaNotificationComponent, MagmaNotificationService, MagmaRadioButtonModule, MagmaTableModule } from '../../../magma-core/src/public-api';
 import { MagmaTimelineModule } from '../../../magma-core/src/lib/components/timeline/magma-timeline.module';
 import { MagmaPaginationModule } from '../../../magma-core/src/lib/components/pagination/magma-pagination.module';
 import { MagmaHeaderModule } from '../../../magma-core/src/lib/components/header/magma-header.module';
@@ -298,6 +298,58 @@ export class AppComponent {
     });
   }
 
+  // TOGGLE SWITCH
+
   isChecked = true
+
+  // END END END END END END END END END
+
+  // MAGMA CHIP WITH DATA PICKER
+
+  @ViewChild(MagmaDatePickerComponent) magmaDatePickerComponent!: MagmaDatePickerComponent
+
+  opedDataPickerButton(){
+    this.magmaDatePickerComponent.openDropDown()
+  }
+  
+  selectedDateChip = ''
+
+  selectedDate(event: any){
+    console.log(event)
+    let date = this.convertDate(event)
+    this.selectedDateChip = date
+
+    // if (this.ngControl && this.ngControl.control) {
+
+    //   if (this.typeCalendar == 'day') {
+    //     let date = this.convertDate(event)
+    //     this.ngControl.control.setValue(date)
+    //   }
+    //   if (this.typeCalendar == 'month') {
+    //     let date = this.formatMonthYear(event)
+    //     this.ngControl.control.setValue(date)
+    //   }
+    //   if (this.typeCalendar == 'year') {
+    //     let date = this.convertDate(event)
+    //     this.ngControl.control.setValue(date)
+    //   }
+    // }
+  }
+
+  convertDate(dateStr: string): string {
+    const date = new Date(dateStr);
+    const day = date.getDate().toString().padStart(2, '0'); // Dzień z zerem na początku
+    const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Miesiące liczone od 0
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
+  }
+
+  // formatMonthYear(date: Date): string {
+  //   const month = (date.getMonth() + 1).toString().padStart(2, '0')
+  //   const year = date.getFullYear()
+  //   return `${month}/${year}`
+  // }
+
+  // END END END END END END END END END
 
 }

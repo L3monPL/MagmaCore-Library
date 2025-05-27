@@ -9,7 +9,7 @@ import { AfterViewInit, Component, ContentChild, ElementRef, EventEmitter, HostL
 export class MagmaDatePickerComponent implements OnInit{
 
   @Input() dropdown = false
-  @Input() typeCalendar?: string
+  @Input() typeCalendar?: string = 'day'
   @Output() selectDateEmmiter = new EventEmitter<any>()
 
   currentDate = new Date()
