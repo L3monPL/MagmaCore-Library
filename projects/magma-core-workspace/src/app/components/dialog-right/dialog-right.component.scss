@@ -1,0 +1,30 @@
+:host{
+    height: 100dvh;
+}
+.dialog_content_scroll{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow-y: scroll;
+    margin-right: -13px;
+    padding-right: 6px;
+}
+::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+}
+::-webkit-scrollbar-thumb {
+    background: #5e5e5e;
+    border: 0px none #ccc;
+    border-radius: 50px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #5e5e5e;
+}
+::-webkit-scrollbar-track {
+    // background: #e1e1e1;
+    // background: var(--magma-color-card-400);
+    background-color: transparent;
+    border: 0px none #ccc;
+    border-radius: 8px;
+}

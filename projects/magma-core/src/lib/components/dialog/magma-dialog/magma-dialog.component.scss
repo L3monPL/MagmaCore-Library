@@ -43,8 +43,10 @@
 }
 .magma_relative{
   position: relative;
-  // overflow: hidden;
-  display: flow-root;
+  // display: flow-root;
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100dvh - 40px);
 }
 .close_item_container{
   position: absolute;
