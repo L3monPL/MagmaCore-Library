@@ -154,7 +154,7 @@ magma-select-list li{
     .mobile_menu_container{
         position: absolute;
         top: 0px;
-        bottom: 6dvh;
+        bottom: var(--magma-mobile-bottom-menu-height);
         left: 0px;
         right: 0px;
         background-color: var(--magma-color-card-100);

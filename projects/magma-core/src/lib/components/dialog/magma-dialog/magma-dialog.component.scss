@@ -96,7 +96,7 @@
     // display: flow-root;
     display: flex;
     flex-direction: column;
-    max-height: calc(100dvh - 40px - 6dvh);
+    max-height: calc(100dvh - 40px - var(--magma-mobile-bottom-menu-height));
   }
   .dialog_right{
     position: fixed;
@@ -108,14 +108,13 @@
     display: flex;
     justify-content: end;
     z-index: 1000;
-    // padding-bottom: 6dvh;
   }
   .dialog_content_right {
     margin: 0rem 0rem 0rem 0rem;
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
     max-width: 100%;
-    padding-bottom: 6dvh;
+    padding-bottom: var(--magma-mobile-bottom-menu-height);
   }
 }
 
