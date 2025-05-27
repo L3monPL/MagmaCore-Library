@@ -20,6 +20,7 @@ import { MagmaHeaderModule } from '../../../magma-core/src/lib/components/header
 import { MagmaChipModule } from '../../../magma-core/src/lib/components/chip/magma-chip.module';
 import { DialogCenterComponent } from './components/dialog-center/dialog-center.component';
 import { DialogRightComponent } from './components/dialog-right/dialog-right.component';
+import { MagmaToggleSwitchModule } from '../../../magma-core/src/lib/components/toggleSwitch/magma-toggle-switch.module';
 
 interface BrandSelect {
   id: number;
@@ -54,7 +55,8 @@ interface BrandSelect {
     MagmaTableModule,
     MagmaHeaderModule,
     MagmaMenuModule,
-    MagmaChipModule
+    MagmaChipModule,
+    MagmaToggleSwitchModule
   ],
   providers: [MagmaDialogService],
   templateUrl: './app.component.html',
@@ -295,5 +297,7 @@ export class AppComponent {
       }
     });
   }
+
+  isChecked = true
 
 }

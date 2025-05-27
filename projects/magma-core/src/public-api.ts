@@ -107,3 +107,7 @@ export * from './lib/components/menu/magma-menu/magma-menu.component'
 export * from './lib/components/chip/magma-chip.module'
 export * from './lib/components/chip/magma-chip/magma-chip.component'
 export * from './lib/components/chip/magma-chip-content/magma-chip-content.component'
+
+// MAGMA TOGGLE SWITCH
+export * from './lib/components/toggleSwitch/magma-toggle-switch.module'
+export * from './lib/components/toggleSwitch/magma-toggle-switch/magma-toggle-switch.component'

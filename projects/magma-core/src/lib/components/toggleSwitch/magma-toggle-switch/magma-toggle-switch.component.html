@@ -1,0 +1,12 @@
+<label class="magma-toggle-wrapper" [class.disabled]="disabled">
+    <div class="switch">
+      <input
+        type="checkbox"
+        [checked]="checked"
+        [disabled]="disabled"
+        (change)="onToggle($event)"
+      />
+      <span class="slider"></span>
+    </div>
+    <span class="label-text"><ng-content></ng-content></span>
+</label>
