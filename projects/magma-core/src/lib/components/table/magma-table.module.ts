@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MagmaTableComponent } from './magma-table/magma-table.component';
+import { ProgressSpinnerModule } from '../progressSpinner/progress-spinner.module';
 
 
 
@@ -9,7 +10,8 @@ import { MagmaTableComponent } from './magma-table/magma-table.component';
     MagmaTableComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ProgressSpinnerModule
   ],
   exports: [
     MagmaTableComponent

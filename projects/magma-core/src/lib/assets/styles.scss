@@ -41,8 +41,8 @@
     background: var(--magma-color-card-200);
 }
 ::-webkit-scrollbar-track {
-    // background: #e1e1e1;
-    background: var(--magma-color-card-400);
+    background: transparent;
+    // background: var(--magma-color-card-400);
     border: 0px none #ccc;
 }
 // MAGMA BUTTON //

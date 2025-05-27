@@ -1,3 +1,8 @@
 <table class="magma_table">
     <ng-content></ng-content>
+    @if (loading) {
+        <div class="loading_container">
+          <progress-spinner></progress-spinner>
+        </div>
+      }
 </table>

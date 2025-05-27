@@ -7,6 +7,7 @@ table{
     width: 100%;
     border-spacing: 0px;
     table-layout: fixed;
+    position: relative;
 }
 //rows
 .magma_table ::ng-deep tr {
@@ -43,6 +44,13 @@ table{
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     height: 36px;
+}
+.magma_table ::ng-deep tbody{
+    display: block;
+    overflow-y: scroll;
+    flex: 1;
+    padding-right: 6px;
+    margin-right: -15px;
 }
 //body row
 .magma_table ::ng-deep tbody tr{
@@ -95,3 +103,16 @@ table{
 .magma_table ::ng-deep .m-col-xxl{
     flex: 6;
 }
+.loading_container{
+    position: absolute;
+    background-color: rgb(31 31 31 / 20%);
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 14px;
+    border-bottom-left-radius: 14px;
+  }
