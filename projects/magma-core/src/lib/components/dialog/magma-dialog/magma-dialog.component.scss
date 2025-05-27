@@ -89,3 +89,33 @@
   border-top-left-radius: 14px;
   border-bottom-left-radius: 14px;
 }
+
+@media only screen and (max-width:800px){
+  .magma_relative{
+    position: relative;
+    // display: flow-root;
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100dvh - 40px - 6dvh);
+  }
+  .dialog_right{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.35);
+    display: flex;
+    justify-content: end;
+    z-index: 1000;
+    // padding-bottom: 6dvh;
+  }
+  .dialog_content_right {
+    margin: 0rem 0rem 0rem 0rem;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    max-width: 100%;
+    padding-bottom: 6dvh;
+  }
+}
+
