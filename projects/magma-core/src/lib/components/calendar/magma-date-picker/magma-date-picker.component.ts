@@ -13,7 +13,7 @@ export class MagmaDatePickerComponent implements OnInit{
   @Output() selectDateEmmiter = new EventEmitter<any>()
 
   currentDate = new Date()
-  selectedDate: Date | null = null
+  @Input() selectedDate: Date | any | null = null
 
   days: Array<{ day: number, isCurrentMonth: boolean }> = []
   months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
