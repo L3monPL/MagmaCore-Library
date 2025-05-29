@@ -134,9 +134,9 @@
 @media only screen and (max-width:800px){
   .datepicker {
     position: fixed;
-    top: 50%!important;
+    z-index: 999;
     left: 50%!important;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
     margin: 4px 0px;
     width: 250px;
     border: 1px solid #4c5462;
