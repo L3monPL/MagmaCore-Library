@@ -54,6 +54,8 @@
     user-select: none;
     appearance: none;
     box-sizing: border-box;
+    display: flex;
+    align-items: center;
 }
 .magma-button:hover{
     // background-color: rgb(93 94 109)!important;
