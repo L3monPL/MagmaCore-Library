@@ -129,3 +129,22 @@
 .not_cuttent_month:hover{
     background-color: transparent!important;
 }
+
+
+@media only screen and (max-width:800px){
+  .datepicker {
+    position: fixed;
+    top: 50%!important;
+    left: 50%!important;
+    transform: translate(-50%, -50%);
+    margin: 4px 0px;
+    width: 250px;
+    border: 1px solid #4c5462;
+    border-radius: 5px;
+    padding: 10px;
+    color: #fff;
+    text-align: center;
+    background-color: var(--magma-color-card-100);
+    user-select: none;
+  }
+}

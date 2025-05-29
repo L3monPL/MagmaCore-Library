@@ -350,6 +350,10 @@ export class AppComponent {
   //   return `${month}/${year}`
   // }
 
+  selectedDateReturn(){
+    return new Date(this.selectedDateChip)
+  }
+
   // END END END END END END END END END
 
 }
