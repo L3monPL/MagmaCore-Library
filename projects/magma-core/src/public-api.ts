@@ -111,3 +111,6 @@ export * from './lib/components/chip/magma-chip-content/magma-chip-content.compo
 // MAGMA TOGGLE SWITCH
 export * from './lib/components/toggleSwitch/magma-toggle-switch.module'
 export * from './lib/components/toggleSwitch/magma-toggle-switch/magma-toggle-switch.component'
+
+// MAGMA DIRECTIVES
+export * from './lib/components/directives/magma-stay-in-viewport.directive'

@@ -21,7 +21,7 @@ table{
     // align-items: center;
     color: var(--magma-color-font-secondary-100);
     min-width: 0;
-    overflow: hidden;
+    // overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 
@@ -102,6 +102,9 @@ table{
 }
 .magma_table ::ng-deep .m-col-xxl{
     flex: 6;
+}
+.magma_table ::ng-deep .m-col-action{
+    position: relative;
 }
 .loading_container{
     position: absolute;
