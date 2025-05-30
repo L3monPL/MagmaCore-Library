@@ -10,6 +10,7 @@ export class MagmaDatePickerComponent implements OnInit{
 
   @Input() dropdown = false
   @Input() typeCalendar?: string = 'day'
+  @Input() isStaticPosition?: boolean = true
   @Output() selectDateEmmiter = new EventEmitter<any>()
 
   currentDate = new Date()
@@ -30,7 +31,15 @@ export class MagmaDatePickerComponent implements OnInit{
     console.log(this.typeCalendar)
     this.currentSelection = this.typeCalendar
 
+    this.checkTypePosition()
+
     this.generateCalendar()
+  }
+
+  checkTypePosition(){
+    if (this.isStaticPosition) {
+      this.dropdown = true
+    }
   }
 
 
@@ -55,9 +64,11 @@ export class MagmaDatePickerComponent implements OnInit{
       // console.log(this.selectedDate)
       this.selectDateEmmiter.emit(this.selectedDate)
 
-      setTimeout(() => {
-        this.dropdown = false
-      }, 300);
+      if (!this.isStaticPosition) {
+        setTimeout(() => {
+          this.dropdown = false
+        }, 300); 
+      }
     }
   }
 
@@ -175,11 +186,13 @@ export class MagmaDatePickerComponent implements OnInit{
     if (!this.dropdown) {
       return
     }
-    if (this.el.nativeElement.closest('.form-field').contains(event.target)) {
-      return
-    }
-    if (!this.dropdownPicker.nativeElement.contains(event.target) && this.dropdown) {
-      this.dropdown = false
+    if (!this.isStaticPosition) {
+      if (this.el.nativeElement.closest('.form-field').contains(event.target)) {
+        return
+      }
+      if (!this.dropdownPicker.nativeElement.contains(event.target) && this.dropdown) {
+        this.dropdown = false
+      } 
     }
   }
 
@@ -223,10 +236,21 @@ export class MagmaDatePickerComponent implements OnInit{
   }
 
   getStyles() {
-    return {
-      right: this.dropDownRight,
-      left: this.dropDownLeft,
-      bottom: this.dropDownBottom
-    };
+    if (this.isStaticPosition) {
+      return {
+        right: this.dropDownRight,
+        left: this.dropDownLeft,
+        bottom: this.dropDownBottom
+      };
+    }
+    else{
+      return {
+        right: this.dropDownRight,
+        left: this.dropDownLeft,
+        bottom: this.dropDownBottom,
+        position: 'absolute'
+      };
+    }
   }
+
 }

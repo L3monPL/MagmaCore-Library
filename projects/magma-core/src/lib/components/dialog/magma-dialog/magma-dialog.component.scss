@@ -8,7 +8,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 9999 !important;
 }
 .dialog_right{
   position: fixed;
@@ -19,7 +19,7 @@
   background: rgba(0, 0, 0, 0.35);
   display: flex;
   justify-content: end;
-  z-index: 1000;
+  z-index: 9999 !important;
 }
 
 .dialog_content{
@@ -107,7 +107,6 @@
     background: rgba(0, 0, 0, 0.35);
     display: flex;
     justify-content: end;
-    z-index: 1000;
   }
   .dialog_content_right {
     margin: 0rem 0rem 0rem 0rem;

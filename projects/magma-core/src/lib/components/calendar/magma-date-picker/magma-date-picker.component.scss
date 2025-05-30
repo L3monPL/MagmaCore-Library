@@ -1,8 +1,10 @@
+:host{
+  font-family: var(--magma-font);
+}
 .input_picker_container{
   position: relative;
 }
 .datepicker {
-  position: absolute;
   z-index: 999;
   left: 0px;
   margin: 4px 0px;
