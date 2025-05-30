@@ -69,7 +69,7 @@
            <!-- TABLE -->
             <br>
             <br>
-            <magma-date-picker [dropdown]="false" (selectDateEmmiter)="true"></magma-date-picker>
+            <magma-date-picker [setDate]="currentDate" [dropdown]="false" (selectDateEmmiter)="datepickerLogEvent($event)"></magma-date-picker>
             <!-- <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
             <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> -->
           <magma-table [loading]="false">

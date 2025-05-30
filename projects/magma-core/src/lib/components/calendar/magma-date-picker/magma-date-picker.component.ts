@@ -13,6 +13,7 @@ export class MagmaDatePickerComponent implements OnInit{
   @Input() isStaticPosition?: boolean = true
   @Output() selectDateEmmiter = new EventEmitter<any>()
 
+  @Input() setDate?: Date
   currentDate = new Date()
   @Input() selectedDate: Date | any | null = null
 
@@ -28,7 +29,16 @@ export class MagmaDatePickerComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    //set Date from INPUT
+    if (this.setDate) {
+      this.currentDate = this.setDate
+      this.selectedDate = this.setDate
+    }
+
+    console.log(this.currentDate)
     console.log(this.typeCalendar)
+
+    // set Datapicker TYPE
     this.currentSelection = this.typeCalendar
 
     this.checkTypePosition()

@@ -357,4 +357,10 @@ export class AppComponent {
 
   // END END END END END END END END END
 
+  datepickerLogEvent(event: any){
+    console.log(event)
+  }
+
+  currentDate = new Date(2025, 4, 29)
+
 }
