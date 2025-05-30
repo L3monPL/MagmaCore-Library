@@ -24,6 +24,9 @@ export class MagmaButtonDirective implements OnInit{
         case 'm':
           this.renderer.setStyle(button, 'height', `32px`)
           break;
+          case 'l':
+          this.renderer.setStyle(button, 'height', `36px`)
+          break;
         case 'xl':
           this.renderer.setStyle(button, 'height', `40px`)
           break;
