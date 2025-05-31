@@ -339,6 +339,14 @@ export class AppComponent {
     // }
   }
 
+  selectedDateMonthChip = ''
+
+  selectedDateMonth(event: any){
+    console.log(event)
+    let date = this.formatMonthYear(event)
+    this.selectedDateMonthChip = date
+  }
+
   convertDate(dateStr: string): string {
     const date = new Date(dateStr);
     const day = date.getDate().toString().padStart(2, '0'); // Dzień z zerem na początku
@@ -347,11 +355,11 @@ export class AppComponent {
     return `${day}/${month}/${year}`;
   }
 
-  // formatMonthYear(date: Date): string {
-  //   const month = (date.getMonth() + 1).toString().padStart(2, '0')
-  //   const year = date.getFullYear()
-  //   return `${month}/${year}`
-  // }
+  formatMonthYear(date: Date): string {
+    const month = (date.getMonth() + 1).toString().padStart(2, '0')
+    const year = date.getFullYear()
+    return `${month}/${year}`
+  }
 
   // selectedDateReturn(){
   //   return new Date(this.selectedDateChip)
