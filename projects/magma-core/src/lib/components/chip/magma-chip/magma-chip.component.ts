@@ -8,4 +8,5 @@ import { Component, ElementRef, Input } from '@angular/core';
 })
 export class MagmaChipComponent {
 
+  chipType?: string = 'text'
 }
