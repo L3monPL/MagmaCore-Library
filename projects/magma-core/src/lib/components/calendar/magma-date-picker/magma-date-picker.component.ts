@@ -63,6 +63,12 @@ export class MagmaDatePickerComponent implements OnInit {
     }
   }
 
+  clearData(){
+    this.currentDate = new Date()
+    this.selectedDate = null
+    this.generateCalendar()
+  }
+
   // ngOnChanges(changes: SimpleChanges): void {
   //   console.log(changes['setDate'])
   //   if (changes['setDate'] && changes['setDate'].currentValue) {

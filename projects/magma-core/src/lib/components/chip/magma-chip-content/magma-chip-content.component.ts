@@ -12,6 +12,7 @@ export class MagmaChipContentComponent {
   @Input() selected?: any = ''
 
   @Output() selectedChange = new EventEmitter<any>()
+  @Output() clearData = new EventEmitter<any>()
 
   constructor(
     public elementRef: ElementRef
@@ -24,6 +25,7 @@ export class MagmaChipContentComponent {
   cancleSelect(){
     this.selected = null
     this.selectedChange.emit(this.selected)
+    this.clearData.emit('clearData')
   }
 
 }

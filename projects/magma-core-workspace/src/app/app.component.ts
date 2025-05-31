@@ -307,13 +307,15 @@ export class AppComponent {
 
   // MAGMA CHIP WITH DATA PICKER
 
-  @ViewChild(MagmaDatePickerComponent) magmaDatePickerComponent!: MagmaDatePickerComponent
+  // @ViewChild(MagmaDatePickerComponent) magmaDatePickerComponent!: MagmaDatePickerComponent
 
-  opedDataPickerButton(){
-    this.magmaDatePickerComponent.openDropDown()
-  }
+  // opedDataPickerButton(){
+  //   this.magmaDatePickerComponent.openDropDown()
+  // }
   
   selectedDateChip = ''
+
+  dateToday = new Date()
 
   selectedDate(event: any){
     console.log(event)
@@ -351,9 +353,13 @@ export class AppComponent {
   //   return `${month}/${year}`
   // }
 
-  selectedDateReturn(){
-    return new Date(this.selectedDateChip)
-  }
+  // selectedDateReturn(){
+  //   return new Date(this.selectedDateChip)
+  // }
+
+  // clearChipData_1(event: any){
+  //   console.log(event)
+  // }
 
   // END END END END END END END END END
 
