@@ -6,7 +6,7 @@ import { AfterViewInit, Component, ContentChild, ElementRef, EventEmitter, HostL
   templateUrl: './magma-date-picker.component.html',
   styleUrl: './magma-date-picker.component.scss'
 })
-export class MagmaDatePickerComponent implements OnInit{
+export class MagmaDatePickerComponent implements OnInit {
 
   @Input() dropdown = false
   @Input() typeCalendar?: string = 'day'
@@ -45,6 +45,37 @@ export class MagmaDatePickerComponent implements OnInit{
 
     this.generateCalendar()
   }
+
+  updateCalendar(){
+    if (this.setDate instanceof Date && !isNaN(this.setDate.getTime())) {
+    this.currentDate = this.setDate
+    this.selectedDate = this.setDate
+    this.generateCalendar()
+  } else {
+    console.warn('setDate is not a valid Date')
+  }
+  }
+
+  // ngOnChanges(changes: SimpleChanges): void {
+  //   console.log(changes['setDate'])
+  //   if (changes['setDate'] && changes['setDate'].currentValue) {
+  //     const newDate = changes['setDate'].currentValue as Date;
+
+  //     this.currentDate = newDate;
+  //     this.selectedDate = newDate;
+
+  //     if (this.currentSelection === 'day') {
+  //       this.generateCalendar();
+  //     }
+
+  //     if (this.currentSelection === 'year') {
+  //       this.years = this.getYearRange(String(this.currentDate));
+  //     }
+
+  //     // Debug (opcjonalnie)
+  //     console.log('setDate changed:', this.setDate);
+  //   }
+  // }
 
   checkTypePosition(){
     if (this.isStaticPosition) {

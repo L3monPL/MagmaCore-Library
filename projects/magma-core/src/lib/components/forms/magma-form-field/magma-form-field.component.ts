@@ -78,6 +78,8 @@ export class MagmaFormFieldComponent implements AfterViewInit, OnInit, OnDestroy
 
     }
   }
+
+  setDate?: Date
   
   ngAfterViewInit(): void {
     const inputElement = this.el.nativeElement.querySelector('input')
@@ -95,15 +97,17 @@ export class MagmaFormFieldComponent implements AfterViewInit, OnInit, OnDestroy
         if (this.isValidDate(this.ngControl.value)) {
 
           console.log(this.ngControl.value)
-
+          // SET VALUE FROM INPUT TO DATEPICKER
+          this.magmaDatePickerComponent.setDate = this.ngControl.value
           this.magmaDatePickerComponent.selectedDate = this.ngControl.value
+          // ---------------------------------
   
           if (this.typeCalendar == 'day') {
             let date = this.convertDate(this.ngControl.value)
             this.ngControl.control.setValue(date)
           }
           if (this.typeCalendar == 'month') {
-            let date = this.formatMonthYear(this.ngControl.value)
+            let date = this.formatMonthYear(this.ngControl.value) 
             this.ngControl.control.setValue(date)
           }
           if (this.typeCalendar == 'year') {
@@ -113,6 +117,28 @@ export class MagmaFormFieldComponent implements AfterViewInit, OnInit, OnDestroy
         }
       }
     }
+
+    if (this.ngControl?.control) {
+      this.ngControl.control.valueChanges.subscribe((value) => {
+        console.log('Wartość inputa się zmieniła:', value);
+        // SET VALUE FROM INPUT TO DATEPICKER
+        this.magmaDatePickerComponent.setDate = this.parseDateFromString(value)!
+        // this.magmaDatePickerComponent.selectedDate = value
+        this.magmaDatePickerComponent.updateCalendar()
+      });
+    }
+  }
+
+  parseDateFromString(dateString: string): Date | null {
+    const parts = dateString.split('/');
+    if (parts.length !== 3) return null;
+
+    const day = parseInt(parts[0], 10);
+    const month = parseInt(parts[1], 10) - 1;
+    const year = parseInt(parts[2], 10);
+
+    const date = new Date(year, month, day);
+    return !isNaN(date.getTime()) ? date : null;
   }
 
   ngOnDestroy(): void {

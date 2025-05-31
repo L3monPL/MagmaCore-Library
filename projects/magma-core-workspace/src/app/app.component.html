@@ -72,7 +72,7 @@
             <magma-date-picker [setDate]="currentDate" [dropdown]="false" (selectDateEmmiter)="datepickerLogEvent($event)"></magma-date-picker>
             <!-- <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
             <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> -->
-          <magma-table [loading]="false">
+          <!-- <magma-table [loading]="false">
             <thead>
               <tr>
                 <th class="m-col-s m-mobile-hide">
@@ -124,15 +124,15 @@
                 </tr>
               }
             </tbody>
-          </magma-table>
+          </magma-table> -->
           <!-- END TABLE END -->
-          <magma-pagination
+          <!-- <magma-pagination
           [totalItems]="150"
           [pageSize]="10"
           [currentPage]="currentPage"
           (pageChange)="onPageChange($event)"
           ></magma-pagination>
-          <br>
+          <br> -->
           <!-- <MAGMA CARD> ---------------------------------------- -->
           <magma-card>
             <magma-card-header>
@@ -144,15 +144,15 @@
               </magma-card-subtitle>
             </magma-card-header>
   
-            <magma-form-field>
+            <!-- <magma-form-field>
               <magma-label>Stan liczb</magma-label>
               <input magmaInput type="number" inputTypeStyle="number" step="1" placeholder="Stan liczb" formControlName="numberCount">
-            </magma-form-field>
+            </magma-form-field> -->
   
-            <magma-form-field>
+            <!-- <magma-form-field>
               <magma-label>Stan liczb</magma-label>
               <input magmaInput type="number" inputTypeStyle="number-right" step="0.1" placeholder="Stan liczb" formControlName="numberCount">
-            </magma-form-field>
+            </magma-form-field> -->
   
             <magma-form-field>
               <magma-label>Wybierz datę</magma-label>
@@ -165,7 +165,7 @@
 
             <magma-form-field>
               <magma-label>Wybierz datę</magma-label>
-              <input magmaInput inputTypeStyle="date" typeCalendar="day" type="text" formControlName="date" readonly>
+              <input magmaInput inputTypeStyle="date" typeCalendar="day" type="text" formControlName="date">
             </magma-form-field>
   
             <magma-form-field>
