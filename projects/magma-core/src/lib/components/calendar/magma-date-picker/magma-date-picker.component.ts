@@ -47,13 +47,20 @@ export class MagmaDatePickerComponent implements OnInit {
   }
 
   updateCalendar(){
+    console.log(this.setDate)
+    if (this.setDate == null) {
+      this.currentDate = new Date()
+      this.selectedDate = null
+      this.generateCalendar()
+    }
     if (this.setDate instanceof Date && !isNaN(this.setDate.getTime())) {
-    this.currentDate = this.setDate
-    this.selectedDate = this.setDate
-    this.generateCalendar()
-  } else {
-    console.warn('setDate is not a valid Date')
-  }
+      this.currentDate = this.setDate
+      this.selectedDate = this.setDate
+      this.generateCalendar()
+    } 
+    else {
+      console.warn('setDate is not a valid Date')
+    }
   }
 
   // ngOnChanges(changes: SimpleChanges): void {

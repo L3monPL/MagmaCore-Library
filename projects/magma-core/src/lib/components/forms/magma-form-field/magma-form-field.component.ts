@@ -120,7 +120,6 @@ export class MagmaFormFieldComponent implements AfterViewInit, OnInit, OnDestroy
 
     if (this.ngControl?.control) {
       this.ngControl.control.valueChanges.subscribe((value) => {
-        console.log('Wartość inputa się zmieniła:', value);
         // SET VALUE FROM INPUT TO DATEPICKER
         this.magmaDatePickerComponent.setDate = this.parseDateFromString(value)!
         // this.magmaDatePickerComponent.selectedDate = value
