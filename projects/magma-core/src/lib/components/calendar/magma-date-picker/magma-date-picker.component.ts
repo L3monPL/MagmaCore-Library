@@ -201,9 +201,11 @@ export class MagmaDatePickerComponent implements OnInit {
       // console.log(this.selectedDate)
       this.selectDateEmmiter.emit(this.selectedDate)
 
-      setTimeout(() => {
-        this.dropdown = false
-      }, 300);
+      if (!this.isStaticPosition) {
+        setTimeout(() => {
+          this.dropdown = false
+        }, 300); 
+      }
     }
     if (this.typeCalendar == 'day') {
       this.currentSelection = 'day'
