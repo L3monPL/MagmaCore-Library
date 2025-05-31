@@ -38,7 +38,8 @@
                 @case ('month') {
                     <div class="months-grid">
                         @for (month of months; track $index) {
-                            <div class="month" (click)="selectMonth($index); $event.stopPropagation()">
+                            <div [ngClass]="{'selected': isSelectedMonth($index)}"
+                             class="month" (click)="selectMonth($index); $event.stopPropagation()">
                                 {{month | slice:0:3}}
                             </div>
                         }

@@ -130,11 +130,26 @@ export class MagmaFormFieldComponent implements AfterViewInit, OnInit, OnDestroy
 
   parseDateFromString(dateString: string): Date | null {
     const parts = dateString.split('/');
-    if (parts.length !== 3) return null;
 
-    const day = parseInt(parts[0], 10);
-    const month = parseInt(parts[1], 10) - 1;
-    const year = parseInt(parts[2], 10);
+    let day = 1;
+    let month = 0;
+    let year: number;
+
+    if (parts.length === 3) {
+      // Format dd/MM/yyyy
+      day = parseInt(parts[0], 10);
+      month = parseInt(parts[1], 10) - 1;
+      year = parseInt(parts[2], 10);
+    } else if (parts.length === 2) {
+      // Format MM/yyyy
+      month = parseInt(parts[0], 10) - 1;
+      year = parseInt(parts[1], 10);
+    } else if (parts.length === 1) {
+      // Format yyyy
+      year = parseInt(parts[0], 10);
+    } else {
+      return null;
+    }
 
     const date = new Date(year, month, day);
     return !isNaN(date.getTime()) ? date : null;

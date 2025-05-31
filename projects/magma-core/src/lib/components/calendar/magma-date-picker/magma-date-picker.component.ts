@@ -105,27 +105,18 @@ export class MagmaDatePickerComponent implements OnInit {
     }
   }
 
-  selectDate(day: number, isCurrentMonth: boolean) {
-    if (day !== null && isCurrentMonth) {
-      let date = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), day)
-      this.selectedDate = date
-      // console.log(this.selectedDate)
-      this.selectDateEmmiter.emit(this.selectedDate)
-
-      if (!this.isStaticPosition) {
-        setTimeout(() => {
-          this.dropdown = false
-        }, 300); 
-      }
-    }
-  }
-
   isSelected(day: number, isCurrentMonth: boolean): boolean {
     return this.selectedDate! &&
            isCurrentMonth &&
            this.selectedDate.getFullYear() === this.currentDate.getFullYear() &&
            this.selectedDate.getMonth() === this.currentDate.getMonth() &&
            this.selectedDate.getDate() === day;
+  }
+  isSelectedMonth(index: number): boolean{
+    return this.selectedDate! &&
+           (index == this.selectedDate.getMonth()) &&
+           this.selectedDate.getFullYear() === this.currentDate.getFullYear() &&
+           this.selectedDate.getMonth() === this.currentDate.getMonth()
   }
 
   generateCalendar() {
@@ -186,12 +177,28 @@ export class MagmaDatePickerComponent implements OnInit {
     this.currentSelection = 'month'
   }
 
+  selectDate(day: number, isCurrentMonth: boolean) {
+    if (day !== null && isCurrentMonth) {
+      let date = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), day)
+      this.selectedDate = date
+      // console.log(this.selectedDate)
+      this.selectDateEmmiter.emit(this.selectedDate)
+
+      if (!this.isStaticPosition) {
+        setTimeout(() => {
+          this.dropdown = false
+        }, 300); 
+      }
+    }
+  }
+
   selectMonth(index: number) {
     this.currentDate = new Date(this.currentDate.getFullYear(), index, 1);
 
     if (this.typeCalendar == 'month') {
       let date = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth())
       this.selectedDate = date
+      // console.log(this.selectedDate)
       this.selectDateEmmiter.emit(this.selectedDate)
 
       setTimeout(() => {
