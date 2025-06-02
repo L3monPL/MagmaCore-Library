@@ -149,4 +149,9 @@
     background-color: var(--magma-color-card-100);
     user-select: none;
   }
+  .datepicker_static{
+    position: static!important;
+    transform: none!important;
+    left: 0px!important;
+  }
 }
