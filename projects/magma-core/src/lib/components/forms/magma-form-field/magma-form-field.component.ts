@@ -2,6 +2,8 @@ import { AfterViewInit, Component, ContentChild, ElementRef, forwardRef, Input, 
 import { MagmaIconDirective } from '../../icon/magma-icon.directive';
 import { NG_VALUE_ACCESSOR, NgControl } from '@angular/forms';
 import { MagmaDatePickerComponent } from '../../calendar/magma-date-picker/magma-date-picker.component';
+import { MagmaAutocompleteComponent } from '../../autocomplete/magma-autocomplete/magma-autocomplete.component';
+import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
 
 
 @Component({
@@ -32,6 +34,7 @@ export class MagmaFormFieldComponent implements AfterViewInit, OnInit, OnDestroy
   isDropdownDate: boolean = false
   typeCalendar?: string
   @ViewChild(MagmaDatePickerComponent) magmaDatePickerComponent!: MagmaDatePickerComponent
+  @ContentChild(MagmaAutocompleteComponent) magmaAutocompleteComponent!: MagmaAutocompleteComponent
 
   ngOnInit(): void {
     const inputElement = this.el.nativeElement.querySelector('input')
@@ -75,7 +78,10 @@ export class MagmaFormFieldComponent implements AfterViewInit, OnInit, OnDestroy
         this.renderer.setStyle(inputElement, 'border-radius', '8px')
         this.renderer.setStyle(inputElement, 'padding-left', '40px')
       }
-
+      // INSIDE INPUT TYPE AUTOCOMPLETE ------------------------------------------------- //
+      if (inputElement.getAttribute('inputTypeStyle') == 'autocomplete') {
+        this.inputTypeStyle = 'autocomplete'
+      }
     }
   }
 
@@ -117,14 +123,24 @@ export class MagmaFormFieldComponent implements AfterViewInit, OnInit, OnDestroy
         }
       }
     }
-
-    if (this.ngControl?.control) {
+    // SET VALUE FROM INPUT TO DATEPICKER
+    if (this.ngControl?.control && this.magmaDatePickerComponent) {
       this.ngControl.control.valueChanges.subscribe((value) => {
         // SET VALUE FROM INPUT TO DATEPICKER
         this.magmaDatePickerComponent.setDate = this.parseDateFromString(value)!
         // this.magmaDatePickerComponent.selectedDate = value
         this.magmaDatePickerComponent.updateCalendar()
       });
+    }
+    // INSIDE INPUT TYPE AUTOCOMPLETE 
+    if (inputElement && inputElement.getAttribute('inputTypeStyle') == 'autocomplete') {
+      // console.log(this.magmaAutocompleteComponent)
+      if (this.ngControl?.control && this.magmaAutocompleteComponent) {
+        this.ngControl?.control.valueChanges.pipe(debounceTime(300), distinctUntilChanged())
+        .subscribe(value => {
+          this.magmaAutocompleteComponent?.search(value)
+        });
+      } 
     }
   }
 

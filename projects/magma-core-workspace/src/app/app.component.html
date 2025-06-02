@@ -85,11 +85,9 @@
           </magma-header>
           <!-- END HEADER END -->
            <!-- TABLE -->
-            <br>
-            <br>
-            <magma-date-picker [setDate]="currentDate" [dropdown]="false" (selectDateEmmiter)="datepickerLogEvent($event)"></magma-date-picker>
-            <br>
-            <magma-date-picker [setDate]="currentDate" typeCalendar="month" [dropdown]="false" (selectDateEmmiter)="datepickerLogEvent($event)"></magma-date-picker>
+            <!-- <magma-date-picker [setDate]="currentDate" [dropdown]="false" (selectDateEmmiter)="datepickerLogEvent($event)"></magma-date-picker> -->
+            <!-- <br> -->
+            <!-- <magma-date-picker [setDate]="currentDate" typeCalendar="month" [dropdown]="false" (selectDateEmmiter)="datepickerLogEvent($event)"></magma-date-picker> -->
             <!-- <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
             <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> -->
           <!-- <magma-table [loading]="false">
@@ -163,6 +161,16 @@
                 Subtitle
               </magma-card-subtitle>
             </magma-card-header>
+
+            <magma-form-field>
+              <magma-label>Autocomplete</magma-label>
+              <input magmaInput type="text" inputTypeStyle="autocomplete" placeholder="Autocomplete" formControlName="autocomplete">
+              <magma-autocomplete (searchEmitter)="searchAutocomplete($event)">
+                <p>test 1</p>
+                <p>test 2</p>
+                <p>test 3</p>
+              </magma-autocomplete>
+            </magma-form-field>
   
             <!-- <magma-form-field>
               <magma-label>Stan liczb</magma-label>

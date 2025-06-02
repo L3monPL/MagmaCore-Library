@@ -11,7 +11,8 @@
     min-width: 120px;
     padding: 8px;
     border-radius: 8px;
-    background-color: var(--magma-color-card-200);
+    background-color: var(--magma-color-card-100);
+    border: 1px solid #4c5462;
     box-shadow: rgba(57, 57, 57, 0.2) 0px 7px 29px 0px;
 
     ::ng-deep p{

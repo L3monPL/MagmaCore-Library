@@ -21,6 +21,8 @@ import { MagmaChipModule } from '../../../magma-core/src/lib/components/chip/mag
 import { DialogCenterComponent } from './components/dialog-center/dialog-center.component';
 import { DialogRightComponent } from './components/dialog-right/dialog-right.component';
 import { MagmaToggleSwitchModule } from '../../../magma-core/src/lib/components/toggleSwitch/magma-toggle-switch.module';
+import { MagmaAutocompleteModule } from '../../../magma-core/src/lib/components/autocomplete/magma-autocomplete.module';
+import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
 
 interface BrandSelect {
   id: number;
@@ -57,7 +59,8 @@ interface BrandSelect {
     MagmaMenuModule,
     MagmaChipModule,
     MagmaToggleSwitchModule,
-    MagmaStayInViewportDirective
+    MagmaStayInViewportDirective,
+    MagmaAutocompleteModule
   ],
   providers: [MagmaDialogService],
   templateUrl: './app.component.html',
@@ -255,7 +258,8 @@ export class AppComponent {
   form = new FormGroup({
     numberCount: new FormControl(120234), // Możesz ustawić domyślną wartość
     date: new FormControl <Date|string>(new Date()),
-    dateMonth: new FormControl <Date|string>(new Date()) 
+    dateMonth: new FormControl <Date|string>(new Date()),
+    autocomplete: new FormControl('')
   });
 
   openDialog() {
@@ -322,7 +326,7 @@ export class AppComponent {
   }
 
   currentDate = new Date(2025, 4, 29)
-  
+
   //////////////////////////////////////////////////
 
   selectedDateChip: Date | string = ''
@@ -366,6 +370,14 @@ export class AppComponent {
     else{
       return ''
     }
+  }
+
+  /////////////////////
+
+  // MAGMA AUTOCOMPLETE //
+
+  searchAutocomplete(event: any){
+    console.log(event)
   }
 
 }
