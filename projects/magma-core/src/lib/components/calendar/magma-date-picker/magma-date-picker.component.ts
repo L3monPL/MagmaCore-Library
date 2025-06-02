@@ -13,7 +13,7 @@ export class MagmaDatePickerComponent implements OnInit {
   @Input() isStaticPosition?: boolean = true
   @Output() selectDateEmmiter = new EventEmitter<any>()
 
-  @Input() setDate?: Date
+  @Input() setDate?: Date| any
   currentDate = new Date()
   @Input() selectedDate: Date | any | null = null
 

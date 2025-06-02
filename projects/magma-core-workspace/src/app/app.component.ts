@@ -312,45 +312,38 @@ export class AppComponent {
   // opedDataPickerButton(){
   //   this.magmaDatePickerComponent.openDropDown()
   // }
-  
-  selectedDateChip = ''
 
-  dateToday = new Date()
+  // dateToday = new Date()
+
+  // END END END END END END END END END
+
+  datepickerLogEvent(event: any){
+    console.log(event)
+  }
+
+  currentDate = new Date(2025, 4, 29)
+  
+  //////////////////////////////////////////////////
+
+  selectedDateChip: Date | string = ''
+  selectedDateMonthChip: string | Date = new Date()
 
   selectedDate(event: any){
     console.log(event)
-    let date = this.convertDate(event)
+    let date = event
     this.selectedDateChip = date
-
-    // if (this.ngControl && this.ngControl.control) {
-
-    //   if (this.typeCalendar == 'day') {
-    //     let date = this.convertDate(event)
-    //     this.ngControl.control.setValue(date)
-    //   }
-    //   if (this.typeCalendar == 'month') {
-    //     let date = this.formatMonthYear(event)
-    //     this.ngControl.control.setValue(date)
-    //   }
-    //   if (this.typeCalendar == 'year') {
-    //     let date = this.convertDate(event)
-    //     this.ngControl.control.setValue(date)
-    //   }
-    // }
   }
-
-  selectedDateMonthChip = ''
 
   selectedDateMonth(event: any){
     console.log(event)
-    let date = this.formatMonthYear(event)
+    let date = event
     this.selectedDateMonthChip = date
   }
 
-  convertDate(dateStr: string): string {
+  formatDayMonthYear(dateStr: string): string {
     const date = new Date(dateStr);
-    const day = date.getDate().toString().padStart(2, '0'); // Dzień z zerem na początku
-    const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Miesiące liczone od 0
+    const day = date.getDate().toString().padStart(2, '0'); 
+    const month = (date.getMonth() + 1).toString().padStart(2, '0'); 
     const year = date.getFullYear();
     return `${day}/${month}/${year}`;
   }
@@ -361,20 +354,18 @@ export class AppComponent {
     return `${month}/${year}`
   }
 
-  // selectedDateReturn(){
-  //   return new Date(this.selectedDateChip)
-  // }
-
-  // clearChipData_1(event: any){
-  //   console.log(event)
-  // }
-
-  // END END END END END END END END END
-
-  datepickerLogEvent(event: any){
-    console.log(event)
+  convertDateToString(date: any, dateType: string){
+    if (date && dateType == 'day') {
+      let dateConverted = this.formatDayMonthYear(date)
+      return dateConverted
+    }
+    if (date && dateType == 'month') {
+      let dateConverted = this.formatMonthYear(date)
+      return dateConverted
+    }
+    else{
+      return ''
+    }
   }
-
-  currentDate = new Date(2025, 4, 29)
 
 }
