@@ -23,6 +23,8 @@ import { DialogRightComponent } from './components/dialog-right/dialog-right.com
 import { MagmaToggleSwitchModule } from '../../../magma-core/src/lib/components/toggleSwitch/magma-toggle-switch.module';
 import { MagmaAutocompleteModule } from '../../../magma-core/src/lib/components/autocomplete/magma-autocomplete.module';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
+import { Element } from '@angular/compiler';
+import { MagmaAutocompleteComponent } from '../../../magma-core/src/lib/components/autocomplete/magma-autocomplete/magma-autocomplete.component';
 
 interface BrandSelect {
   id: number;
@@ -407,9 +409,10 @@ export class AppComponent {
 
   objectAutocomplete = null
 
-  selectedAutocompleteObject(object: any){
+  selectedAutocompleteObject(object: any, autocompleteReference: MagmaAutocompleteComponent){
     this.objectAutocomplete = object
-    this.form.get('autocomplete')?.setValue(object.name, { emitEvent: false })
+    autocompleteReference.autocompleteSelectItem()
+    this.form.get('autocomplete')?.setValue(object.name)
   }
 
   /////////////////////

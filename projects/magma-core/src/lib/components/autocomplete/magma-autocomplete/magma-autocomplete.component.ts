@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, ContentChildren, ElementRef, EventEmitter, HostListener, Input, Output, QueryList, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, Input, Output, Renderer2, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'magma-autocomplete',
@@ -6,7 +6,7 @@ import { AfterContentInit, Component, ContentChildren, ElementRef, EventEmitter,
   templateUrl: './magma-autocomplete.component.html',
   styleUrl: './magma-autocomplete.component.scss'
 })
-export class MagmaAutocompleteComponent implements AfterContentInit{
+export class MagmaAutocompleteComponent{
 
   @Input() isOpen: boolean = false
   @Input() list: Array<any> = []
@@ -17,27 +17,22 @@ export class MagmaAutocompleteComponent implements AfterContentInit{
   @Output() searchEmitter = new EventEmitter()
 
   @ViewChild('magmaAutocomplete', { static: false }) autocompleteContainerRef?: ElementRef
-  @ContentChildren('[magmaAutocompleteItem]', { descendants: true })
-  autocompleteItems!: QueryList<ElementRef>
+
+  isAutocompleteSelectItem = false
+
+  autocompleteSelectItem(){
+    this.isAutocompleteSelectItem = true
+  }
 
   constructor(private el: ElementRef, private renderer: Renderer2) {}
 
-  ngAfterContentInit(): void {
-    console.log(this.autocompleteItems)
-    this.autocompleteItems.forEach((item: ElementRef) => {
-      this.renderer.listen(item.nativeElement, 'click', () => {
-        this.onAutocompleteItemClick(item.nativeElement);
-      });
-    });
-  }
-
-  onAutocompleteItemClick(element: HTMLElement) {
-    console.log('Kliknięto element:', element.textContent?.trim());
-    // Możesz tutaj wyemitować event, zamknąć panel, itp.
-    // this.closePanel();
-  }
-
   openPanel(){
+    if (this.isAutocompleteSelectItem) {
+      this.isAutocompleteSelectItem = false
+      this.closePanel()
+      return
+    }
+
     this.isOpen = true
 
     setTimeout(() => {
@@ -50,6 +45,7 @@ export class MagmaAutocompleteComponent implements AfterContentInit{
   }
 
   search(inputValue: any){
+
     if (inputValue) {
       this.openPanel()
     }
