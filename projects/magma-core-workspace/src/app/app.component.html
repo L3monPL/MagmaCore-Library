@@ -173,7 +173,7 @@
             </magma-form-field>
 
             <magma-form-field>
-              <magma-label>Autocomplete</magma-label>
+              <magma-label>Autocomplete | showOptionsOnClick</magma-label>
               <input #inputAutocomplete_2 magmaInput type="text" inputTypeStyle="autocomplete" placeholder="Autocomplete" formControlName="autocomplete_2">
               <magma-autocomplete #autocomplete_2 showOptionsOnClick [inputElement]="inputAutocomplete_2" [list]="listAutocomplete_2" [loading]="loadingAutocomplete" (searchEmitter)="searchAutocomplete_2($event)">
                 @for (item of listAutocomplete_2; track $index) {
