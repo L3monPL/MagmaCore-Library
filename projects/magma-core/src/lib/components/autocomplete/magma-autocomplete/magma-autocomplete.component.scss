@@ -13,8 +13,20 @@
     margin-top: 6px;
     margin-bottom: 6px;
     visibility: hidden;
+    max-height: 160px;
+    overflow-y: auto;
 }
 .loading_container{
     align-items: center;
     justify-content: center;
+}
+.autocomplete_container ::ng-deep p{
+    padding: 0.5rem 0.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.autocomplete_container ::ng-deep p:hover{
+    background-color: var(--magma-color-card-200);
+    transition: 0.3s;
 }
