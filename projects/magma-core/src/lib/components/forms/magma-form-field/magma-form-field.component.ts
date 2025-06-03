@@ -87,6 +87,13 @@ export class MagmaFormFieldComponent implements AfterViewInit, OnInit, OnDestroy
             // console.log('click input')
             // this.magmaAutocompleteComponent.openPanel()
             // console.log(this.ngControl.value)
+            const nativeEl = this.magmaAutocompleteComponent.nativeElement
+
+            console.log(nativeEl.getAttribute('showOptionsOnClick') != null)
+
+            if (nativeEl.getAttribute('showOptionsOnClick') != null) {
+              this.magmaAutocompleteComponent.openPanel()
+            }
             if (this.ngControl.value) {
               this.magmaAutocompleteComponent.openPanel()
             }

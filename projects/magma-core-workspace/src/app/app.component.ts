@@ -261,7 +261,8 @@ export class AppComponent {
     numberCount: new FormControl(120234), // Możesz ustawić domyślną wartość
     date: new FormControl <Date|string>(new Date()),
     dateMonth: new FormControl <Date|string>(new Date()),
-    autocomplete: new FormControl('')
+    autocomplete: new FormControl(''),
+    autocomplete_2: new FormControl('')
   });
 
   openDialog() {
@@ -413,6 +414,49 @@ export class AppComponent {
     this.objectAutocomplete = object
     autocompleteReference.autocompleteSelectItem()
     this.form.get('autocomplete')?.setValue(object.name)
+  }
+
+  // V_2 ///////////////////
+
+  listAutocomplete_2: Array<any> = [
+    { id: 0, name: 'blue' },
+        { id: 1, name: 'orange' },
+        { id: 2, name: 'white' },
+        { id: 3, name: 'red' },
+        { id: 4, name: 'green' },
+        { id: 5, name: 'purple' },
+        { id: 6, name: 'black' }
+  ]
+
+  selectedAutocompleteObject_2(object: any, autocompleteReference: MagmaAutocompleteComponent){
+    this.objectAutocomplete = object
+    autocompleteReference.autocompleteSelectItem()
+    this.form.get('autocomplete_2')?.setValue(object.name)
+  }
+
+  searchAutocomplete_2(event: any){
+    this.loadingAutocomplete = true
+
+    if (this.autocompleteTimeout) {
+      clearTimeout(this.autocompleteTimeout)
+    }
+
+    console.log(event)
+
+    this.autocompleteTimeout = setTimeout(() => {
+
+      this.listAutocomplete_2 = [
+        { id: 0, name: 'blue' },
+        { id: 1, name: 'orange' },
+        { id: 2, name: 'white' },
+        { id: 3, name: 'red' },
+        { id: 4, name: 'green' },
+        { id: 5, name: 'purple' },
+        { id: 6, name: 'black' }
+      ]
+
+      this.loadingAutocomplete = false
+    }, 1000);
   }
 
   /////////////////////

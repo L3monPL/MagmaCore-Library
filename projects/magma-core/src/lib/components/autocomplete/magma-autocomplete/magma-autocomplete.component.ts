@@ -18,13 +18,13 @@ export class MagmaAutocompleteComponent{
 
   @ViewChild('magmaAutocomplete', { static: false }) autocompleteContainerRef?: ElementRef
 
-  isAutocompleteSelectItem = false
-
-  autocompleteSelectItem(){
-    this.isAutocompleteSelectItem = true
+  get nativeElement(): HTMLElement {
+    return this.el.nativeElement;
   }
 
   constructor(private el: ElementRef, private renderer: Renderer2) {}
+
+  autocompleteTimeout: any
 
   openPanel(){
     if (this.isAutocompleteSelectItem) {
@@ -33,15 +33,20 @@ export class MagmaAutocompleteComponent{
       return
     }
 
+    if (this.autocompleteTimeout) {
+      clearTimeout(this.autocompleteTimeout)
+    }
+
     this.isOpen = true
 
-    setTimeout(() => {
+    this.autocompleteTimeout = setTimeout(() => {
       this.adjustPosition();
     });
   }
 
   closePanel(){
     this.isOpen = false
+    clearTimeout(this.autocompleteTimeout)
   }
 
   search(inputValue: any){
@@ -53,6 +58,12 @@ export class MagmaAutocompleteComponent{
       this.closePanel()
     }
     this.searchEmitter.emit(inputValue)
+  }
+
+  isAutocompleteSelectItem = false
+
+  autocompleteSelectItem(){
+    this.isAutocompleteSelectItem = true
   }
 
   @HostListener('window:resize')
