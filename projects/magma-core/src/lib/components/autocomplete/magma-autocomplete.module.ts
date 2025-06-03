@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MagmaAutocompleteComponent } from './magma-autocomplete/magma-autocomplete.component';
+import { ProgressSpinnerModule } from '../progressSpinner/progress-spinner.module';
 
 
 
@@ -9,7 +10,8 @@ import { MagmaAutocompleteComponent } from './magma-autocomplete/magma-autocompl
     MagmaAutocompleteComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ProgressSpinnerModule
   ],
   exports: [
     MagmaAutocompleteComponent

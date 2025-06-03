@@ -164,11 +164,11 @@
 
             <magma-form-field>
               <magma-label>Autocomplete</magma-label>
-              <input magmaInput type="text" inputTypeStyle="autocomplete" placeholder="Autocomplete" formControlName="autocomplete">
-              <magma-autocomplete (searchEmitter)="searchAutocomplete($event)">
-                <p>test 1</p>
-                <p>test 2</p>
-                <p>test 3</p>
+              <input #inputAutocomplete_1 magmaInput type="text" inputTypeStyle="autocomplete" placeholder="Autocomplete" formControlName="autocomplete">
+              <magma-autocomplete [inputElement]="inputAutocomplete_1" [list]="listAutocomplete" [loading]="loadingAutocomplete" (searchEmitter)="searchAutocomplete($event)">
+                @for (item of listAutocomplete; track $index) {
+                  <p magmaAutocompleteItem (click)="selectedAutocompleteObject(item)">{{item.name}}</p>
+                }
               </magma-autocomplete>
             </magma-form-field>
   

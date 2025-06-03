@@ -47,7 +47,6 @@ export class MagmaMenuComponent{
     const clickedInsideMenu = this.el.nativeElement.contains(event.target);
     const clickedToggle = this.toggleButtonElement?.contains(event.target as Node);
 
-    // Zamykaj tylko gdy kliknięcie jest poza menu i poza przyciskiem toggle
     if (!clickedInsideMenu && !clickedToggle && this.isOpen) {
       this.isOpen = false;
     }

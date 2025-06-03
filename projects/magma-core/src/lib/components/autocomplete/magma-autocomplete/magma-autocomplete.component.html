@@ -1,5 +1,10 @@
 @if (isOpen) {
-    <div class="autocomplete_container">
-        <ng-content></ng-content>
+    <div #magmaAutocomplete class="autocomplete_container" [ngClass]="{'loading_container': loading}">
+        @if (!loading) {
+            <ng-content></ng-content>
+        }
+        @else {
+            <progress-spinner [size]="18"></progress-spinner>
+        }
     </div>
 }

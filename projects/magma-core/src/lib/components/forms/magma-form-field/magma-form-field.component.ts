@@ -81,6 +81,17 @@ export class MagmaFormFieldComponent implements AfterViewInit, OnInit, OnDestroy
       // INSIDE INPUT TYPE AUTOCOMPLETE ------------------------------------------------- //
       if (inputElement.getAttribute('inputTypeStyle') == 'autocomplete') {
         this.inputTypeStyle = 'autocomplete'
+
+        if (inputElement) {
+          this.inputClickListener = this.renderer.listen(inputElement, 'click', (event) => {
+            // console.log('click input')
+            // this.magmaAutocompleteComponent.openPanel()
+            // console.log(this.ngControl.value)
+            if (this.ngControl.value) {
+              this.magmaAutocompleteComponent.openPanel()
+            }
+          });
+        }
       }
     }
   }
@@ -102,7 +113,7 @@ export class MagmaFormFieldComponent implements AfterViewInit, OnInit, OnDestroy
       if (this.ngControl && this.ngControl.control) {
         if (this.isValidDate(this.ngControl.value)) {
 
-          console.log(this.ngControl.value)
+          // console.log(this.ngControl.value)
           // SET VALUE FROM INPUT TO DATEPICKER
           this.magmaDatePickerComponent.setDate = this.ngControl.value
           this.magmaDatePickerComponent.selectedDate = this.ngControl.value
@@ -134,10 +145,12 @@ export class MagmaFormFieldComponent implements AfterViewInit, OnInit, OnDestroy
     }
     // INSIDE INPUT TYPE AUTOCOMPLETE 
     if (inputElement && inputElement.getAttribute('inputTypeStyle') == 'autocomplete') {
-      // console.log(this.magmaAutocompleteComponent)
+
       if (this.ngControl?.control && this.magmaAutocompleteComponent) {
         this.ngControl?.control.valueChanges.pipe(debounceTime(300), distinctUntilChanged())
         .subscribe(value => {
+          const height = inputElement.offsetHeight
+          this.magmaAutocompleteComponent.inputHeight = `${height}px`
           this.magmaAutocompleteComponent?.search(value)
         });
       } 
@@ -245,7 +258,7 @@ export class MagmaFormFieldComponent implements AfterViewInit, OnInit, OnDestroy
   // -------------------------------------------------------------------------- //
 
   selectedDate(event: any){
-    console.log(event)
+    // console.log(event)
 
     if (this.ngControl && this.ngControl.control) {
 

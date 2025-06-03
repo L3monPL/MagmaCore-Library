@@ -376,8 +376,42 @@ export class AppComponent {
 
   // MAGMA AUTOCOMPLETE //
 
+  listAutocomplete: Array<any> = []
+  loadingAutocomplete = false
+  autocompleteTimeout: any
+
   searchAutocomplete(event: any){
+    this.loadingAutocomplete = true
+
+    if (this.autocompleteTimeout) {
+      clearTimeout(this.autocompleteTimeout)
+    }
+
     console.log(event)
+
+    this.autocompleteTimeout = setTimeout(() => {
+
+      this.listAutocomplete = [
+        { id: 0, name: 'blue' },
+        { id: 1, name: 'orange' },
+        { id: 2, name: 'white' },
+        { id: 3, name: 'red' },
+        { id: 4, name: 'green' },
+        { id: 5, name: 'purple' },
+        { id: 6, name: 'black' }
+      ]
+
+      this.loadingAutocomplete = false
+    }, 1000);
   }
+
+  objectAutocomplete = null
+
+  selectedAutocompleteObject(object: any){
+    this.objectAutocomplete = object
+    this.form.get('autocomplete')?.setValue(object.name, { emitEvent: false })
+  }
+
+  /////////////////////
 
 }
