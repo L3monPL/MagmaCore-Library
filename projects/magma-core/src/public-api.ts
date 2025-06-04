@@ -114,3 +114,7 @@ export * from './lib/components/toggleSwitch/magma-toggle-switch/magma-toggle-sw
 
 // MAGMA DIRECTIVES
 export * from './lib/components/directives/magma-stay-in-viewport.directive'
+
+// MAGMA AUTOCOMPLETE
+export * from './lib/components/autocomplete/magma-autocomplete.module'
+export * from './lib/components/autocomplete/magma-autocomplete/magma-autocomplete.component'
