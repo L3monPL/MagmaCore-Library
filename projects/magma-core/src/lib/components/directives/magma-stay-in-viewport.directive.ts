@@ -1,21 +1,34 @@
-import { AfterViewInit, Directive, ElementRef, HostListener, Renderer2 } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, HostListener, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 
 @Directive({
   selector: '[magmaStayInViewport]',
   standalone: true
 })
-export class MagmaStayInViewportDirective implements AfterViewInit{
+export class MagmaStayInViewportDirective implements AfterViewInit, OnDestroy{
+
+  private resizeObserver?: ResizeObserver
 
   constructor(private el: ElementRef, private renderer: Renderer2) {}
 
   ngAfterViewInit(): void {
     const element = this.el.nativeElement as HTMLElement;
     this.renderer.setStyle(element, 'visibility', 'hidden'); // Ukryj element
+    this.renderer.setStyle(element, 'position', 'absolute')
 
-    setTimeout(() => {
+    // setTimeout(() => {
+    //   this.adjustPosition();
+    //   this.renderer.setStyle(element, 'visibility', 'visible'); // Pokaż po ustawieniu pozycji
+    // });
+
+    this.resizeObserver = new ResizeObserver(() => {
       this.adjustPosition();
-      this.renderer.setStyle(element, 'visibility', 'visible'); // Pokaż po ustawieniu pozycji
+      this.renderer.setStyle(element, 'visibility', 'visible');
     });
+    this.resizeObserver.observe(element);
+  }
+
+  ngOnDestroy(): void {
+    this.resizeObserver?.disconnect();
   }
 
   @HostListener('window:resize')
@@ -36,12 +49,12 @@ export class MagmaStayInViewportDirective implements AfterViewInit{
     };
   
     if (rect.right > window.innerWidth) {
-      stylesToUpdate['right'] = `${margin}px`;
+      stylesToUpdate['right'] = `0px`;
       stylesToUpdate['left'] = 'auto';
     }
   
     if (rect.left < 0) {
-      stylesToUpdate['left'] = `${margin}px`;
+      stylesToUpdate['left'] = `0px`;
       stylesToUpdate['right'] = 'auto';
     }
   

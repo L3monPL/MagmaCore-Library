@@ -12,6 +12,7 @@ export class MagmaMenuComponent{
   @Input() toggleButtonElement?: HTMLElement
 
   @Output() changeValue = new EventEmitter<any>()
+  @Output() isOpenChange = new EventEmitter<boolean>()
 
   constructor(private el: ElementRef, private renderer: Renderer2) {
     this.addStyles()
@@ -25,7 +26,7 @@ export class MagmaMenuComponent{
 
   toggle(event: Event) {
     this.isOpen = !this.isOpen
-    // console.log(this.isOpen)
+    this.isOpenChange.emit(this.isOpen)
   }
 
   @HostListener('click', ['$event'])
@@ -49,6 +50,7 @@ export class MagmaMenuComponent{
 
     if (!clickedInsideMenu && !clickedToggle && this.isOpen) {
       this.isOpen = false;
+      this.isOpenChange.emit(this.isOpen)
     }
   }
 }

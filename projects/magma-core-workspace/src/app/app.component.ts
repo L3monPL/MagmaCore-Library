@@ -461,4 +461,18 @@ export class AppComponent {
 
   /////////////////////
 
+  // MAGMA MENU //////
+
+  isMenuOpen = false
+
+  openMenu(){
+    this.isMenuOpen = !this.isMenuOpen
+  }
+
+  menuTableLog(event: any){
+    console.log(event)
+  }
+
+  /////////////////////
+
 }
