@@ -167,8 +167,13 @@
             </magma-card-header>
 
             <magma-form-field>
-              <magma-label>Wybierz datę</magma-label>
+              <magma-label>Select range date</magma-label>
               <magma-date-range-input formControlName="date_1"></magma-date-range-input>
+            </magma-form-field>
+
+            <magma-form-field>
+              <magma-label>Wybierz datę</magma-label>
+              <input magmaInput inputTypeStyle="date" typeCalendar="day" type="text" formControlName="date">
             </magma-form-field>
 
             <magma-form-field>
@@ -209,11 +214,6 @@
             <br>
             <magma-toggle-switch [(checked)]="isChecked">Konto jest archiwalne</magma-toggle-switch>
             <!--  -->
-
-            <magma-form-field>
-              <magma-label>Wybierz datę</magma-label>
-              <input magmaInput inputTypeStyle="date" typeCalendar="day" type="text" formControlName="date">
-            </magma-form-field>
   
             <magma-form-field>
               <magma-label>First name</magma-label>

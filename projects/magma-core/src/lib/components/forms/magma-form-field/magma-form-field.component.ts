@@ -32,7 +32,7 @@ export class MagmaFormFieldComponent implements AfterViewInit, OnInit, OnDestroy
 
   private inputClickListener?: () => void
   isDropdownDate: boolean = false
-  typeCalendar?: string
+  typeCalendar?: string = 'day'
   @ViewChild(MagmaDatePickerComponent) magmaDatePickerComponent!: MagmaDatePickerComponent
   @ContentChild(MagmaAutocompleteComponent) magmaAutocompleteComponent!: MagmaAutocompleteComponent
 
