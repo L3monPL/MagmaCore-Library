@@ -55,7 +55,7 @@ export class MagmaFormFieldComponent implements AfterViewInit, OnInit, OnDestroy
         this.renderer.setStyle(inputElement, 'padding-right', '28px')
       }
       // INSIDE INPUT TYPE DATE ------------------------------------------------- //
-      if (inputElement.getAttribute('inputTypeStyle') == 'date') {
+      if (inputElement.getAttribute('inputTypeStyle') == 'date' || inputElement.getAttribute('inputTypeStyle') == 'dateRange') {
         this.inputTypeStyle = 'date'
 
         if (inputElement.getAttribute('typeCalendar')) {
@@ -89,7 +89,7 @@ export class MagmaFormFieldComponent implements AfterViewInit, OnInit, OnDestroy
             // console.log(this.ngControl.value)
             const nativeEl = this.magmaAutocompleteComponent.nativeElement
 
-            console.log(nativeEl.getAttribute('showOptionsOnClick') != null)
+            // console.log(nativeEl.getAttribute('showOptionsOnClick') != null)
 
             if (nativeEl.getAttribute('showOptionsOnClick') != null) {
               this.magmaAutocompleteComponent.openPanel()
@@ -141,11 +141,54 @@ export class MagmaFormFieldComponent implements AfterViewInit, OnInit, OnDestroy
         }
       }
     }
+    // INSIDE INPUT TYPE DATE ------------------------------------------------- //
+    if (inputElement && inputElement.getAttribute('inputTypeStyle') == 'dateRange') {
+      if (this.ngControl && this.ngControl.control) {
+
+        console.log(this.ngControl.value)
+        let from = this.ngControl.value.from
+        let to = this.ngControl.value.to
+
+        this.magmaDatePickerComponent.isRangePicker = true
+        this.magmaDatePickerComponent.rangeStart = from
+        this.magmaDatePickerComponent.rangeEnd = to
+
+        this.magmaDatePickerComponent.updateCalendar()
+
+        // this.magmaDatePickerComponent.setDate = from
+        // this.magmaDatePickerComponent.selectedDate = from
+
+
+        // if (this.isValidDate(this.ngControl.value)) {
+
+          // console.log(this.ngControl.value)
+          // SET VALUE FROM INPUT TO DATEPICKER
+          // this.magmaDatePickerComponent.setDate = this.ngControl.value
+          // this.magmaDatePickerComponent.selectedDate = this.ngControl.value
+          // // ---------------------------------
+  
+          // if (this.typeCalendar == 'day') {
+          //   let date = this.convertDate(this.ngControl.value)
+          //   this.ngControl.control.setValue(date)
+          // }
+          // if (this.typeCalendar == 'month') {
+          //   let date = this.formatMonthYear(this.ngControl.value) 
+          //   this.ngControl.control.setValue(date)
+          // }
+          // if (this.typeCalendar == 'year') {
+          //   let date = this.convertDate(this.ngControl.value)
+          //   this.ngControl.control.setValue(date)
+          // }
+        // }
+      }
+    }
     // SET VALUE FROM INPUT TO DATEPICKER
     if (this.ngControl?.control && this.magmaDatePickerComponent) {
       this.ngControl.control.valueChanges.subscribe((value) => {
         // SET VALUE FROM INPUT TO DATEPICKER
-        this.magmaDatePickerComponent.setDate = this.parseDateFromString(value)!
+        if (inputElement.getAttribute('inputTypeStyle') != 'dateRange') {
+          this.magmaDatePickerComponent.setDate = this.parseDateFromString(value)!
+        }
         // this.magmaDatePickerComponent.selectedDate = value
         this.magmaDatePickerComponent.updateCalendar()
       });
@@ -265,9 +308,19 @@ export class MagmaFormFieldComponent implements AfterViewInit, OnInit, OnDestroy
   // -------------------------------------------------------------------------- //
 
   selectedDate(event: any){
-    // console.log(event)
+    console.log(event)
+    const inputElement = this.el.nativeElement.querySelector('input')
 
     if (this.ngControl && this.ngControl.control) {
+
+      if (inputElement.getAttribute('inputTypeStyle') == 'dateRange'){
+        this.ngControl.control.setValue({
+          from: new Date(event.from),
+          to: new Date(event.to)
+        });
+
+        return
+      }
 
       if (this.typeCalendar == 'day') {
         let date = this.convertDate(event)

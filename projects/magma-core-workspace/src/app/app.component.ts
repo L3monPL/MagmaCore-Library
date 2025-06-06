@@ -224,7 +224,7 @@ export class AppComponent {
   ]
 
   detetListChecboxChange(){
-    console.log(this.checkBoxList)
+    // console.log(this.checkBoxList)
   }
 
   isOpen = true
@@ -260,6 +260,11 @@ export class AppComponent {
   form = new FormGroup({
     numberCount: new FormControl(120234), // Możesz ustawić domyślną wartość
     date: new FormControl <Date|string>(new Date()),
+    date_1: new FormControl<{ from: Date|string; to: Date|string }>({
+      from: '',
+      to: ''
+    }),
+    date_2: new FormControl <Date|string>(new Date()),
     dateMonth: new FormControl <Date|string>(new Date()),
     autocomplete: new FormControl(''),
     autocomplete_2: new FormControl('')
@@ -271,7 +276,7 @@ export class AppComponent {
       message: 'This is a custom message for the dialog.'
     }).then(result => {
       if (result) {
-        console.log(result) 
+        // console.log(result) 
       }
     });
   }
@@ -284,7 +289,7 @@ export class AppComponent {
 
   onPageChange(page: number) {
     this.currentPage = page;
-    console.log('Nowa strona:', page);
+    // console.log('Nowa strona:', page);
   }
 
   isMobileMenuContainer = false
@@ -301,7 +306,7 @@ export class AppComponent {
       user: user
     }).then(result => {
       if (result) {
-        console.log(result) 
+        // console.log(result) 
       }
     });
   }
@@ -325,7 +330,7 @@ export class AppComponent {
   // END END END END END END END END END
 
   datepickerLogEvent(event: any){
-    console.log(event)
+    // console.log(event)
   }
 
   currentDate = new Date(2025, 4, 29)
@@ -336,13 +341,13 @@ export class AppComponent {
   selectedDateMonthChip: string | Date = new Date()
 
   selectedDate(event: any){
-    console.log(event)
+    // console.log(event)
     let date = event
     this.selectedDateChip = date
   }
 
   selectedDateMonth(event: any){
-    console.log(event)
+    // console.log(event)
     let date = event
     this.selectedDateMonthChip = date
   }
@@ -390,7 +395,7 @@ export class AppComponent {
       clearTimeout(this.autocompleteTimeout)
     }
 
-    console.log(event)
+    // console.log(event)
 
     this.autocompleteTimeout = setTimeout(() => {
 
@@ -441,7 +446,7 @@ export class AppComponent {
       clearTimeout(this.autocompleteTimeout)
     }
 
-    console.log(event)
+    // console.log(event)
 
     this.autocompleteTimeout = setTimeout(() => {
 
@@ -470,7 +475,7 @@ export class AppComponent {
   }
 
   menuTableLog(event: any){
-    console.log(event)
+    // console.log(event)
   }
 
   /////////////////////

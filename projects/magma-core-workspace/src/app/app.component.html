@@ -167,6 +167,11 @@
             </magma-card-header>
 
             <magma-form-field>
+              <magma-label>Wybierz datę</magma-label>
+              <magma-date-range-input formControlName="date_1"></magma-date-range-input>
+            </magma-form-field>
+
+            <magma-form-field>
               <magma-label>Autocomplete</magma-label>
               <input #inputAutocomplete_1 magmaInput type="text" inputTypeStyle="autocomplete" placeholder="Autocomplete" formControlName="autocomplete">
               <magma-autocomplete #autocomplete_1 [inputElement]="inputAutocomplete_1" [list]="listAutocomplete" [loading]="loadingAutocomplete" (searchEmitter)="searchAutocomplete($event)">

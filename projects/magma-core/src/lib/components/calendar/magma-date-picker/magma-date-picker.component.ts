@@ -23,20 +23,36 @@ export class MagmaDatePickerComponent implements OnInit {
   years?: Array<number> = []
   currentSelection?: string = 'day'
 
+  /// RANGE ///
+  @Input() isRangePicker: boolean = false
+
+  rangeStart: Date | null = null
+  rangeEnd: Date | null = null
+  isSelectingRangeStart: boolean = false
+  isSelectingRangeEnd: boolean = false
+  /////////////
+
   constructor(
     private el: ElementRef, 
   ) {
   }
 
   ngOnInit(): void {
+    // RANGE
+    // if (this.isRangePicker) {
+    //   console.log(this.rangeStart)
+    //   console.log(this.rangeEnd)
+    //   return
+    // }
+    //
     //set Date from INPUT
     if (this.setDate) {
       this.currentDate = this.setDate
       this.selectedDate = this.setDate
     }
 
-    console.log(this.currentDate)
-    console.log(this.typeCalendar)
+    // console.log(this.currentDate)
+    // console.log(this.typeCalendar)
 
     // set Datapicker TYPE
     this.currentSelection = this.typeCalendar
@@ -47,7 +63,13 @@ export class MagmaDatePickerComponent implements OnInit {
   }
 
   updateCalendar(){
-    console.log(this.setDate)
+    if (this.isRangePicker) {
+      console.log(this.rangeStart)
+      console.log(this.rangeEnd)
+      // console.log(this.selectedDate)
+      this.generateCalendar()
+      return
+    }
     if (this.setDate == null) {
       this.currentDate = new Date()
       this.selectedDate = null
@@ -58,9 +80,9 @@ export class MagmaDatePickerComponent implements OnInit {
       this.selectedDate = this.setDate
       this.generateCalendar()
     } 
-    else {
-      console.warn('setDate is not a valid Date')
-    }
+    // else {
+    //   console.warn('setDate is not a valid Date')
+    // }
   }
 
   clearData(){
@@ -125,6 +147,25 @@ export class MagmaDatePickerComponent implements OnInit {
            this.selectedDate.getMonth() === this.currentDate.getMonth()
   }
 
+  //RANGE
+
+  isSelectedRangeStart(day: number, isCurrentMonth: boolean): boolean {
+    return this.rangeStart! &&
+           isCurrentMonth &&
+           this.rangeStart.getFullYear() === this.currentDate.getFullYear() &&
+           this.rangeStart.getMonth() === this.currentDate.getMonth() &&
+           this.rangeStart.getDate() === day;
+  }
+  isSelectedRangeEnd(day: number, isCurrentMonth: boolean): boolean {
+    return this.rangeEnd! &&
+           isCurrentMonth &&
+           this.rangeEnd.getFullYear() === this.currentDate.getFullYear() &&
+           this.rangeEnd.getMonth() === this.currentDate.getMonth() &&
+           this.rangeEnd.getDate() === day;
+  }
+
+  ////////
+
   generateCalendar() {
     const year = this.currentDate.getFullYear();
     const month = this.currentDate.getMonth();
@@ -163,7 +204,7 @@ export class MagmaDatePickerComponent implements OnInit {
     }
 
     if (this.days[this.days.length - 1]!.day >= 7) {
-      console.log(this.days[this.days.length - 1])
+      // console.log(this.days[this.days.length - 1])
       this.days.splice(-7)
 
       if (this.days[this.days.length - 1]!.day >= 7 && this.days[this.days.length - 1]!.day < 20) {
@@ -171,7 +212,7 @@ export class MagmaDatePickerComponent implements OnInit {
       }
     }
 
-    console.log(this.days)
+    // console.log(this.days)
   }
 
 
@@ -186,8 +227,36 @@ export class MagmaDatePickerComponent implements OnInit {
   selectDate(day: number, isCurrentMonth: boolean) {
     if (day !== null && isCurrentMonth) {
       let date = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), day)
+      // RANGE
+      if (this.isRangePicker) {
+        if (!this.isSelectingRangeStart) {
+          this.rangeStart = date
+          this.rangeEnd = null
+
+          this.isSelectingRangeStart = true
+          this.isSelectingRangeEnd = false
+        }
+        else {
+          this.rangeEnd = date
+
+          this.isSelectingRangeStart = false
+          this.isSelectingRangeEnd = true
+
+          console.log(this.rangeStart, this.rangeEnd)
+          this.selectDateEmmiter.emit({ from: this.rangeStart, to: this.rangeEnd })
+
+          if (!this.isStaticPosition) {
+            setTimeout(() => {
+              this.dropdown = false
+            }, 300); 
+          }
+        }
+        return
+      }
+      ////////
+      // NORMAL
       this.selectedDate = date
-      // console.log(this.selectedDate)
+      console.log(this.selectedDate)
       this.selectDateEmmiter.emit(this.selectedDate)
 
       if (!this.isStaticPosition) {
@@ -224,7 +293,7 @@ export class MagmaDatePickerComponent implements OnInit {
 
     this.years = this.getYearRange(String(this.currentDate))
 
-    console.log(this.years)
+    // console.log(this.years)
   }
 
   selectYear(year: number) {
@@ -271,7 +340,7 @@ export class MagmaDatePickerComponent implements OnInit {
 
     //RIGHT LEFT
     if (windowWidth - inputRect.x < 272) {
-      console.log(windowWidth - inputRect.x)
+      // console.log(windowWidth - inputRect.x)
       this.dropDownRight = '0px'
       this.dropDownLeft = 'auto'
     }

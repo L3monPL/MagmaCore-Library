@@ -60,6 +60,8 @@
                                 [ngClass]="{
                                 'selected': isSelected(item!.day, item.isCurrentMonth),
                                 'not_cuttent_month': !item.isCurrentMonth,
+                                'selected_range_start': isSelectedRangeStart(item!.day, item.isCurrentMonth),
+                                'selected_range_end': isSelectedRangeEnd(item!.day, item.isCurrentMonth)
                                 }"
                                 (click)="selectDate(item!.day, item.isCurrentMonth); $event.stopPropagation()">
                                     {{item.day}}

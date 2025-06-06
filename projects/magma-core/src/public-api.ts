@@ -44,6 +44,7 @@ export * from './lib/components/selects/magma-select-option.directive'
 // MAGMA CALENDAR
 export * from './lib/components/calendar/magma-date-picker.module'
 export * from './lib/components/calendar/magma-date-picker/magma-date-picker.component'
+export * from './lib/components/calendar/magma-date-range-input/magma-date-range-input.component'
 
 // MAGMA PROGRESS SPINNER
 export * from './lib/components/progressSpinner/progress-spinner.module'

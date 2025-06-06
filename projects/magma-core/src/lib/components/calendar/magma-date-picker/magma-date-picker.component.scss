@@ -106,6 +106,22 @@
 .selected:hover{
     background-color: #6366f1!important;
 }
+.selected_range_start{
+  background-color: #6366f1;
+  color: white;
+  transition: 0.5s;
+}
+.selected_range_start:hover{
+  background-color: #6366f1!important;
+}
+.selected_range_end{
+  background-color: #6366f1;
+  color: white;
+  transition: 0.5s;
+}
+.selected_range_end:hover{
+  background-color: #6366f1!important;
+}
 .months-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
