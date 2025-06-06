@@ -64,8 +64,8 @@ export class MagmaDatePickerComponent implements OnInit {
 
   updateCalendar(){
     if (this.isRangePicker) {
-      console.log(this.rangeStart)
-      console.log(this.rangeEnd)
+      // console.log(this.rangeStart)
+      // console.log(this.rangeEnd)
       // console.log(this.selectedDate)
       this.generateCalendar()
       return
@@ -383,6 +383,76 @@ export class MagmaDatePickerComponent implements OnInit {
         position: 'absolute'
       };
     }
+  }
+
+  hoveredDay: Date | null = null
+
+  onHover(day: number, isCurrentMonth: boolean) {
+    if (!isCurrentMonth || !this.rangeStart) {
+      this.hoveredDay = null;
+      return;
+    }
+
+    this.hoveredDay = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), day);
+
+    console.log(this.hoveredDay)
+  }
+  
+  onHoverEnd() {
+    this.hoveredDay = null;
+  }
+
+  isInHoverRange(day: number, isCurrentMonth: boolean): boolean {
+    if (!this.rangeStart || !this.hoveredDay) return false;
+
+    // Oblicz prawdziwą datę z dnia + kontekstu (czy to poprzedni / aktualny / następny miesiąc)
+    let itemDate: Date;
+
+    const currentYear = this.currentDate.getFullYear();
+    const currentMonth = this.currentDate.getMonth();
+
+    if (isCurrentMonth) {
+      itemDate = new Date(currentYear, currentMonth, day);
+    } else if (day < 15) {
+      // To są dni z następnego miesiąca
+      itemDate = new Date(currentYear, currentMonth + 1, day);
+    } else {
+      // To są dni z poprzedniego miesiąca
+      itemDate = new Date(currentYear, currentMonth - 1, day);
+    }
+
+    // Hover działa tylko przy otwartym wyborze range bez końca
+    if (this.rangeEnd) return false;
+
+    const start = this.rangeStart;
+    const hover = this.hoveredDay;
+
+    const min = start < hover ? start : hover;
+    const max = start > hover ? start : hover;
+
+    return itemDate > min && itemDate < max;
+  }
+
+  isInRange(day: number, isCurrentMonth: boolean): boolean {
+    if (!this.rangeStart || !this.rangeEnd) return false;
+  
+    let itemDate: Date;
+  
+    const currentYear = this.currentDate.getFullYear();
+    const currentMonth = this.currentDate.getMonth();
+  
+    if (isCurrentMonth) {
+      itemDate = new Date(currentYear, currentMonth, day);
+    } else if (day < 15) {
+      itemDate = new Date(currentYear, currentMonth + 1, day);
+    } else {
+      itemDate = new Date(currentYear, currentMonth - 1, day);
+    }
+  
+    const start = this.rangeStart;
+    const end = this.rangeEnd;
+  
+    return itemDate > start && itemDate < end;
   }
 
 }

@@ -145,7 +145,7 @@ export class MagmaFormFieldComponent implements AfterViewInit, OnInit, OnDestroy
     if (inputElement && inputElement.getAttribute('inputTypeStyle') == 'dateRange') {
       if (this.ngControl && this.ngControl.control) {
 
-        console.log(this.ngControl.value)
+        // console.log(this.ngControl.value)
         let from = this.ngControl.value.from
         let to = this.ngControl.value.to
 

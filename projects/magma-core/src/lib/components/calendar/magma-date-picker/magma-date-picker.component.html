@@ -61,8 +61,12 @@
                                 'selected': isSelected(item!.day, item.isCurrentMonth),
                                 'not_cuttent_month': !item.isCurrentMonth,
                                 'selected_range_start': isSelectedRangeStart(item!.day, item.isCurrentMonth),
-                                'selected_range_end': isSelectedRangeEnd(item!.day, item.isCurrentMonth)
+                                'selected_range_end': isSelectedRangeEnd(item!.day, item.isCurrentMonth),
+                                'in-hover-range': isInHoverRange(item!.day, item.isCurrentMonth),
+                                'in-range': isInRange(item.day, item.isCurrentMonth)
                                 }"
+                                (mouseenter)="onHover(item!.day, item.isCurrentMonth)"
+                                (mouseleave)="onHoverEnd()"
                                 (click)="selectDate(item!.day, item.isCurrentMonth); $event.stopPropagation()">
                                     {{item.day}}
                                 </div>
