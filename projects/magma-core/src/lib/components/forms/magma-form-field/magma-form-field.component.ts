@@ -308,7 +308,7 @@ export class MagmaFormFieldComponent implements AfterViewInit, OnInit, OnDestroy
   // -------------------------------------------------------------------------- //
 
   selectedDate(event: any){
-    console.log(event)
+    // console.log(event)
     const inputElement = this.el.nativeElement.querySelector('input')
 
     if (this.ngControl && this.ngControl.control) {

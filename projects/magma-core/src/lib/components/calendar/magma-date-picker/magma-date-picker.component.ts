@@ -242,7 +242,7 @@ export class MagmaDatePickerComponent implements OnInit {
           this.isSelectingRangeStart = false
           this.isSelectingRangeEnd = true
 
-          console.log(this.rangeStart, this.rangeEnd)
+          // console.log(this.rangeStart, this.rangeEnd)
           this.selectDateEmmiter.emit({ from: this.rangeStart, to: this.rangeEnd })
 
           if (!this.isStaticPosition) {
@@ -256,7 +256,7 @@ export class MagmaDatePickerComponent implements OnInit {
       ////////
       // NORMAL
       this.selectedDate = date
-      console.log(this.selectedDate)
+      // console.log(this.selectedDate)
       this.selectDateEmmiter.emit(this.selectedDate)
 
       if (!this.isStaticPosition) {
@@ -395,7 +395,7 @@ export class MagmaDatePickerComponent implements OnInit {
 
     this.hoveredDay = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), day);
 
-    console.log(this.hoveredDay)
+    // console.log(this.hoveredDay)
   }
   
   onHoverEnd() {
