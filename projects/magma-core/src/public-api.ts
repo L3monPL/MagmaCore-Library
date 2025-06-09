@@ -119,3 +119,7 @@ export * from './lib/components/directives/magma-stay-in-viewport.directive'
 // MAGMA AUTOCOMPLETE
 export * from './lib/components/autocomplete/magma-autocomplete.module'
 export * from './lib/components/autocomplete/magma-autocomplete/magma-autocomplete.component'
+
+// MAGMA FILEUPLOAD
+export * from './lib/components/fileUpload/magma-file-upload.module'
+export * from './lib/components/fileUpload/magma-file-upload-template/magma-file-upload-template.component'

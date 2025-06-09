@@ -25,6 +25,7 @@ import { MagmaAutocompleteModule } from '../../../magma-core/src/lib/components/
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
 import { Element } from '@angular/compiler';
 import { MagmaAutocompleteComponent } from '../../../magma-core/src/lib/components/autocomplete/magma-autocomplete/magma-autocomplete.component';
+import { DialogUploadFileComponent } from './components/dialog-upload-file/dialog-upload-file.component';
 
 interface BrandSelect {
   id: number;
@@ -301,6 +302,8 @@ export class AppComponent {
     this.selectedRole = name
   }
 
+  // MAGMA DIALOG
+
   openItemRightDialog(user: any){
     this.dialogService.openDialog(DialogRightComponent, {
       user: user
@@ -310,6 +313,17 @@ export class AppComponent {
       }
     });
   }
+  uploadFileDialog(){
+    this.dialogService.openDialog(DialogUploadFileComponent, {
+      
+    }).then(result => {
+      if (result) {
+        // console.log(result) 
+      }
+    });
+  }
+
+  /////////////////
 
   // TOGGLE SWITCH
 

@@ -1,0 +1,42 @@
+.file_upload_container{
+    height: 200px;
+    border-radius: 16px;
+    border: 1px dashed var(--magma-color-gray-300);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    cursor: pointer;
+    margin-top: 2rem;
+    padding: 2rem;
+
+    svg{
+        width: 40px;
+        height: 40px;
+        fill: var(--magma-color-gray-300);
+    }
+}
+.file_upload_container:hover{
+    border: 1px dashed var(--magma-color-purple-100);
+    transition: 0.3s;
+}
+.file_container{
+    display: flex;
+    flex-direction: row;
+    column-gap: 1rem;
+    overflow-x: auto;
+    width: 100%;
+}
+.file_item{
+    background-color: var(--magma-color-card-300);
+    padding: 1rem;
+    border-radius: 8px;
+
+    .file_name{
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        width: 140px;
+    }
+}
