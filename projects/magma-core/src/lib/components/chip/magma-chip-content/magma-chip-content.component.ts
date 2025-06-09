@@ -10,6 +10,7 @@ export class MagmaChipContentComponent {
 
   @Input() value?: string = ''
   @Input() selected?: any = ''
+  @Input()removable: boolean = true
 
   @Output() selectedChange = new EventEmitter<any>()
   @Output() clearData = new EventEmitter<any>()
