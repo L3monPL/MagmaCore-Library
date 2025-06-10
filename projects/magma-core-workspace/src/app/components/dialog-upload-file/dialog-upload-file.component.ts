@@ -25,4 +25,12 @@ export class DialogUploadFileComponent implements DialogComponentInterface{
   close() {
     this.closeDialog('close')
   }
+  /////////////////////////////////////////
+
+  files: File[] = []
+
+  importFiles(){
+    console.log(this.files)
+  }
+
 }

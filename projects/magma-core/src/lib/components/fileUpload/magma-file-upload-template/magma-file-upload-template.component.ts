@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'magma-file-upload-template',
@@ -8,7 +8,10 @@ import { Component } from '@angular/core';
 })
 export class MagmaFileUploadTemplateComponent {
 
-  files: File[] = [];
+  @Input() files: File[] = []
+  @Input() multiple: boolean = false
+
+  @Output() filesChange = new EventEmitter<File[]>()
 
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
@@ -29,9 +32,25 @@ export class MagmaFileUploadTemplateComponent {
   }
 
   private addFiles(fileList: FileList): void {
+    let newFiles: File[];
+
+  if (this.multiple) {
+    newFiles = [...this.files];
     for (let i = 0; i < fileList.length; i++) {
-      this.files.push(fileList.item(i)!);
+      newFiles.push(fileList.item(i)!);
     }
+  } else {
+    newFiles = fileList.length ? [fileList.item(0)!] : [];
+  }
+
+  this.files = newFiles;
+  this.filesChange.emit(this.files)
+  }
+
+  removeFile(index: number, event: any): void {
+    event.stopPropagation()
+    this.files = this.files.filter((_, i) => i !== index);
+    this.filesChange.emit(this.files);
   }
 
 }

@@ -1,7 +1,10 @@
 <magma-dialog [position]="'center'" (closeDialog)="close()" [loading]="false">
     <section>
         <h3>Dodaj pliki</h3>
-        <!-- <button magmaButton color="red" (click)="close()">Close</button> -->
-        <magma-file-upload-template></magma-file-upload-template>
+        <magma-file-upload-template [(files)]="files" [multiple]="true"></magma-file-upload-template>
+        <div class="row_actions_end">
+            <button magmaButton size="m" (click)="close()">Anuluj</button>
+            <button magmaButton color="green" size="m" (click)="importFiles()">Importuj</button>
+        </div>
     </section>
 </magma-dialog>

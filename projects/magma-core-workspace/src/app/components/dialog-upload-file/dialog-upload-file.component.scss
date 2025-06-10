@@ -3,4 +3,12 @@ section{
     h3{
         margin-top: 0px;
     }
+    .row_actions_end{
+        display: flex;
+        flex-direction: row;
+        column-gap: 1rem;
+        justify-content: end;
+        align-items: center;
+        margin-top: 2rem;
+    }
 }
