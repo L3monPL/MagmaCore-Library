@@ -16,7 +16,7 @@
                             <span (click)="toggleYearSelection(); $event.stopPropagation()">{{ currentDate | date: 'yyyy' }}</span>
                         }
                         @case ('day') {
-                            <span (click)="toggleMonthSelection(); $event.stopPropagation()">{{ currentDate | date: 'MMMM' }}</span>
+                            <span (click)="toggleMonthSelection(); $event.stopPropagation()">{{ months[currentDate.getMonth()] }}</span>
                             <span (click)="toggleYearSelection(); $event.stopPropagation()">{{ currentDate | date: 'yyyy' }}</span>
                         }
                     }

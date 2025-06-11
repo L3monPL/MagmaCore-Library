@@ -173,7 +173,7 @@
               <magma-date-range-input formControlName="date_1"></magma-date-range-input>
             </magma-form-field>
 
-            <magma-form-field>
+            <magma-form-field [months]="months" [daysOfWeek]="daysOfWeek">
               <magma-label>Wybierz datę</magma-label>
               <input magmaInput inputTypeStyle="date" typeCalendar="day" type="text" formControlName="date">
             </magma-form-field>

@@ -11,21 +11,20 @@ export class MagmaDatePickerComponent implements OnInit {
   @Input() dropdown = false
   @Input() typeCalendar?: string = 'day'
   @Input() isStaticPosition?: boolean = true
+  @Input() setDate?: Date| any
+  @Input() selectedDate: Date | any | null = null
+  @Input() isRangePicker: boolean = false
+  @Input() months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+  @Input() daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+
   @Output() selectDateEmmiter = new EventEmitter<any>()
 
-  @Input() setDate?: Date| any
   currentDate = new Date()
-  @Input() selectedDate: Date | any | null = null
-
   days: Array<{ day: number, isCurrentMonth: boolean }> = []
-  months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-  daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
   years?: Array<number> = []
   currentSelection?: string = 'day'
 
   /// RANGE ///
-  @Input() isRangePicker: boolean = false
-
   rangeStart: Date | null = null
   rangeEnd: Date | null = null
   isSelectingRangeStart: boolean = false

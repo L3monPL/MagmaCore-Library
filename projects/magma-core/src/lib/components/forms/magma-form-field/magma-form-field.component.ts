@@ -21,6 +21,8 @@ import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
 })
 export class MagmaFormFieldComponent implements AfterViewInit, OnInit, OnDestroy{
   
+  @Input() months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+  @Input() daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
   constructor(private el: ElementRef, private renderer: Renderer2) {}
 

@@ -23,7 +23,7 @@
         </div>
     }
     @if (inputTypeStyle == 'date') {
-        <magma-date-picker [isStaticPosition]="false" [dropdown]="isDropdownDate" [typeCalendar]="this.typeCalendar" (selectDateEmmiter)="selectedDate($event)"></magma-date-picker>
+        <magma-date-picker [daysOfWeek]="daysOfWeek" [months]="months" [isStaticPosition]="false" [dropdown]="isDropdownDate" [typeCalendar]="this.typeCalendar" (selectDateEmmiter)="selectedDate($event)"></magma-date-picker>
     }
     @if (inputTypeStyle == 'search') {
         <div class="container_absolute_search">
