@@ -31,11 +31,20 @@ p{
     margin-bottom: 0px;
     margin-top: 6px;
 }
-/* Typy powiadomień */
-.SUCCES { 
+
+.SUCCES{ 
     background-color: #56d45a22; 
     border: 1px solid #56d45a;
-}  /* Zielone */
-.ERROR   { background-color: #F44336; }  /* Czerwone */
-.INFO    { background-color: #2196F3; }  /* Niebieskie */
-.WARNING { background-color: #FF9800; }  /* Pomarańczowe */
+} 
+.ERROR{ 
+    background-color: #F4433622; 
+    border: 1px solid #F44336; 
+} 
+.INFO{ 
+    background-color: #2196F322; 
+    border: 1px solid #2196F3; 
+}  
+.WARNING{ 
+    background-color: #FF980022; 
+    border: 1px solid #FF9800; 
+} 
