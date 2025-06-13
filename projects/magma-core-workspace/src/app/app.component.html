@@ -90,7 +90,7 @@
             <!-- <magma-date-picker [setDate]="currentDate" typeCalendar="month" [dropdown]="false" (selectDateEmmiter)="datepickerLogEvent($event)"></magma-date-picker> -->
             <!-- <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
             <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> -->
-          <magma-table [loading]="false">
+          <magma-table [loading]="loadingTable">
             <thead>
               <tr>
                 <th class="m-col-s m-mobile-hide">
@@ -165,7 +165,8 @@
                 Subtitle
               </magma-card-subtitle>
             </magma-card-header>
-
+            <button magmaButton (click)="loadingTable = !loadingTable">loading table</button>
+            <br>
             <button magmaButton (click)="uploadFileDialog()">Upload file</button>
 
             <magma-form-field>
