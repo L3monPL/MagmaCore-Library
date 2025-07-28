@@ -18,6 +18,7 @@ export class MagmaSelectListComponent implements AfterContentInit{
       this.selectOptionDirective.toArray().forEach(option => {
         option.optionSelected.subscribe((value: any) => {
           this.optionSelected.emit(value)
+          console.log(value)
         });
       });
     }

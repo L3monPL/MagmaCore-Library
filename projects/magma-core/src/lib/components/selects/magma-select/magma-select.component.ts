@@ -45,10 +45,13 @@ export class MagmaSelectComponent implements ControlValueAccessor, AfterContentI
 
         if (this.optionLabel) {
           this.value = value[this.optionLabel]
+          this.onChange(this.value)
         }
         else{
           this.value = value
+          this.onChange(this.value)
         }
+        this.onTouched()
         this.dropdownOpen = false
       });
     }

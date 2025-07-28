@@ -89,7 +89,7 @@ export class AppComponent {
     this.selectList = [
       {id: 0, name: 'Ford'},
       {id: 1, name: 'Kia'},
-      {id: 2, name: 'Mazda'},
+      // {id: 2, name: 'Mazda'},
     ];
   }
 
@@ -266,9 +266,11 @@ export class AppComponent {
       to: ''
     }),
     date_2: new FormControl <Date|string>(new Date()),
+    dateDay_1: new FormControl <Date|string>(new Date('12/05/2025')),
     dateMonth: new FormControl <Date|string>(new Date()),
     autocomplete: new FormControl(''),
-    autocomplete_2: new FormControl('')
+    autocomplete_2: new FormControl(''),
+    selectCar: new FormControl('Kia'),
   });
 
   openDialog() {
@@ -498,5 +500,9 @@ export class AppComponent {
   daysOfWeek = ['Nd', 'Pn', 'Wt', 'Śr', 'Cz', 'Pt', 'Sb']
 
   loadingTable = false
+
+  showInfo_1(){
+    console.log(this.form.get('selectCar')?.value)
+  }
 
 }

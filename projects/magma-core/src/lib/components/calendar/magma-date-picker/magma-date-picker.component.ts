@@ -166,6 +166,9 @@ export class MagmaDatePickerComponent implements OnInit {
   ////////
 
   generateCalendar() {
+    console.log(this.currentDate)
+
+
     const year = this.currentDate.getFullYear();
     const month = this.currentDate.getMonth();
     const daysInMonth = new Date(year, month + 1, 0).getDate();

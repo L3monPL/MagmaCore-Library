@@ -90,7 +90,7 @@
             <!-- <magma-date-picker [setDate]="currentDate" typeCalendar="month" [dropdown]="false" (selectDateEmmiter)="datepickerLogEvent($event)"></magma-date-picker> -->
             <!-- <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
             <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> -->
-          <magma-table [loading]="loadingTable">
+          <!-- <magma-table [loading]="loadingTable">
             <thead>
               <tr>
                 <th class="m-col-s m-mobile-hide">
@@ -121,9 +121,7 @@
                 </th>
                 <th #menuToggleTable_1 class="m-col-action" (click)="openMenu()">
                   <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="512" height="512"><circle cx="2" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="22" cy="12" r="2"/></svg>
-                  <!-- <magma-dropdown-profile-menu magmaStayInViewport>
 
-                  </magma-dropdown-profile-menu> -->
                   <magma-menu magmaStayInViewport [(isOpen)]="isMenuOpen" [toggleButtonElement]="menuToggleTable_1" (changeValue)="menuTableLog($event)">
                     <p magmaSelect value="Admin">Admin</p>
                     <p magmaSelect value="User">User</p>
@@ -146,7 +144,7 @@
                 </tr>
               }
             </tbody>
-          </magma-table>
+          </magma-table> -->
           <!-- END TABLE END -->
           <!-- <magma-pagination
           [totalItems]="150"
@@ -157,7 +155,7 @@
           <br> -->
           <!-- <MAGMA CARD> ---------------------------------------- -->
           <magma-card>
-            <magma-card-header>
+            <!-- <magma-card-header>
               <magma-card-title>
                 Card title
               </magma-card-title>
@@ -197,7 +195,7 @@
                   <p magmaAutocompleteItem (click)="selectedAutocompleteObject_2(item, autocomplete_2)">{{item.name}}</p>
                 }
               </magma-autocomplete>
-            </magma-form-field>
+            </magma-form-field> -->
   
             <!-- <magma-form-field>
               <magma-label>Stan liczb</magma-label>
@@ -208,6 +206,11 @@
               <magma-label>Stan liczb</magma-label>
               <input magmaInput type="number" inputTypeStyle="number-right" step="0.1" placeholder="Stan liczb" formControlName="numberCount">
             </magma-form-field> -->
+
+            <magma-form-field>
+              <magma-label>Wybierz datę</magma-label>
+              <input magmaInput inputTypeStyle="date" typeCalendar="day" type="text" formControlName="dateDay_1">
+            </magma-form-field>
   
             <magma-form-field>
               <magma-label>Wybierz datę</magma-label>
@@ -227,6 +230,21 @@
               <magma-label>Opis wydarzenia</magma-label>
               <textarea magmaTextarea rows="5" style="resize: none;"></textarea>
             </magma-form-field>
+
+            <magma-form-field>
+              <magma-label>Select Year</magma-label>
+              <magma-select formControlName="selectCar" optionLabel="name">
+                <magma-select-list>
+                  @for (item of selectList; track $index) {
+                    <li magmaSelectOption [value]="item"
+                        [class.selected]="this.form.get('selectCar')?.value === item.name">
+                      {{ item.name }}
+                    </li>
+                  }
+                </magma-select-list>
+              </magma-select>
+            </magma-form-field>
+            <button magmaButton (click)="showInfo_1()">SHOW</button>
       
             <magma-card-actions justify="end">
               <button magmaButton (click)="openDialog()">Dialog open</button>
