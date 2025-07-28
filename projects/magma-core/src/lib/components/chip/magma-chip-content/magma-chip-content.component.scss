@@ -23,6 +23,22 @@
         column-gap: 0.5rem;
         color: #fff;
 
+        .content{
+            display: flex;
+            flex-direction: row;
+            column-gap: 0.25rem;
+            align-items: center;
+
+            .label{
+                // font-size: 0.7rem;
+                // color: #d1d1d1;
+            }
+            .selected{
+                // font-size: 0.9rem;
+                color: var(--magma-color-font-secondary-100);
+            }
+        }
+
     }
     .m_close_action{
         display: flex;
