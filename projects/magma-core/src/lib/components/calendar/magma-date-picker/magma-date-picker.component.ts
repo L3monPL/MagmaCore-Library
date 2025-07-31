@@ -79,9 +79,9 @@ export class MagmaDatePickerComponent implements OnInit {
       this.selectedDate = this.setDate
       this.generateCalendar()
     } 
-    // else {
-    //   console.warn('setDate is not a valid Date')
-    // }
+    else {
+      console.warn('setDate is not a valid Date')
+    }
   }
 
   clearData(){
