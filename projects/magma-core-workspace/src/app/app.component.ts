@@ -373,13 +373,13 @@ export class AppComponent {
     const day = date.getDate().toString().padStart(2, '0'); 
     const month = (date.getMonth() + 1).toString().padStart(2, '0'); 
     const year = date.getFullYear();
-    return `${day}/${month}/${year}`;
+    return `${year}-${month}-${day}`;
   }
 
   formatMonthYear(date: Date): string {
     const month = (date.getMonth() + 1).toString().padStart(2, '0')
     const year = date.getFullYear()
-    return `${month}/${year}`
+    return `${year}-${month}`
   }
 
   convertDateToString(date: any, dateType: string){
