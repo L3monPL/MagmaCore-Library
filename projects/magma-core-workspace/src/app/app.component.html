@@ -144,15 +144,18 @@
                 </tr>
               }
             </tbody>
-          </magma-table> -->
+          </magma-table>  -->
+
           <!-- END TABLE END -->
+
           <!-- <magma-pagination
           [totalItems]="150"
           [pageSize]="10"
           [currentPage]="currentPage"
           (pageChange)="onPageChange($event)"
-          ></magma-pagination>
-          <br> -->
+          ></magma-pagination> -->
+
+          <br>
           <!-- <MAGMA CARD> ---------------------------------------- -->
           <magma-card>
             <!-- <magma-card-header>
@@ -215,6 +218,11 @@
             <magma-form-field>
               <magma-label>Wybierz datę</magma-label>
               <input magmaInput inputTypeStyle="date" typeCalendar="month" type="text" formControlName="dateMonth">
+            </magma-form-field>
+
+            <magma-form-field>
+              <magma-label>Select range date</magma-label>
+              <magma-date-range-input formControlName="date_1"></magma-date-range-input>
             </magma-form-field>
             <!--  -->
             <br>

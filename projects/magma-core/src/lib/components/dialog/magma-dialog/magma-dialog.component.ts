@@ -32,6 +32,7 @@ export class MagmaDialogComponent implements AfterViewInit, OnDestroy{
   ngAfterViewInit(): void {
     setTimeout(() => {
         this.isOpen = true
+        console.log(this.loading)
     }, 0);
   }
 

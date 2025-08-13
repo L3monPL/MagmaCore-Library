@@ -262,8 +262,8 @@ export class AppComponent {
     numberCount: new FormControl(120234), // Możesz ustawić domyślną wartość
     date: new FormControl <Date|string>(new Date()),
     date_1: new FormControl<{ from: Date|string; to: Date|string }>({
-      from: '',
-      to: ''
+      from: new Date(),
+      to: new Date(2025, 7, 22, 0, 0, 0, 0)
     }),
     date_2: new FormControl <Date|string>(new Date()),
     dateDay_1: new FormControl <Date|string>(new Date('12/05/2025')),

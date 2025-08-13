@@ -57,7 +57,7 @@ export class MagmaDateRangeInputComponent implements ControlValueAccessor{
     const mm = String(date.getMonth() + 1).padStart(2, '0');
     const dd = String(date.getDate()).padStart(2, '0');
     const yyyy = date.getFullYear();
-    return `${dd}/${mm}/${yyyy}`;
+    return `${yyyy}-${mm}-${dd}`;
   }
 
   private parseDate(dateStr: string): Date | null {

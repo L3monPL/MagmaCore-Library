@@ -128,6 +128,20 @@
     z-index: 9999;
     font-family: var(--magma-font);
 }
+input[readonly]{
+    cursor: default;
+}
+input[readonly]:focus {
+  outline: none;
+  border-color: transparent;
+  box-shadow: none;
+  cursor: default;
+}
+
+
+
+
+
 
 @media only screen and (max-width:800px){
     .m-mobile-hide{

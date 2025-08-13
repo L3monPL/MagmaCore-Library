@@ -12,4 +12,12 @@
     max-height: 200px;
     overflow-y: auto;
     z-index: 10;
-  }
+}
+li{
+    background-color: var(--magma-color-card-100);
+    padding: 0.25rem 0.5rem;
+    cursor: pointer;
+}
+.selected{
+    font-weight: 500;
+}

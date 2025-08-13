@@ -244,6 +244,14 @@ export class MagmaDatePickerComponent implements OnInit {
           this.isSelectingRangeStart = false
           this.isSelectingRangeEnd = true
 
+          if (this.rangeStart! > this.rangeEnd) {
+            let start = this.rangeStart
+            let end = this.rangeEnd
+
+            this.rangeStart = end
+            this.rangeEnd = start
+          }
+
           // console.log(this.rangeStart, this.rangeEnd)
           this.selectDateEmmiter.emit({ from: this.rangeStart, to: this.rangeEnd })
 
