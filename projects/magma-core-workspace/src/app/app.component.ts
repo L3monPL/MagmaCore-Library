@@ -263,7 +263,7 @@ export class AppComponent {
     date: new FormControl <Date|string>(new Date()),
     date_1: new FormControl<{ from: Date|string; to: Date|string }>({
       from: new Date(),
-      to: new Date(2025, 7, 22, 0, 0, 0, 0)
+      to: this.addDays(new Date(), 6)
     }),
     date_2: new FormControl <Date|string>(new Date()),
     dateDay_1: new FormControl <Date|string>(new Date('12/05/2025')),
@@ -272,6 +272,12 @@ export class AppComponent {
     autocomplete_2: new FormControl(''),
     selectCar: new FormControl('Kia'),
   });
+
+  addDays(date: Date, days: number): Date {
+    const result = new Date(date);
+    result.setDate(result.getDate() + days);
+    return result;
+  }
 
   openDialog() {
     this.dialogService.openDialog(DialogCenterComponent, {
