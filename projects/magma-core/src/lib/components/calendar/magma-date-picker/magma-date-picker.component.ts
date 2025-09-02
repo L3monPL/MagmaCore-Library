@@ -63,8 +63,8 @@ export class MagmaDatePickerComponent implements OnInit {
 
   updateCalendar(){
     if (this.isRangePicker) {
-      // console.log(this.rangeStart)
-      // console.log(this.rangeEnd)
+      console.log(this.rangeStart)
+      console.log(this.rangeEnd)
       // console.log(this.selectedDate)
       this.generateCalendar()
       return
@@ -77,6 +77,9 @@ export class MagmaDatePickerComponent implements OnInit {
     if (this.setDate instanceof Date && !isNaN(this.setDate.getTime())) {
       this.currentDate = this.setDate
       this.selectedDate = this.setDate
+
+      // console.log(this.currentDate)
+
       this.generateCalendar()
     } 
     else {
@@ -266,7 +269,7 @@ export class MagmaDatePickerComponent implements OnInit {
       ////////
       // NORMAL
       this.selectedDate = date
-      // console.log(this.selectedDate)
+      console.log(this.selectedDate)
       this.selectDateEmmiter.emit(this.selectedDate)
 
       if (!this.isStaticPosition) {
@@ -283,7 +286,7 @@ export class MagmaDatePickerComponent implements OnInit {
     if (this.typeCalendar == 'month') {
       let date = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth())
       this.selectedDate = date
-      // console.log(this.selectedDate)
+      console.log(this.selectedDate)
       this.selectDateEmmiter.emit(this.selectedDate)
 
       if (!this.isStaticPosition) {

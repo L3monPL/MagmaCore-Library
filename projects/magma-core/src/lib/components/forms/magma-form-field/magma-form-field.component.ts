@@ -157,6 +157,9 @@ export class MagmaFormFieldComponent implements AfterViewInit, OnInit, OnDestroy
         this.magmaDatePickerComponent.rangeStart = from
         this.magmaDatePickerComponent.rangeEnd = to
 
+        console.log('from:' + from)
+        console.log('to:' + to)
+
         this.magmaDatePickerComponent.updateCalendar()
 
         // this.magmaDatePickerComponent.setDate = from
@@ -192,6 +195,7 @@ export class MagmaFormFieldComponent implements AfterViewInit, OnInit, OnDestroy
         // SET VALUE FROM INPUT TO DATEPICKER
         if (inputElement.getAttribute('inputTypeStyle') != 'dateRange') {
           this.magmaDatePickerComponent.setDate = this.parseDateFromString(value)!
+          console.log(this.magmaDatePickerComponent.setDate)
         }
         // this.magmaDatePickerComponent.selectedDate = value
         this.magmaDatePickerComponent.updateCalendar()
@@ -212,29 +216,37 @@ export class MagmaFormFieldComponent implements AfterViewInit, OnInit, OnDestroy
   }
 
   parseDateFromString(dateString: string): Date | null {
-    const parts = dateString.split('/');
-
-    let day = 1;
-    let month = 0;
-    let year: number;
-
-    if (parts.length === 3) {
-      // Format dd/MM/yyyy
-      day = parseInt(parts[0], 10);
-      month = parseInt(parts[1], 10) - 1;
-      year = parseInt(parts[2], 10);
-    } else if (parts.length === 2) {
-      // Format MM/yyyy
-      month = parseInt(parts[0], 10) - 1;
-      year = parseInt(parts[1], 10);
-    } else if (parts.length === 1) {
-      // Format yyyy
-      year = parseInt(parts[0], 10);
-    } else {
+    if (!dateString) {
       return null;
     }
 
+    const parts = dateString.split('-');
+    if (parts.length !== 3) {
+      // return null;
+    }
+
+    let day = 1
+    let month = 0
+    let year: number = 0
+
+    if (parts.length == 3) {
+      year = parseInt(parts[0], 10)
+      month = parseInt(parts[1], 10) - 1
+      day = parseInt(parts[2], 10)
+    }
+    if (parts.length == 2) {
+      year = parseInt(parts[0], 10)
+      month = parseInt(parts[1], 10) - 1
+    }
+    if (parts.length == 1) {
+      year = parseInt(parts[0], 10)
+    }
+
     const date = new Date(year, month, day);
+
+    console.log(dateString)
+    console.log(date)
+
     return !isNaN(date.getTime()) ? date : null;
   }
 
