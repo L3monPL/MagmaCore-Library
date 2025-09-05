@@ -241,11 +241,11 @@
 
             <magma-form-field>
               <magma-label>Select Year</magma-label>
-              <magma-select formControlName="selectCar" optionLabel="name">
+              <magma-select formControlName="selectCar" optionLabel="name" [list]="selectList" sortBy="id">
                 <magma-select-list>
                   @for (item of selectList; track $index) {
                     <li magmaSelectOption [value]="item"
-                        [class.selected]="this.form.get('selectCar')?.value === item.name">
+                        [class.selected]="this.form.get('selectCar')?.value === item.id">
                       {{ item.name }}
                     </li>
                   }
