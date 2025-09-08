@@ -270,7 +270,7 @@ export class AppComponent {
     dateMonth: new FormControl <Date|string>(new Date()),
     autocomplete: new FormControl(''),
     autocomplete_2: new FormControl(''),
-    selectCar: new FormControl(1),
+    selectCar: new FormControl(null),
   });
 
   addDays(date: Date, days: number): Date {

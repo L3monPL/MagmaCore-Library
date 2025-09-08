@@ -20,9 +20,10 @@ export class MagmaSelectComponent implements ControlValueAccessor, AfterContentI
 
   @ContentChild(MagmaSelectListComponent) selectList!: MagmaSelectListComponent
 
-  @Input() optionLabel?: string = ''
-  @Input() sortBy?: string = ''
+  @Input() optionLabel?: string = 'name'
+  @Input() sortBy?: string = 'id'
   @Input() list?: Array<any>
+  @Input() placeholderText?: string = 'Select option'
 
   dropdownOpen = false
 
@@ -33,9 +34,15 @@ export class MagmaSelectComponent implements ControlValueAccessor, AfterContentI
   onTouched = () => {};
 
   writeValue(value: any): void {
-    const found = this.list!.find(item => item[this.sortBy!] === value)
+    if (value == null || value == undefined) {
+      this.displayTextSelected = null
+    }
+    else{
+      const found = this.list!.find(item => item[this.sortBy!] === value)
 
-    this.displayTextSelected = found[this.optionLabel!]
+      this.displayTextSelected = found[this.optionLabel!]
+    }
+
     console.log(this.displayTextSelected)
 
     this.value = value
@@ -53,12 +60,12 @@ export class MagmaSelectComponent implements ControlValueAccessor, AfterContentI
 
         if (this.optionLabel) {
           this.displayTextSelected = value[this.optionLabel]
-          console.log(this.displayTextSelected)
-          this.value = value
+          // console.log(this.displayTextSelected)
+          this.value = value[this.sortBy!]
           this.onChange(this.value)
         }
         else{
-          this.value = value
+          this.value = value[this.sortBy!]
           this.onChange(this.value)
         }
         this.onTouched()
