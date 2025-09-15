@@ -62,5 +62,8 @@ html, body{
 //   pointer-events: none; /* pozwala na interakcję tylko z overlayami w nim */
 }
 .cdk-overlay-connected-position-bounding-box{
-    position: sticky;
+    position: fixed;
+}
+.cdk-overlay-container:empty {
+    display: none;
 }

@@ -73,7 +73,8 @@ export class MagmaSelectComponent implements ControlValueAccessor, AfterContentI
           this.onChange(this.value)
         }
         this.onTouched()
-        this.dropdownOpen = false
+        // this.dropdownOpen = false
+        this.closeDropdown()
       });
     }
   }
@@ -90,37 +91,28 @@ overlayRef!: OverlayRef
 @ViewChild('dropdownTemplate') dropdownTemplate!: TemplateRef<any>
 
 openDropdown() {
-  if (this.overlayRef) return;
+  if (this.overlayRef) return
 
-  // const positionStrategy = this.overlay.position()
-  //     .global() // <-- global = fixed względem całego viewportu
-  //     .centerHorizontally()
-  //     .top('100px'); // np. odległość od góry
-
-
-    this.overlayRef = this.overlay.create({
-      positionStrategy: this.overlay.position()
-        .flexibleConnectedTo(this.selectInput.nativeElement)
-        .withPositions([{
-          originX: 'start',
-          originY: 'bottom',
-          overlayX: 'start',
-          overlayY: 'top',
-          offsetY: 5
-        }]).withPush(true),
+  this.overlayRef = this.overlay.create({
+    positionStrategy: this.overlay.position()
+      .flexibleConnectedTo(this.selectInput.nativeElement)
+      .withPositions([{
+        originX: 'start',
+        originY: 'bottom',
+        overlayX: 'start',
+        overlayY: 'top',
+      }]).withPush(true),
         
-      scrollStrategy: this.overlay.scrollStrategies.reposition()
-    });
+    scrollStrategy: this.overlay.scrollStrategies.reposition()
+  });
 
-    console.log(this.selectInput.nativeElement)
-
-    // Przenosimy ng-content do overlay
-    const portal = new TemplatePortal(this.dropdownTemplate, this.viewContainerRef);
-    this.overlayRef.attach(portal);
+  // Przenosimy ng-content do overlay
+  const portal = new TemplatePortal(this.dropdownTemplate, this.viewContainerRef);
+  this.overlayRef.attach(portal);
 
     // this.overlayRef.backdropClick().subscribe(() => this.closeDropdown())
 
-    this.dropdownOpen = true;
+  this.dropdownOpen = true;
 
   this.overlayRef.outsidePointerEvents().subscribe(() => this.closeDropdown())
 }
@@ -130,10 +122,7 @@ closeDropdown() {
     this.overlayRef.dispose();
     this.overlayRef = null!;
   }
-  const overlayContainer = document.querySelector('.cdk-overlay-container');
-  if (overlayContainer) {
-    overlayContainer.remove(); // usuwa cały kontener z DOM
-  }
+
   this.dropdownOpen = false;
 }
 
