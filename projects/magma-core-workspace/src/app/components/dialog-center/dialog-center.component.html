@@ -1,4 +1,19 @@
-<magma-dialog [position]="'center'" (closeDialog)="close()" [loading]="true">
+<magma-dialog [formGroup]="form" [position]="'center'" (closeDialog)="close()" [loading]="false">
     <h2>Center</h2>
+    <div class="scroll_container">
+    <magma-form-field>
+              <magma-label>Select Year</magma-label>
+              <magma-select formControlName="selectCar" optionLabel="name" [list]="selectList" sortBy="id" placeholderText="Wybierz opcje">
+                <magma-select-list>
+                  @for (item of selectList; track $index) {
+                    <li magmaSelectOption [value]="item"
+                        [class.selected]="this.form.get('selectCar')?.value! === item.id">
+                      {{ item.name }}
+                    </li>
+                  }
+                </magma-select-list>
+              </magma-select>
+    </magma-form-field>
+    </div>
     <button magmaButton color="red" (click)="close()">Close</button>
 </magma-dialog>

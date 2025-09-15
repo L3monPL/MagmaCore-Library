@@ -1,3 +1,6 @@
+.select{
+    position: relative;
+}
 .select_input{
     background-color: var(--magma-color-card-100);
     border-radius: 5px;
@@ -30,4 +33,8 @@
     input{
         cursor: pointer!important;
     }
+}
+
+.cdk-overlay-connected-position-bounding-box {
+  position: fixed !important;
 }

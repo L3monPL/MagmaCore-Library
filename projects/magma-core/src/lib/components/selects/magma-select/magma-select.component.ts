@@ -1,7 +1,9 @@
-import { AfterContentInit, AfterViewInit, Component, ContentChild, ContentChildren, ElementRef, forwardRef, HostListener, Input, QueryList, ViewChild } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, ContentChild, ContentChildren, ElementRef, forwardRef, HostListener, Input, QueryList, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MagmaSelectListComponent } from '../magma-select-list/magma-select-list.component';
 import { MagmaSelectOptionDirective } from '../magma-select-option.directive';
+import { Overlay, OverlayRef } from '@angular/cdk/overlay';
+import { ComponentPortal, TemplatePortal } from '@angular/cdk/portal';
 
 @Component({
   selector: 'magma-select',
@@ -17,6 +19,8 @@ import { MagmaSelectOptionDirective } from '../magma-select-option.directive';
   ],
 })
 export class MagmaSelectComponent implements ControlValueAccessor, AfterContentInit{
+
+  constructor(private overlay: Overlay, private viewContainerRef: ViewContainerRef) {}
 
   @ContentChild(MagmaSelectListComponent) selectList!: MagmaSelectListComponent
 
@@ -75,17 +79,72 @@ export class MagmaSelectComponent implements ControlValueAccessor, AfterContentI
   }
 
   toggleDropdown() {
-    this.dropdownOpen = !this.dropdownOpen
+  if (this.dropdownOpen) {
+    this.closeDropdown();
+  } else {
+    this.openDropdown();
   }
+  this.dropdownOpen = !this.dropdownOpen;
+}
+overlayRef!: OverlayRef
+@ViewChild('dropdownTemplate') dropdownTemplate!: TemplateRef<any>
+
+openDropdown() {
+  if (this.overlayRef) return;
+
+  // const positionStrategy = this.overlay.position()
+  //     .global() // <-- global = fixed względem całego viewportu
+  //     .centerHorizontally()
+  //     .top('100px'); // np. odległość od góry
+
+
+    this.overlayRef = this.overlay.create({
+      positionStrategy: this.overlay.position()
+        .flexibleConnectedTo(this.selectInput.nativeElement)
+        .withPositions([{
+          originX: 'start',
+          originY: 'bottom',
+          overlayX: 'start',
+          overlayY: 'top',
+          offsetY: 5
+        }]).withPush(true),
+        
+      scrollStrategy: this.overlay.scrollStrategies.reposition()
+    });
+
+    console.log(this.selectInput.nativeElement)
+
+    // Przenosimy ng-content do overlay
+    const portal = new TemplatePortal(this.dropdownTemplate, this.viewContainerRef);
+    this.overlayRef.attach(portal);
+
+    // this.overlayRef.backdropClick().subscribe(() => this.closeDropdown())
+
+    this.dropdownOpen = true;
+
+  this.overlayRef.outsidePointerEvents().subscribe(() => this.closeDropdown())
+}
+
+closeDropdown() {
+  if (this.overlayRef) {
+    this.overlayRef.dispose();
+    this.overlayRef = null!;
+  }
+  const overlayContainer = document.querySelector('.cdk-overlay-container');
+  if (overlayContainer) {
+    overlayContainer.remove(); // usuwa cały kontener z DOM
+  }
+  this.dropdownOpen = false;
+}
 
   @ViewChild('selectInput') private selectInput!: ElementRef
 
-  @HostListener('document:click', ['$event'])
-  onClick(event: MouseEvent) {
+  // @HostListener('document:click', ['$event'])
+  // onClick(event: MouseEvent) {
     
-    if (!this.selectInput.nativeElement.contains(event.target) && this.dropdownOpen) {
-      this.dropdownOpen = false
-    }
-  }
+  //   if (!this.selectInput.nativeElement.contains(event.target) && this.dropdownOpen) {
+  //     this.dropdownOpen = false
+  //   }
+  // }
 
 }

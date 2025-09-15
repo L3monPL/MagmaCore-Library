@@ -1,6 +1,6 @@
 {
   "name": "magma-core",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "peerDependencies": {
     "@angular/common": "^17.3.0",
     "@angular/core": "^17.3.0",
@@ -8,6 +8,9 @@
   },
   "dependencies": {
     "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@angular/cdk": "^17.3.0"
   },
   "sideEffects": false
 }
