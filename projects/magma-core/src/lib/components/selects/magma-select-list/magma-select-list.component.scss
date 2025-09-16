@@ -1,5 +1,5 @@
 .magma-list {
-    position: absolute;
+    position: relative;
     width: 100%;
     box-sizing: border-box;
     // background: white;
@@ -18,11 +18,19 @@
 }
 :host ::ng-deep li {
   background-color: var(--magma-color-card-100);
-  padding: 0.35rem 0.5rem;
+  color: var(--magma-color-font-primary-100);
+  font-family: var(--magma-font);
+  padding: 0.5rem 0.5rem;
   transition: 0.3s;
   cursor: pointer;
 }
 :host ::ng-deep li:hover {
   filter: brightness(1.2);
   transition: 0.3s;
+}
+::-webkit-scrollbar-track {
+    background: var(--magma-color-card-100);
+    border: 0px none #ccc;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
 }

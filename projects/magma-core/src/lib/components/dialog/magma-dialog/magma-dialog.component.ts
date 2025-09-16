@@ -47,24 +47,32 @@ export class MagmaDialogComponent implements AfterViewInit, OnDestroy{
   //   }
   // }
 
+  isClickInsideAllowedArea(target: EventTarget | null): boolean {
+    const dialogContent = this.dialogContentRef?.nativeElement;
+    const overlayContainer = document.querySelector('.cdk-overlay-container');
+    
+    return (
+      (dialogContent && dialogContent.contains(target)) ||
+      (overlayContainer && overlayContainer.contains(target as Node))
+    );
+  }
+
   mouseDownOutside = false
 
   @HostListener('document:mousedown', ['$event'])
   onDocumentMouseDown(event: MouseEvent) {
-    const clickedInside = this.dialogContentRef?.nativeElement.contains(event.target);
-    this.mouseDownOutside = !clickedInside;
+    this.mouseDownOutside = !this.isClickInsideAllowedArea(event.target);
   }
 
   @HostListener('document:mouseup', ['$event'])
   onDocumentMouseUp(event: MouseEvent) {
-    const clickedInside = this.dialogContentRef?.nativeElement.contains(event.target);
-    const mouseUpOutside = !clickedInside;
+    const mouseUpOutside = !this.isClickInsideAllowedArea(event.target);
 
     if (this.mouseDownOutside && mouseUpOutside && this.isOpen) {
       this.close();
     }
 
-    this.mouseDownOutside = false; // Reset flag
+    this.mouseDownOutside = false;
   }
 
   close() {

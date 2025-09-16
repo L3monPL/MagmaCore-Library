@@ -2,7 +2,7 @@ import { AfterContentInit, AfterViewInit, Component, ContentChild, ContentChildr
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MagmaSelectListComponent } from '../magma-select-list/magma-select-list.component';
 import { MagmaSelectOptionDirective } from '../magma-select-option.directive';
-import { Overlay, OverlayRef } from '@angular/cdk/overlay';
+import { FlexibleConnectedPositionStrategy, Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { ComponentPortal, TemplatePortal } from '@angular/cdk/portal';
 
 @Component({
@@ -93,24 +93,57 @@ overlayRef!: OverlayRef
 openDropdown() {
   if (this.overlayRef) return
 
+  const positionStrategy: FlexibleConnectedPositionStrategy =
+      this.overlay.position()
+        .flexibleConnectedTo(this.selectInput.nativeElement)
+        .withPositions([
+          {
+            originX: 'start',
+            originY: 'bottom',
+            overlayX: 'start',
+            overlayY: 'top',
+          },
+          {
+            originX: 'start',
+            originY: 'top',
+            overlayX: 'start',
+            overlayY: 'bottom',
+            offsetY: 8
+          }
+        ])
+        .withPush(true);
+
   this.overlayRef = this.overlay.create({
-    positionStrategy: this.overlay.position()
-      .flexibleConnectedTo(this.selectInput.nativeElement)
-      .withPositions([{
-        originX: 'start',
-        originY: 'bottom',
-        overlayX: 'start',
-        overlayY: 'top',
-      }]).withPush(true),
-        
-    scrollStrategy: this.overlay.scrollStrategies.reposition()
+    positionStrategy,
+    scrollStrategy: this.overlay.scrollStrategies.reposition(),
+    panelClass: 'my-dropdown-pane'
   });
 
   // Przenosimy ng-content do overlay
   const portal = new TemplatePortal(this.dropdownTemplate, this.viewContainerRef);
   this.overlayRef.attach(portal);
 
-    // this.overlayRef.backdropClick().subscribe(() => this.closeDropdown())
+  // ustaw szerokość dropdowna = szerokość inputa
+  const inputWidth = this.selectInput.nativeElement.getBoundingClientRect().width;
+  const overlayElement = this.overlayRef.overlayElement;
+  overlayElement.style.width = `${inputWidth}px`;
+
+  //
+
+  positionStrategy.positionChanges.subscribe(change => {
+  const overlayElement = this.overlayRef.overlayElement;
+
+  if (change.connectionPair.originY === 'top') {
+    // użyła się druga strategia (dropdown NAD inputem)
+    overlayElement.style.bottom = '0px';
+    overlayElement.style.position = 'absolute';
+  } else {
+    // wróć do domyślnego zachowania
+    overlayElement.style.bottom = '';
+  }
+});
+
+  //
 
   this.dropdownOpen = true;
 
